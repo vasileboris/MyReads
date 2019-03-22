@@ -1,0 +1,12 @@
+.project
+.idea/
+*.iml
+*.ipr
+*.iws
+target
+.classpath
+.settings
+bower_components
+node_modules
+dist
+yarn-error.log
