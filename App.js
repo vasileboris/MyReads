@@ -1,8 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import i18next from 'i18next';
-import Fetch from 'i18next-fetch-backend';
-import PROP from '/utils/PROP';
+import { StyleSheet, Text, View } from 'react-native';
 import localizer from '/utils/Localizer';
 import { fetchBooks } from '/api/BookApi';
 
@@ -31,31 +28,14 @@ export default class App extends React.Component {
     }
 
     componentDidMount() {
-        i18next
-            .use(Fetch)
-            .init({
-                backend: {
-                    loadPath: lng => {
-                        const suffix = 'en' !== lng ? `_${lng}` : '';
-                        return `http://192.168.0.87:81/translations/Messages${suffix}.properties`
-                    },
-                    parse: data => PROP.parse(data)
-                },
-                lng: "en",
-                fallbackLng: "en",
-                interpolation: {
-                    prefix: "{",
-                    suffix: "}"
-                },
-                debug: true
-            }, () => {
-                fetchBooks().then((response) => {
-                   this.setState({
-                       isI18nInitialized: true,
-                       books: response.data
-                   })
-                });
+        localizer.init(() => {
+            fetchBooks().then((response) => {
+               this.setState({
+                   isI18nInitialized: true,
+                   books: response.data
+               })
             });
+        });
     }
 }
 

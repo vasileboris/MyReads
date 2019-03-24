@@ -3066,11 +3066,6 @@ http-errors@~1.6.2:
     setprototypeof "1.1.0"
     statuses ">= 1.4.0 < 2"
 
-i18next-fetch-backend@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/i18next-fetch-backend/-/i18next-fetch-backend-2.2.0.tgz#39ff6578596e0122e80692e04d7897ee373607d6"
-  integrity sha512-HodOCr4fezjMgJwWnOR/JUotdbM1onXdnB6Y+XDgDpXX58SkZXcyz6VmmUGc/8XMxFzq3162Qs2vO+SlO4TCFw==
-
 i18next@^15.0.7:
   version "15.0.7"
   resolved "https://registry.yarnpkg.com/i18next/-/i18next-15.0.7.tgz#2f61240c8b2b6656233217a8eee07a09a5707fea"
