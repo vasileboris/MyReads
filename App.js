@@ -1,7 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { View } from 'react-native';
 import localizer from '/utils/Localizer';
-import { fetchBooks } from '/api/BookApi';
+import MessageComponent from '/components/message/MessageComponent';
+import appStyles from '/styles/AppStyles';
 
 export default class App extends React.Component {
     constructor(props) {
@@ -9,41 +10,24 @@ export default class App extends React.Component {
 
         this.state = {
             isI18nInitialized: false,
-            books: []
         }
     }
 
     render() {
-        const { isI18nInitialized, books } = this.state;
+        const { isI18nInitialized } = this.state;
 
-        if(!isI18nInitialized) {
-            return null;
-        }
-        return (
-            <View style={styles.container}>
-                <Text>{localizer.localize('books-search-text')}</Text>
-                {books.map( book => (<Text>{book.title}</Text>))}
+        return isI18nInitialized && (
+            <View style={appStyles.vertical}>
+                <MessageComponent message="This is a custom message"/>
             </View>
         );
     }
 
     componentDidMount() {
         localizer.init(() => {
-            fetchBooks().then((response) => {
-               this.setState({
-                   isI18nInitialized: true,
-                   books: response.data
-               })
-            });
+           this.setState({
+               isI18nInitialized: true,
+           })
         });
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-});
