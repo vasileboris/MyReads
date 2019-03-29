@@ -4,8 +4,8 @@ const appStyles = StyleSheet.create({
     vertical: {
         flex: 1,
         flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'space-between',
+        alignItems: 'stretch'
     },
 
     text: {
