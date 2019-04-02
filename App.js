@@ -16,7 +16,7 @@ export default class App extends React.Component {
     render() {
         const { isLocalizerInitialized } = this.state;
 
-        return isI18nInitialized && (
+        return isLocalizerInitialized && (
             <View style={[appStyles.app, appStyles.vertical]}>
                 <MessageComponent key={1} message="This is message 1"/>
                 <MessageComponent key={2} message="This is message 2"/>
