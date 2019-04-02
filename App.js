@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import { View, Text } from 'react-native';
 import localizer from '/utils/Localizer';
 import MessageComponent from '/components/message/MessageComponent';
 import appStyles from '/styles/AppStyles';
@@ -9,16 +9,15 @@ export default class App extends React.Component {
         super(props);
 
         this.state = {
-            isI18nInitialized: false,
-            inputValue: ""
+            isLocalizerInitialized: false
         };
     }
 
     render() {
-        const { isI18nInitialized, inputValue } = this.state;
+        const { isLocalizerInitialized } = this.state;
 
         return isI18nInitialized && (
-            <View style={appStyles.vertical}>
+            <View style={[appStyles.app, appStyles.vertical]}>
                 <MessageComponent key={1} message="This is message 1"/>
                 <MessageComponent key={2} message="This is message 2"/>
                 <MessageComponent key={3} message="This is message 3"/>
@@ -33,7 +32,7 @@ export default class App extends React.Component {
     componentDidMount() {
         localizer.init(() => {
            this.setState({
-               isI18nInitialized: true,
+               isLocalizerInitialized: true,
            })
         });
     }
