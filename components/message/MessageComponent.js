@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text, StyleSheet } from 'react-native';
+import {
+    Text,
+    StyleSheet
+} from 'react-native';
 import appStyles from '/styles/AppStyles';
 
 const styles = StyleSheet.create({
