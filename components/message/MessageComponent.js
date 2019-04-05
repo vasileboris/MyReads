@@ -5,18 +5,19 @@ import {
     StyleSheet
 } from 'react-native';
 import appStyles from '/styles/AppStyles';
+import appTheme from '/styles/AppTheme.js';
 
 const styles = StyleSheet.create({
-    message: {
-        color: 'white',
-        backgroundColor: 'red'
+    text: {
+        color: appTheme.colorTextMessage,
+        backgroundColor: appTheme.colorMessage
     },
 });
 
 const MessageComponent = props => {
     const { message } = props;
     return message && (
-        <Text style={[appStyles.text, styles.message]}>{message}</Text>
+        <Text style={[appStyles.text, styles.text]}>{message}</Text>
     );
 };
 

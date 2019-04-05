@@ -27,7 +27,8 @@ function buildImgAttributes(image) {
 }
 
 BookImageComponent.propTypes = {
-    image: PropTypes.string
+    image: PropTypes.string,
+    size: PropTypes.string.isRequired
 };
 
 export default BookImageComponent;
