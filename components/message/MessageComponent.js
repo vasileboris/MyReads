@@ -10,14 +10,15 @@ import appColors from '/styles/AppColors';
 const styles = StyleSheet.create({
     text: {
         color: appColors.colorTextMessage,
-        backgroundColor: appColors.colorMessage
+        backgroundColor: appColors.colorMessage,
+        textAlign: "center"
     },
 });
 
 const MessageComponent = props => {
     const { message } = props;
     return message && (
-        <Text style={[appStyles.text, styles.text]}>{message}</Text>
+        <Text style={[appStyles.entry, appStyles.text, styles.text]}>{message}</Text>
     );
 };
 

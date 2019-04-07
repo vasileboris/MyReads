@@ -1,10 +1,10 @@
 {
   "devToolsPort": 19002,
-  "expoServerPort": null,
-  "packagerPort": null,
-  "packagerPid": null,
+  "expoServerPort": 19000,
+  "packagerPort": 19001,
+  "packagerPid": 7739,
   "expoServerNgrokUrl": "https://yv-2sk.anonymous.myreads.exp.direct",
   "packagerNgrokUrl": "https://packager.yv-2sk.anonymous.myreads.exp.direct",
-  "ngrokPid": 6344,
+  "ngrokPid": 7846,
   "webpackServerPort": null
 }

@@ -1,7 +1,13 @@
+import { Dimensions } from 'react-native';
+
 const appSizes = {
     sixColumnWidth: 140,
     smallMargin: 5,
     margin: 10,
+    padding: 10,
+    screenWidth: function() {
+        return Dimensions.get('window').width
+    },
     smallImageWidth: function() {
         return this.sixColumnWidth;
     },
@@ -10,7 +16,10 @@ const appSizes = {
         return this.sixColumnWidth;
     },
     largeImageHeight: 174,
-    elementWidth: function() {
+    entryWidth: function() {
+        return this.screenWidth() - 2 * this.margin;
+    },
+    resultWidth: function() {
         return this.sixColumnWidth;
     }
 };

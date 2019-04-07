@@ -23,8 +23,14 @@ const appStyles = StyleSheet.create({
         fontWeight: "bold"
     },
 
+    entry: {
+        width: appSizes.entryWidth(),
+        margin: appSizes.margin,
+        padding: appSizes.padding
+    },
+
     resultSingle: {
-        width: appSizes.elementWidth(),
+        width: appSizes.resultWidth(),
         margin: appSizes.margin
     },
 
