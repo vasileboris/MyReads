@@ -1,10 +1,10 @@
 {
   "devToolsPort": 19002,
-  "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 5395,
-  "expoServerNgrokUrl": "https://sa-imr.anonymous.myreads.exp.direct",
-  "packagerNgrokUrl": "https://packager.sa-imr.anonymous.myreads.exp.direct",
-  "ngrokPid": 5464,
+  "expoServerPort": null,
+  "packagerPort": null,
+  "packagerPid": null,
+  "expoServerNgrokUrl": "https://yv-2sk.anonymous.myreads.exp.direct",
+  "packagerNgrokUrl": "https://packager.yv-2sk.anonymous.myreads.exp.direct",
+  "ngrokPid": 6344,
   "webpackServerPort": null
 }

@@ -1,26 +1,19 @@
 import React from 'react';
-import BookImageComponent from './BookImageComponent';
 import PropTypes from 'prop-types';
 import {
     View,
-    Text,
-    StyleSheet
+    Text
 } from 'react-native';
+import BookImageComponent from './BookImageComponent';
 import appStyles from '/styles/AppStyles';
-import appTheme from "../../styles/AppTheme";
-
-const styles = StyleSheet.create({
-    text: {
-        color: appTheme.color3
-    },
-});
 
 function BookFigureComponent (props) {
     const { book, size } = props;
+    const { text, title, resultImportant, resultDetail } = appStyles;
     return (
         <View>
             <BookImageComponent image={book.image} size={size}/>
-            <Text style={[appStyles.text, styles.text]}>{book.title}</Text>
+            <Text style={[text, title, resultImportant, resultDetail]}>{book.title}</Text>
         </View>
     );
 }

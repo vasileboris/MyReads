@@ -1,5 +1,7 @@
 import { StyleSheet, Platform } from 'react-native';
 import { Constants } from 'expo';
+import appColors from "./AppColors";
+import appSizes from "./AppSizes";
 
 const appStyles = StyleSheet.create({
     app: {
@@ -16,6 +18,27 @@ const appStyles = StyleSheet.create({
     text: {
         fontFamily: 'sans-serif',
     },
+
+    title: {
+        fontWeight: "bold"
+    },
+
+    resultSingle: {
+        width: appSizes.elementWidth(),
+        margin: appSizes.margin
+    },
+
+    resultImportant: {
+        fontWeight: "bold",
+        color: appColors.color3
+    },
+
+    resultDetail: {
+        marginTop: appSizes.smallMargin,
+        paddingTop: appSizes.smallMargin,
+        borderTopColor: appColors.color3,
+        borderTopWidth: 1
+    }
 });
 
 export default appStyles;

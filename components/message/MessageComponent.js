@@ -5,12 +5,12 @@ import {
     StyleSheet
 } from 'react-native';
 import appStyles from '/styles/AppStyles';
-import appTheme from '/styles/AppTheme.js';
+import appColors from '/styles/AppColors';
 
 const styles = StyleSheet.create({
     text: {
-        color: appTheme.colorTextMessage,
-        backgroundColor: appTheme.colorMessage
+        color: appColors.colorTextMessage,
+        backgroundColor: appColors.colorMessage
     },
 });
 
