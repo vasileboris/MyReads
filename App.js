@@ -5,7 +5,6 @@ import {
     ScrollView
 } from 'react-native';
 import localizer from 'utils/Localizer';
-import MessageComponent from 'components/message/MessageComponent';
 import ReadonlyBookComponent from 'components/book/ReadonlyBookComponent';
 import BookComponent from 'components/book/BookComponent';
 import appStyles from 'styles/AppStyles';
@@ -30,20 +29,20 @@ export default class App extends React.Component {
         };
         return isLocalizerInitialized && (
             <View style={[appStyles.app, appStyles.horizontal]}>
-                <BookComponent book={{...bookRNIA, title: `${bookRNIA.title} 1`}}
-                               onReadClick={book => console.log(book.title)}
-                               onEditClick={book => console.log(book.title)}
-                               onDeleteClick={book => console.log(book.title)}/>
-                <ReadonlyBookComponent book={{...bookRNIA, title: `${bookRNIA.title} 2`}}/>
-
-                <ReadonlyBookComponent book={{...bookRNIA, title: `${bookRNIA.title} 3`}}/>
-                <BookComponent book={{...bookRNIA, title: `${bookRNIA.title} 4`}}
+                <ReadonlyBookComponent book={{...bookRNIA, title: `${bookRNIA.title} 11`}}/>
+                <BookComponent book={{...bookRNIA, title: `${bookRNIA.title} 12`}}
                                onReadClick={book => console.log(book.title)}
                                onEditClick={book => console.log(book.title)}
                                onDeleteClick={book => console.log(book.title)}/>
 
-                <ReadonlyBookComponent book={{...bookRNIA, title: `${bookRNIA.title} 5`}}/>
-                <BookComponent book={{...bookRNIA, title: `${bookRNIA.title} 6`}}
+                <ReadonlyBookComponent book={{...bookRNIA, title: `${bookRNIA.title} 13`}}/>
+                <BookComponent book={{...bookRNIA, title: `${bookRNIA.title} 14`}}
+                               onReadClick={book => console.log(book.title)}
+                               onEditClick={book => console.log(book.title)}
+                               onDeleteClick={book => console.log(book.title)}/>
+
+                <ReadonlyBookComponent book={{...bookRNIA, title: `${bookRNIA.title} 15`}}/>
+                <BookComponent book={{...bookRNIA, title: `${bookRNIA.title} 16`}}
                                onReadClick={book => console.log(book.title)}
                                onEditClick={book => console.log(book.title)}
                                onDeleteClick={book => console.log(book.title)}/>
