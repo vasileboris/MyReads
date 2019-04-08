@@ -9,11 +9,12 @@ import appStyles from '/styles/AppStyles';
 
 function BookFigureComponent (props) {
     const { book, size } = props;
-    const { text, title, resultImportant, resultDetail } = appStyles;
     return (
         <View>
             <BookImageComponent image={book.image} size={size}/>
-            <Text style={[text, title, resultImportant, resultDetail]}>{book.title}</Text>
+            <Text style={[appStyles.text, appStyles.title, appStyles.resultImportant, appStyles.resultDetail]}>
+                {book.title}
+            </Text>
         </View>
     );
 }

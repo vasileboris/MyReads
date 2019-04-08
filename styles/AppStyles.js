@@ -6,14 +6,23 @@ import appSizes from "./AppSizes";
 const appStyles = StyleSheet.create({
     app: {
         marginTop: 'android' === Platform.OS ? Constants.statusBarHeight : 0,
-        backgroundColor: appColors.color1
+        backgroundColor: appColors.color2
+    },
+
+    horizontal: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        alignItems: 'flex-start',
+        flexWrap: 'wrap'
     },
 
     vertical: {
         flex: 1,
         flexDirection: 'column',
         justifyContent: 'space-between',
-        alignItems: 'stretch'
+        alignItems: 'stretch',
+        flexWrap: 'nowrap'
     },
 
     text: {
@@ -21,7 +30,7 @@ const appStyles = StyleSheet.create({
     },
 
     title: {
-        fontWeight: "bold"
+        fontWeight: 'bold'
     },
 
     entry: {
@@ -30,13 +39,26 @@ const appStyles = StyleSheet.create({
         padding: appSizes.padding
     },
 
+    button: {
+        marginTop: appSizes.margin,
+        marginBottom: appSizes.margin
+    },
+
+    result: {
+        width: appSizes.resultWidth(),
+        margin: appSizes.margin,
+        paddingTop: appSizes.smallMargin,
+        borderTopColor: appColors.color3,
+        borderTopWidth: 4
+    },
+
     resultSingle: {
         width: appSizes.resultWidth(),
         margin: appSizes.margin
     },
 
     resultImportant: {
-        fontWeight: "bold",
+        fontWeight: 'bold',
         color: appColors.color3
     },
 
