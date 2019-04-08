@@ -5,7 +5,8 @@ import appSizes from "./AppSizes";
 
 const appStyles = StyleSheet.create({
     app: {
-        marginTop: 'android' === Platform.OS ? Constants.statusBarHeight : 0
+        marginTop: 'android' === Platform.OS ? Constants.statusBarHeight : 0,
+        backgroundColor: appColors.color1
     },
 
     vertical: {
