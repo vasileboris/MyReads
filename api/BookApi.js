@@ -1,19 +1,19 @@
 import axios from 'axios';
-import user from '/User';
-import localizer from '/utils/Localizer';
+import user from 'User';
+import localizer from 'utils/Localizer';
 import {
     getReason
-} from '/utils/Error';
+} from 'utils/Error';
 import {
     sanitize,
     sanitizeArray,
     sanitizeNumber
-} from '/validation/Sanitizer';
+} from 'validation/Sanitizer';
 import {
     isPositiveNumber,
     isRequired
-} from '/validation/Rule';
-import validate from '/validation/Validator';
+} from 'validation/Rule';
+import validate from 'validation/Validator';
 
 export const BOOKS_ENDPOINT = `http://192.168.0.87:8080/users/${user.id}/books`;
 

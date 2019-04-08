@@ -4,8 +4,8 @@ import {
     Text,
     StyleSheet
 } from 'react-native';
-import appStyles from '/styles/AppStyles';
-import appColors from '/styles/AppColors';
+import appStyles from 'styles/AppStyles';
+import appColors from 'styles/AppColors';
 
 const styles = StyleSheet.create({
     text: {

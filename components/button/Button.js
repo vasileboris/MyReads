@@ -4,8 +4,8 @@ import {
     Button as RNButton,
     View
 } from 'react-native';
-import appStyles from '/styles/AppStyles';
-import appColors from '/styles/AppColors';
+import appStyles from 'styles/AppStyles';
+import appColors from 'styles/AppColors';
 
 const Button = props => {
     const { title, onPress } = props;

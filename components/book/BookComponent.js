@@ -4,11 +4,11 @@ import {
     View,
     Text
 } from 'react-native';
-import localizer from '/utils/Localizer';
+import localizer from 'utils/Localizer';
 import BookImageComponent from './BookImageComponent';
-import Button from '/components/button/Button';
-import appStyles from '/styles/AppStyles';
-import appColors from '/styles/AppColors';
+import Button from 'components/button/Button';
+import appStyles from 'styles/AppStyles';
+import appColors from 'styles/AppColors';
 
 function BookComponent(props) {
     const { book, onReadClick, onEditClick, onDeleteClick } = props;

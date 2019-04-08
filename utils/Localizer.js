@@ -1,5 +1,5 @@
 import i18next from 'i18next';
-import messages from "/assets/translations/Messages";
+import messages from "../assets/translations/Messages";
 
 const Localizer = {
 

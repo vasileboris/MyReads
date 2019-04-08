@@ -4,9 +4,9 @@ import {
     View,
     Text
 } from 'react-native';
-import localizer from '/utils/Localizer';
+import localizer from 'utils/Localizer';
 import BookFigureComponent from './BookFigureComponent';
-import appStyles from '/styles/AppStyles';
+import appStyles from 'styles/AppStyles';
 
 function ReadonlyBookComponent(props) {
     const { book } = props;

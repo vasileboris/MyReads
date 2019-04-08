@@ -5,7 +5,7 @@ import {
     Text
 } from 'react-native';
 import BookImageComponent from './BookImageComponent';
-import appStyles from '/styles/AppStyles';
+import appStyles from 'styles/AppStyles';
 
 function BookFigureComponent (props) {
     const { book, size } = props;

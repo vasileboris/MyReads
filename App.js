@@ -4,11 +4,11 @@ import {
     Text,
     ScrollView
 } from 'react-native';
-import localizer from '/utils/Localizer';
-import MessageComponent from '/components/message/MessageComponent';
-import ReadonlyBookComponent from '/components/book/ReadonlyBookComponent';
-import BookComponent from '/components/book/BookComponent';
-import appStyles from '/styles/AppStyles';
+import localizer from 'utils/Localizer';
+import MessageComponent from 'components/message/MessageComponent';
+import ReadonlyBookComponent from 'components/book/ReadonlyBookComponent';
+import BookComponent from 'components/book/BookComponent';
+import appStyles from 'styles/AppStyles';
 
 export default class App extends React.Component {
     constructor(props) {

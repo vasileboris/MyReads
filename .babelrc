@@ -1,5 +1,16 @@
 {
   "plugins": [
-    "module:babel-root-slash-import"
+    [
+      "module-resolver",
+      {
+        "alias": {
+          "assets": "./assets",
+          "components": "./components",
+          "styles": "./styles",
+          "utils": "./utils",
+          "validation": "./validation"
+        }
+      }
+    ]
   ]
 }

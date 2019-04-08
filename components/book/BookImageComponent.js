@@ -4,7 +4,7 @@ import {
     Image,
     StyleSheet
 } from 'react-native';
-import appSizes from '/styles/AppSizes';
+import appSizes from 'styles/AppSizes';
 
 const styles = StyleSheet.create({
     smallImage: {
