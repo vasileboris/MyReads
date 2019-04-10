@@ -13,39 +13,37 @@ import appColors from 'styles/AppColors';
 function BookComponent(props) {
     const { book, onReadClick, onEditClick, onDeleteClick } = props;
     return (
-        <View style={[appStyles.result]}>
-            <View style={[appStyles.vertical]}>
-                <BookImageComponent image={book.image} size="small"/>
-                <Button style={[appStyles.button]}
-                        color={appColors.color3}
-                        onPress={() => onReadClick(book)}
-                        title={localizer.localize('read-button')}/>
+        <View style={[appStyles.result, appStyles.container, appStyles.vertical]}>
+            <BookImageComponent image={book.image} size="small"/>
+            <Button style={[appStyles.button]}
+                    color={appColors.color3}
+                    onPress={() => onReadClick(book)}
+                    title={localizer.localize('read-button')}/>
 
-                <View style={[appStyles.resultDetail, appStyles.vertical]}>
-                    <View>
-                        <Text style={[appStyles.text, appStyles.title, appStyles.resultImportant]}>
-                            {book.title}
-                        </Text>
-                        <Text style={[appStyles.text]}>
-                            {localizer.localize('book-by-label')} {book.authors.join(', ')}
-                        </Text>
-                        <Text style={[appStyles.text]}>
-                            {book.pages} {localizer.localize('book-pages-label')}
-                        </Text>
-                    </View>
-                    {/*
-                    <View className="buttons small container horizontal">
-                        <Button className="button"
-                                onClick={() => onEditClick(book)}>
-                            {localizer.localize('edit-button')}
-                        </Button>
-                        <Button className="button"
-                                onClick={() => onDeleteClick(book)}>
-                            {localizer.localize('delete-button')}
-                        </Button>
-                    </View>
-                    */}
+            <View style={[appStyles.resultDetail]}>
+                <View>
+                    <Text style={[appStyles.text, appStyles.title, appStyles.resultImportant]}>
+                        {book.title}
+                    </Text>
+                    <Text style={[appStyles.text]}>
+                        {localizer.localize('book-by-label')} {book.authors.join(', ')}
+                    </Text>
+                    <Text style={[appStyles.text]}>
+                        {book.pages} {localizer.localize('book-pages-label')}
+                    </Text>
                 </View>
+                {/*
+                <View className="buttons small container horizontal">
+                    <Button className="button"
+                            onClick={() => onEditClick(book)}>
+                        {localizer.localize('edit-button')}
+                    </Button>
+                    <Button className="button"
+                            onClick={() => onDeleteClick(book)}>
+                        {localizer.localize('delete-button')}
+                    </Button>
+                </View>
+                */}
             </View>
         </View>
     );

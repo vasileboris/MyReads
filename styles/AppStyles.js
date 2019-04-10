@@ -6,23 +6,23 @@ import appSizes from "./AppSizes";
 const appStyles = StyleSheet.create({
     app: {
         marginTop: 'android' === Platform.OS ? Constants.statusBarHeight : 0,
-        backgroundColor: appColors.color2
+        backgroundColor: appColors.color2,
+    },
+
+    container: {
+        flex: 1,
     },
 
     horizontal: {
-        flex: 1,
         flexDirection: 'row',
-        justifyContent: 'flex-start',
-        alignItems: 'flex-start',
-        flexWrap: 'wrap'
+        flexWrap: 'wrap',
+        justifyContent: 'center',
     },
 
     vertical: {
-        flex: 1,
         flexDirection: 'column',
-        justifyContent: 'space-between',
-        alignItems: 'stretch',
-        flexWrap: 'nowrap'
+        flexWrap: 'nowrap',
+        justifyContent: 'flex-start',
     },
 
     text: {
@@ -30,13 +30,13 @@ const appStyles = StyleSheet.create({
     },
 
     title: {
-        fontWeight: 'bold'
+        fontWeight: 'bold',
     },
 
     entry: {
         width: appSizes.entryWidth(),
         margin: appSizes.margin,
-        padding: appSizes.padding
+        padding: appSizes.padding,
     },
 
     button: {
@@ -49,24 +49,24 @@ const appStyles = StyleSheet.create({
         margin: appSizes.margin,
         paddingTop: appSizes.smallMargin,
         borderTopColor: appColors.color3,
-        borderTopWidth: 4
+        borderTopWidth: 4,
     },
 
     resultSingle: {
         width: appSizes.resultWidth(),
-        margin: appSizes.margin
+        margin: appSizes.margin,
     },
 
     resultImportant: {
         fontWeight: 'bold',
-        color: appColors.color3
+        color: appColors.color3,
     },
 
     resultDetail: {
         marginTop: appSizes.smallMargin,
         paddingTop: appSizes.smallMargin,
         borderTopColor: appColors.color3,
-        borderTopWidth: 1
+        borderTopWidth: 1,
     }
 });
 

@@ -14,7 +14,7 @@ function ReadonlyBookComponent(props) {
         return null;
     }
     return (
-        <View style={[appStyles.resultSingle]}>
+        <View style={[appStyles.resultSingle, appStyles.container, appStyles.vertical]}>
             <BookFigureComponent book={book} size="large"/>
             <Text>{localizer.localize('book-by-label')} {book.authors.join(', ')}</Text>
             <Text>{book.pages} {localizer.localize('book-pages-label')}</Text>

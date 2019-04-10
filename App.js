@@ -28,24 +28,22 @@ export default class App extends React.Component {
             pages: 335
         };
         return isLocalizerInitialized && (
-            <View style={[appStyles.app, appStyles.horizontal]}>
+            <View style={[appStyles.app, appStyles.container, appStyles.horizontal]}>
                 <ReadonlyBookComponent book={{...bookRNIA, title: `${bookRNIA.title} 11`}}/>
+                <ReadonlyBookComponent book={{...bookRNIA, title: `${bookRNIA.title} 11`}}/>
+                <ReadonlyBookComponent book={{...bookRNIA, title: `${bookRNIA.title} 11`}}/>
+                <ReadonlyBookComponent book={{...bookRNIA, title: `${bookRNIA.title} 11`}}/>
+{/*
                 <BookComponent book={{...bookRNIA, title: `${bookRNIA.title} 12`}}
                                onReadClick={book => console.log(book.title)}
                                onEditClick={book => console.log(book.title)}
                                onDeleteClick={book => console.log(book.title)}/>
-
-                <ReadonlyBookComponent book={{...bookRNIA, title: `${bookRNIA.title} 13`}}/>
-                <BookComponent book={{...bookRNIA, title: `${bookRNIA.title} 14`}}
+                <BookComponent book={{...bookRNIA, title: `${bookRNIA.title} 13`}}
                                onReadClick={book => console.log(book.title)}
                                onEditClick={book => console.log(book.title)}
                                onDeleteClick={book => console.log(book.title)}/>
-
-                <ReadonlyBookComponent book={{...bookRNIA, title: `${bookRNIA.title} 15`}}/>
-                <BookComponent book={{...bookRNIA, title: `${bookRNIA.title} 16`}}
-                               onReadClick={book => console.log(book.title)}
-                               onEditClick={book => console.log(book.title)}
-                               onDeleteClick={book => console.log(book.title)}/>
+                <ReadonlyBookComponent book={{...bookRNIA, title: `${bookRNIA.title} 11`}}/>
+*/}
             </View>
         );
     }
