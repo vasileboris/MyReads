@@ -33,12 +33,12 @@ export default class App extends React.Component {
         };
         return isLocalizerInitialized && (
             <View style={[appStyles.app, appStyles.container, appStyles.vertical, appStyles.justifyStart]}>
+                <ReadonlyBookComponent book={book1}/>
+{/*
                 <BookComponent book={book1}
                                onReadClick={book => console.log(book.title)}
                                onEditClick={book => console.log(book.title)}
                                onDeleteClick={book => console.log(book.title)}/>
-{/*
-                <ReadonlyBookComponent book={book1}/>
                 <ReadonlyBookComponent book={book2}/>
                 <BookComponent book={{...bookRNIA, title: `${bookRNIA.title} 13`}}
                                onReadClick={book => console.log(book.title)}

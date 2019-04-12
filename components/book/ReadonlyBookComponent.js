@@ -16,7 +16,7 @@ function ReadonlyBookComponent(props) {
     return (
         <View style={[appStyles.result, appStyles.horizontal, appStyles.justifyStart]}>
             <BookImageComponent image={book.image} size="small"/>
-            <View style={[appStyles.vertical, appStyles.justifySpaceBetween, appStyles.resultText]}>
+            <View style={[appStyles.vertical, appStyles.justifyCenter, appStyles.resultText]}>
                 <Text style={[appStyles.text, appStyles.title]}>
                     {book.title}
                 </Text>
