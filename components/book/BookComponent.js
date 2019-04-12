@@ -14,7 +14,7 @@ function BookComponent(props) {
     const { book, onReadClick, onEditClick, onDeleteClick } = props;
     return (
         <View style={[appStyles.resultSingle, appStyles.vertical, appStyles.justifySpaceBetween]}>
-            <View style={[appStyles.resultSingleSection, appStyles.vertical, appStyles.justifySpaceBetween]}>
+            <View style={[appStyles.resultSingleSection, appStyles.vertical, appStyles.justifyCenter]}>
                 <View style={[appStyles.alignItemsCenter]}>
                     <BookImageComponent image={book.image} size="large"/>
                 </View>
@@ -23,7 +23,7 @@ function BookComponent(props) {
                         onPress={() => onReadClick(book)}
                         title={localizer.localize('read-button')}/>
             </View>
-            <View style={[appStyles.resultDetail, appStyles.resultSingleSection, appStyles.vertical, appStyles.justifySpaceBetween]}>
+            <View style={[appStyles.resultDetail, appStyles.resultSingleSection, appStyles.vertical, appStyles.justifyCenter]}>
                 <View style={[appStyles.resultSingleSectionZone, appStyles.vertical, appStyles.justifyCenter]}>
                     <Text style={[appStyles.text, appStyles.title]}>
                         {book.title}
