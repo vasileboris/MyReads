@@ -5,8 +5,8 @@ import {
     Text
 } from 'react-native';
 import localizer from 'utils/Localizer';
-import BookFigureComponent from './BookFigureComponent';
 import appStyles from 'styles/AppStyles';
+import BookImageComponent from "./BookImageComponent";
 
 function ReadonlyBookComponent(props) {
     const { book } = props;
@@ -14,10 +14,21 @@ function ReadonlyBookComponent(props) {
         return null;
     }
     return (
-        <View style={[appStyles.resultSingle, appStyles.container, appStyles.vertical]}>
-            <BookFigureComponent book={book} size="large"/>
-            <Text>{localizer.localize('book-by-label')} {book.authors.join(', ')}</Text>
-            <Text>{book.pages} {localizer.localize('book-pages-label')}</Text>
+        <View style={[appStyles.result, appStyles.horizontal, appStyles.justifyStart]}>
+            <BookImageComponent image={book.image} size="small"/>
+            <View style={[appStyles.vertical, appStyles.justifySpaceBetween, appStyles.resultText]}>
+                <Text style={[appStyles.text, appStyles.title]}>
+                    {book.title}
+                </Text>
+                <View style={[appStyles.vertical, appStyles.justifySpaceBetween]}>
+                    <Text style={[appStyles.text]}>
+                        {localizer.localize('book-by-label')} {book.authors.join(', ')}
+                    </Text>
+                    <Text style={[appStyles.text]}>
+                        {book.pages} {localizer.localize('book-pages-label')}
+                    </Text>
+                </View>
+            </View>
         </View>
     );
 }

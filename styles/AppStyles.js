@@ -15,14 +15,24 @@ const appStyles = StyleSheet.create({
 
     horizontal: {
         flexDirection: 'row',
-        flexWrap: 'wrap',
-        justifyContent: 'center',
+        flexWrap: 'nowrap',
     },
 
     vertical: {
         flexDirection: 'column',
         flexWrap: 'nowrap',
+    },
+
+    justifyCenter: {
+        justifyContent: 'center',
+    },
+
+    justifyStart: {
         justifyContent: 'flex-start',
+    },
+
+    justifySpaceBetween: {
+        justifyContent: 'space-between',
     },
 
     text: {
@@ -31,11 +41,15 @@ const appStyles = StyleSheet.create({
 
     title: {
         fontWeight: 'bold',
+        color: appColors.color3,
     },
 
     entry: {
         width: appSizes.entryWidth(),
-        margin: appSizes.margin,
+        marginTop: appSizes.margin,
+        marginRight: appSizes.margin,
+        marginBottom: 0,
+        marginLeft: appSizes.margin,
         padding: appSizes.padding,
     },
 
@@ -46,20 +60,11 @@ const appStyles = StyleSheet.create({
 
     result: {
         width: appSizes.resultWidth(),
-        margin: appSizes.margin,
-        paddingTop: appSizes.smallMargin,
+        marginTop: appSizes.margin,
+        marginRight: appSizes.margin,
+        marginBottom: 0,
+        marginLeft: appSizes.margin,
         borderTopColor: appColors.color3,
-        borderTopWidth: 4,
-    },
-
-    resultSingle: {
-        width: appSizes.resultWidth(),
-        margin: appSizes.margin,
-    },
-
-    resultImportant: {
-        fontWeight: 'bold',
-        color: appColors.color3,
     },
 
     resultDetail: {
@@ -67,6 +72,11 @@ const appStyles = StyleSheet.create({
         paddingTop: appSizes.smallMargin,
         borderTopColor: appColors.color3,
         borderTopWidth: 1,
+    },
+
+    resultText: {
+        marginLeft: appSizes.margin,
+        width: appSizes.resultTextWidth()
     }
 });
 

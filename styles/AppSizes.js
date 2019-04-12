@@ -5,22 +5,21 @@ const appSizes = {
     smallMargin: 5,
     margin: 10,
     padding: 10,
+    smallImageWidth: 70,
+    smallImageHeight: 87,
+    largeImageWidth: 140,
+    largeImageHeight: 174,
     screenWidth: function() {
         return Dimensions.get('window').width
     },
-    smallImageWidth: function() {
-        return this.sixColumnWidth;
-    },
-    smallImageHeight: 174,
-    largeImageWidth: function() {
-        return this.sixColumnWidth;
-    },
-    largeImageHeight: 174,
     entryWidth: function() {
         return this.screenWidth() - 2 * this.margin;
     },
     resultWidth: function() {
-        return this.sixColumnWidth;
+        return this.screenWidth() - 2 * this.margin;
+    },
+    resultTextWidth: function() {
+        return this.resultWidth() - this.smallImageWidth - this.margin;
     }
 };
 

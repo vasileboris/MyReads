@@ -8,11 +8,11 @@ import appSizes from 'styles/AppSizes';
 
 const styles = StyleSheet.create({
     smallImage: {
-        width: appSizes.smallImageWidth(),
+        width: appSizes.smallImageWidth,
         height: appSizes.smallImageHeight
     },
     largeImage: {
-        width: appSizes.largeImageWidth(),
+        width: appSizes.largeImageWidth,
         height: appSizes.largeImageHeight
     },
 });

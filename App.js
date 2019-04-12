@@ -21,18 +21,20 @@ export default class App extends React.Component {
     render() {
         const { isLocalizerInitialized } = this.state;
 
-        let bookRNIA = {
-            title: "React Native In Action",
-            image: "https://images.manning.com/720/960/resize/book/2/8a23d37-c21c-491a-a5a9-498b6b54fe6d/Dabit-React-HI.png",
-            authors: ["Sir John Whitmore"],
-            pages: 335
+        let book1 = {
+            title: "The Power of Habit: Why We Do What We Do in Life and Business",
+            authors: ["Charles Duhigg"],
+            pages: 375
+        };
+        let book2 = {
+            title: "#Workout: Games, Tools & Practices to Engage People, Improve Work, and Delight Clients (Management 3.0)",
+            authors: ["Jurgen Appelo"],
+            pages: 123
         };
         return isLocalizerInitialized && (
-            <View style={[appStyles.app, appStyles.container, appStyles.horizontal]}>
-                <ReadonlyBookComponent book={{...bookRNIA, title: `${bookRNIA.title} 11`}}/>
-                <ReadonlyBookComponent book={{...bookRNIA, title: `${bookRNIA.title} 11`}}/>
-                <ReadonlyBookComponent book={{...bookRNIA, title: `${bookRNIA.title} 11`}}/>
-                <ReadonlyBookComponent book={{...bookRNIA, title: `${bookRNIA.title} 11`}}/>
+            <View style={[appStyles.app, appStyles.container, appStyles.vertical, appStyles.justifyStart]}>
+                <ReadonlyBookComponent book={book1}/>
+                <ReadonlyBookComponent book={book2}/>
 {/*
                 <BookComponent book={{...bookRNIA, title: `${bookRNIA.title} 12`}}
                                onReadClick={book => console.log(book.title)}
@@ -42,7 +44,6 @@ export default class App extends React.Component {
                                onReadClick={book => console.log(book.title)}
                                onEditClick={book => console.log(book.title)}
                                onDeleteClick={book => console.log(book.title)}/>
-                <ReadonlyBookComponent book={{...bookRNIA, title: `${bookRNIA.title} 11`}}/>
 */}
             </View>
         );
