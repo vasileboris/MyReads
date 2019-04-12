@@ -13,16 +13,19 @@ import appColors from 'styles/AppColors';
 function BookComponent(props) {
     const { book, onReadClick, onEditClick, onDeleteClick } = props;
     return (
-        <View style={[appStyles.result, appStyles.container, appStyles.vertical]}>
-            <BookImageComponent image={book.image} size="small"/>
-            <Button style={[appStyles.button]}
-                    color={appColors.color3}
-                    onPress={() => onReadClick(book)}
-                    title={localizer.localize('read-button')}/>
-
-            <View style={[appStyles.resultDetail]}>
-                <View>
-                    <Text style={[appStyles.text, appStyles.title, appStyles.resultImportant]}>
+        <View style={[appStyles.resultSingle, appStyles.vertical, appStyles.justifySpaceBetween]}>
+            <View style={[appStyles.resultSingleSection, appStyles.vertical, appStyles.justifySpaceBetween]}>
+                <View style={[appStyles.alignItemsCenter]}>
+                    <BookImageComponent image={book.image} size="large"/>
+                </View>
+                <Button style={[appStyles.button]}
+                        color={appColors.color3}
+                        onPress={() => onReadClick(book)}
+                        title={localizer.localize('read-button')}/>
+            </View>
+            <View style={[appStyles.resultDetail, appStyles.resultSingleSection, appStyles.vertical, appStyles.justifySpaceBetween]}>
+                <View style={[appStyles.resultSingleSectionZone, appStyles.vertical, appStyles.justifyCenter]}>
+                    <Text style={[appStyles.text, appStyles.title]}>
                         {book.title}
                     </Text>
                     <Text style={[appStyles.text]}>
@@ -32,18 +35,16 @@ function BookComponent(props) {
                         {book.pages} {localizer.localize('book-pages-label')}
                     </Text>
                 </View>
-                {/*
-                <View className="buttons small container horizontal">
-                    <Button className="button"
-                            onClick={() => onEditClick(book)}>
-                        {localizer.localize('edit-button')}
-                    </Button>
-                    <Button className="button"
-                            onClick={() => onDeleteClick(book)}>
-                        {localizer.localize('delete-button')}
-                    </Button>
+                <View style={[appStyles.resultSingleSectionZone, appStyles.vertical, appStyles.justifyStart]}>
+                    <Button style={[appStyles.button]}
+                            color={appColors.color3}
+                            onPress={() => onEditClick(book)}
+                            title={localizer.localize('edit-button')}/>
+                    <Button style={[appStyles.button]}
+                            color={appColors.color3}
+                            onPress={() => onDeleteClick(book)}
+                            title={localizer.localize('delete-button')}/>
                 </View>
-                */}
             </View>
         </View>
     );

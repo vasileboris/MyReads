@@ -1,11 +1,10 @@
-import { StyleSheet, Platform } from 'react-native';
-import { Constants } from 'expo';
+import { StyleSheet } from 'react-native';
 import appColors from "./AppColors";
 import appSizes from "./AppSizes";
 
 const appStyles = StyleSheet.create({
     app: {
-        marginTop: 'android' === Platform.OS ? Constants.statusBarHeight : 0,
+        marginTop: appSizes.appMarginTop(),
         backgroundColor: appColors.color2,
     },
 
@@ -35,6 +34,10 @@ const appStyles = StyleSheet.create({
         justifyContent: 'space-between',
     },
 
+    alignItemsCenter: {
+        alignItems: 'center',
+    },
+
     text: {
         fontFamily: 'sans-serif',
     },
@@ -55,7 +58,7 @@ const appStyles = StyleSheet.create({
 
     button: {
         marginTop: appSizes.margin,
-        marginBottom: appSizes.margin
+        marginBottom: appSizes.margin,
     },
 
     result: {
@@ -64,14 +67,26 @@ const appStyles = StyleSheet.create({
         marginRight: appSizes.margin,
         marginBottom: 0,
         marginLeft: appSizes.margin,
-        borderTopColor: appColors.color3,
     },
 
     resultDetail: {
-        marginTop: appSizes.smallMargin,
         paddingTop: appSizes.smallMargin,
         borderTopColor: appColors.color3,
         borderTopWidth: 1,
+    },
+
+    resultSingle: {
+        margin: appSizes.margin,
+        width: appSizes.resultWidth(),
+        height: appSizes.resultSingleHeight(),
+    },
+
+    resultSingleSection: {
+        height: appSizes.resultSingleSectionHeight(),
+    },
+
+    resultSingleSectionZone: {
+        height: appSizes.resultSingleSectionZoneHeight(),
     },
 
     resultText: {
