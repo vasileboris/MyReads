@@ -11,10 +11,6 @@ const styles = StyleSheet.create({
         width: appSizes.smallImageWidth(),
         height: appSizes.smallImageHeight()
     },
-    mediumImage: {
-        width: appSizes.mediumImageWidth(),
-        height: appSizes.mediumImageHeight()
-    },
     largeImage: {
         width: appSizes.largeImageWidth(),
         height: appSizes.largeImageHeight()

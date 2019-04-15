@@ -40,6 +40,7 @@ const appStyles = StyleSheet.create({
 
     text: {
         fontFamily: 'sans-serif',
+        fontSize: 16
     },
 
     title: {

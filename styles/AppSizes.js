@@ -4,6 +4,9 @@ import {
 } from 'react-native';
 import { Constants } from "expo";
 
+const PHI = 1.618;
+const BOOK_HW_RATIO = 1.5;
+
 const appSizes = {
     sixColumnWidth: 140,
     smallMargin: 5,
@@ -22,40 +25,44 @@ const appSizes = {
         return Dimensions.get('window').height
     },
 
-    smallImageWidth: function() {
-        return 70;
+    appWidth: function() {
+        return this.screenWidth() - 2 * this.margin;
     },
 
-    smallImageHeight: function() {
-        return 87;
+    appHeight: function() {
+        return this.screenHeight() - this.appMarginTop()  - 2 * this.margin;
     },
 
-    mediumImageWidth: function() {
-        return this.smallImageWidth() * 2;
+
+    goldenSegments: function(value, level = 1) {
+        const a = value / PHI;
+        if(level <= 1) {
+            return {
+                a,
+                b: value - a
+            }
+        }
+        return this.goldenSegments(a, level - 1);
     },
 
-    mediumImageHeight: function() {
-        return this.smallImageHeight() * 2;
+    appWidthGoldenSegments: function(level = 1) {
+        return this.goldenSegments(this.appWidth(), level);
     },
 
-    largeImageWidth: function() {
-        return this.smallImageWidth() * 3;
-    },
-
-    largeImageHeight: function() {
-        return this.smallImageHeight() * 3;
+    appHeighGoldenSegments: function(level = 1) {
+        return this.goldenSegments(this.appHeight(), level);
     },
 
     entryWidth: function() {
-        return this.screenWidth() - 2 * this.margin;
+        return this.appWidth();
     },
 
     resultWidth: function() {
-        return this.screenWidth() - 2 * this.margin;
+        return this.appWidth();
     },
 
     resultSingleHeight: function() {
-        return this.screenHeight() - 2 * this.margin - this.appMarginTop();
+        return this.appHeight();
     },
 
     resultSingleSectionHeight: function() {
@@ -66,8 +73,24 @@ const appSizes = {
         return this.resultSingleSectionHeight() / 2;
     },
 
+    largeImageWidth: function() {
+        return this.appWidthGoldenSegments(1).b;
+    },
+
+    largeImageHeight: function() {
+        return this.largeImageWidth() * BOOK_HW_RATIO;
+    },
+
+    smallImageWidth: function() {
+        return this.appWidthGoldenSegments(2).b;
+    },
+
+    smallImageHeight: function() {
+        return this.smallImageWidth() * BOOK_HW_RATIO;
+    },
+
     resultTextWidth: function() {
-        return this.resultWidth() - this.smallImageWidth - this.margin;
+        return this.resultWidth() - this.smallImageWidth() - this.margin;
     }
 };
 
