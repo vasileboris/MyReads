@@ -77,20 +77,26 @@ const appStyles = StyleSheet.create({
     },
 
     resultSingle: {
-        margin: appSizes.margin,
+        marginLeft: appSizes.margin,
+        marginRight: appSizes.margin,
         width: appSizes.resultWidth(),
         height: appSizes.resultSingleHeight(),
     },
 
-    resultSingleSection: {
-        height: appSizes.resultSingleSectionHeight(),
+    resultSingleSectionA1: {
+        height: appSizes.resultSingleSectionA1Height(),
     },
 
-    resultSingleSectionZone: {
-        height: appSizes.resultSingleSectionZoneHeight(),
+    resultSingleSectionB1: {
+        height: appSizes.resultSingleSectionB1Height(),
     },
 
-    resultText: {
+    resultSingleSectionA2: {
+        width: appSizes.resultSingleSectionA1Width(),
+        paddingLeft: appSizes.margin,
+    },
+
+        resultText: {
         marginLeft: appSizes.margin,
         width: appSizes.resultTextWidth()
     }

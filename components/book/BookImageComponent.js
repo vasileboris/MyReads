@@ -1,34 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-    Image,
-    StyleSheet
-} from 'react-native';
-import appSizes from 'styles/AppSizes';
-
-const styles = StyleSheet.create({
-    smallImage: {
-        width: appSizes.smallImageWidth(),
-        height: appSizes.smallImageHeight()
-    },
-    largeImage: {
-        width: appSizes.largeImageWidth(),
-        height: appSizes.largeImageHeight()
-    },
-});
+import Image from 'components/image/Image';
 
 function BookImageComponent(props) {
     const { image, size } = props;
-    const imgAttributes = buildImgAttributes(image);
-    return <Image source={imgAttributes.src} style={[styles[`${size}Image`]]}/>;
+    return <Image image={buildImage(image)} size={size}/>;
 }
 
-function buildImgAttributes(image) {
-    let src = require('../../assets/images/book.png');
+function buildImage(image) {
+    let source = require('../../assets/images/book.png');
     if (image) {
-        src = {uri: image};
+        source = {uri: image};
     }
-    return { src };
+    return { source };
 }
 
 BookImageComponent.propTypes = {

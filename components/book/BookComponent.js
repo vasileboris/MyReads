@@ -7,24 +7,18 @@ import {
 import localizer from 'utils/Localizer';
 import BookImageComponent from './BookImageComponent';
 import Button from 'components/button/Button';
+import Image from 'components/image/Image';
 import appStyles from 'styles/AppStyles';
 import appColors from 'styles/AppColors';
 
 function BookComponent(props) {
     const { book, onReadClick, onEditClick, onDeleteClick } = props;
+    const openBook = require('../../assets/images/open-book.png');
     return (
         <View style={[appStyles.resultSingle, appStyles.vertical, appStyles.justifySpaceBetween]}>
-            <View style={[appStyles.resultSingleSection, appStyles.vertical, appStyles.justifyCenter]}>
-                <View style={[appStyles.alignItemsCenter]}>
-                    <BookImageComponent image={book.image} size="large"/>
-                </View>
-                <Button style={[appStyles.button]}
-                        color={appColors.color3}
-                        onPress={() => onReadClick(book)}
-                        title={localizer.localize('read-button')}/>
-            </View>
-            <View style={[appStyles.resultDetail, appStyles.resultSingleSection, appStyles.vertical, appStyles.justifyCenter]}>
-                <View style={[appStyles.resultSingleSectionZone, appStyles.vertical, appStyles.justifyCenter]}>
+            <View style={[appStyles.resultSingleSectionB1, appStyles.horizontal, appStyles.justifyStart, appStyles.alignItemsCenter]}>
+                <Image image={{source: openBook}} size="large"/>
+                <View style={[appStyles.vertical, appStyles.justifyCenter, appStyles.resultSingleSectionA2]}>
                     <Text style={[appStyles.text, appStyles.title]}>
                         {book.title}
                     </Text>
@@ -35,7 +29,27 @@ function BookComponent(props) {
                         {book.pages} {localizer.localize('book-pages-label')}
                     </Text>
                 </View>
-                <View style={[appStyles.resultSingleSectionZone, appStyles.vertical, appStyles.justifyStart]}>
+            </View>
+            <View style={[appStyles.resultDetail, appStyles.resultSingleSectionA1, appStyles.vertical, appStyles.justifySpaceBetween]}>
+                <Button style={[appStyles.button]}
+                        color={appColors.color3}
+                        onPress={() => onReadClick(book)}
+                        title={localizer.localize('read-button')}/>
+                <View style={[appStyles.horizontal, appStyles.justifyStart, appStyles.alignItemsCenter]}>
+                    <BookImageComponent image={book.image} size="large"/>
+                    <View style={[appStyles.vertical, appStyles.justifyCenter, appStyles.resultSingleSectionA2]}>
+                        <Text style={[appStyles.text, appStyles.title]}>
+                            {book.title}
+                        </Text>
+                        <Text style={[appStyles.text]}>
+                            {localizer.localize('book-by-label')} {book.authors.join(', ')}
+                        </Text>
+                        <Text style={[appStyles.text]}>
+                            {book.pages} {localizer.localize('book-pages-label')}
+                        </Text>
+                    </View>
+                </View>
+                <View style={[appStyles.vertical, appStyles.justifyCenter]}>
                     <Button style={[appStyles.button]}
                             color={appColors.color3}
                             onPress={() => onEditClick(book)}

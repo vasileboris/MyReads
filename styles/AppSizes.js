@@ -30,7 +30,7 @@ const appSizes = {
     },
 
     appHeight: function() {
-        return this.screenHeight() - this.appMarginTop()  - 2 * this.margin;
+        return this.screenHeight() - this.appMarginTop();
     },
 
 
@@ -49,7 +49,7 @@ const appSizes = {
         return this.goldenSegments(this.appWidth(), level);
     },
 
-    appHeighGoldenSegments: function(level = 1) {
+    appHeightGoldenSegments: function(level = 1) {
         return this.goldenSegments(this.appHeight(), level);
     },
 
@@ -61,16 +61,28 @@ const appSizes = {
         return this.appWidth();
     },
 
+    resultTextWidth: function() {
+        return this.resultWidth() - this.smallImageWidth() - this.margin;
+    },
+
     resultSingleHeight: function() {
         return this.appHeight();
     },
 
-    resultSingleSectionHeight: function() {
-        return this.resultSingleHeight() / 2;
+    resultSingleSectionA1Height: function() {
+        return this.appHeightGoldenSegments(1).a;
     },
 
-    resultSingleSectionZoneHeight: function() {
-        return this.resultSingleSectionHeight() / 2;
+    resultSingleSectionB1Height: function() {
+        return this.appHeightGoldenSegments(1).b;
+    },
+
+    resultSingleSectionA1Width: function() {
+        return this.appWidthGoldenSegments(1).a;
+    },
+
+    resultSingleSectionB1Width: function() {
+        return this.appWidthGoldenSegments(1).b;
     },
 
     largeImageWidth: function() {
@@ -89,9 +101,6 @@ const appSizes = {
         return this.smallImageWidth() * BOOK_HW_RATIO;
     },
 
-    resultTextWidth: function() {
-        return this.resultWidth() - this.smallImageWidth() - this.margin;
-    }
 };
 
 export default appSizes;
