@@ -16,27 +16,29 @@ function BookComponent(props) {
     const openBook = require('../../assets/images/open-book.png');
     return (
         <View style={[appStyles.resultSingle, appStyles.vertical, appStyles.justifySpaceBetween]}>
-            <View style={[appStyles.resultSingleSectionB1, appStyles.horizontal, appStyles.justifyStart, appStyles.alignItemsCenter]}>
-                <Image image={{source: openBook}} size="large"/>
-                <View style={[appStyles.vertical, appStyles.justifyCenter, appStyles.resultSingleSectionA2]}>
-                    <Text style={[appStyles.text, appStyles.title]}>
-                        {book.title}
-                    </Text>
-                    <Text style={[appStyles.text]}>
-                        {localizer.localize('book-by-label')} {book.authors.join(', ')}
-                    </Text>
-                    <Text style={[appStyles.text]}>
-                        {book.pages} {localizer.localize('book-pages-label')}
-                    </Text>
+            <View style={[appStyles.resultSingleSectionB1, appStyles.vertical, appStyles.justifySpaceBetween]}>
+                <View style={[appStyles.horizontal, appStyles.justifyStart, appStyles.alignItemsCenter]}>
+                    <Image image={{source: openBook}} size="largeSquare"/>
+                    <View style={[appStyles.vertical, appStyles.justifyCenter, appStyles.resultSingleSectionA2]}>
+                        <Text style={[appStyles.text, appStyles.title]}>
+                            {book.title}
+                        </Text>
+                        <Text style={[appStyles.text]}>
+                            {localizer.localize('book-by-label')} {book.authors.join(', ')}
+                        </Text>
+                        <Text style={[appStyles.text]}>
+                            {book.pages} {localizer.localize('book-pages-label')}
+                        </Text>
+                    </View>
                 </View>
-            </View>
-            <View style={[appStyles.resultDetail, appStyles.resultSingleSectionA1, appStyles.vertical, appStyles.justifySpaceBetween]}>
                 <Button style={[appStyles.button]}
                         color={appColors.color3}
                         onPress={() => onReadClick(book)}
                         title={localizer.localize('read-button')}/>
+            </View>
+            <View style={[appStyles.resultDetail, appStyles.resultSingleSectionA1, appStyles.vertical, appStyles.justifySpaceBetween]}>
                 <View style={[appStyles.horizontal, appStyles.justifyStart, appStyles.alignItemsCenter]}>
-                    <BookImageComponent image={book.image} size="large"/>
+                    <BookImageComponent image={book.image} size="largeRectangle"/>
                     <View style={[appStyles.vertical, appStyles.justifyCenter, appStyles.resultSingleSectionA2]}>
                         <Text style={[appStyles.text, appStyles.title]}>
                             {book.title}

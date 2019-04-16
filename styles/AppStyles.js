@@ -34,6 +34,10 @@ const appStyles = StyleSheet.create({
         justifyContent: 'space-between',
     },
 
+    justifyEnd: {
+        justifyContent: 'flex-end',
+    },
+
     alignItemsCenter: {
         alignItems: 'center',
     },
@@ -71,7 +75,6 @@ const appStyles = StyleSheet.create({
     },
 
     resultDetail: {
-        paddingTop: appSizes.smallMargin,
         borderTopColor: appColors.color3,
         borderTopWidth: 1,
     },
@@ -84,10 +87,12 @@ const appStyles = StyleSheet.create({
     },
 
     resultSingleSectionA1: {
+        paddingTop: appSizes.margin,
         height: appSizes.resultSingleSectionA1Height(),
     },
 
     resultSingleSectionB1: {
+        paddingTop: appSizes.margin,
         height: appSizes.resultSingleSectionB1Height(),
     },
 
@@ -96,7 +101,7 @@ const appStyles = StyleSheet.create({
         paddingLeft: appSizes.margin,
     },
 
-        resultText: {
+    resultText: {
         marginLeft: appSizes.margin,
         width: appSizes.resultTextWidth()
     }

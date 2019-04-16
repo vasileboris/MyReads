@@ -7,13 +7,21 @@ import {
 import appSizes from 'styles/AppSizes';
 
 const styles = StyleSheet.create({
-    smallImage: {
+    smallRectangleImage: {
         width: appSizes.smallImageWidth(),
         height: appSizes.smallImageHeight()
     },
-    largeImage: {
+    largeRectangleImage: {
         width: appSizes.largeImageWidth(),
         height: appSizes.largeImageHeight()
+    },
+    smallSquareImage: {
+        width: appSizes.smallImageWidth(),
+        height: appSizes.smallImageWidth()
+    },
+    largeSquareImage: {
+        width: appSizes.largeImageWidth(),
+        height: appSizes.largeImageWidth()
     },
 });
 

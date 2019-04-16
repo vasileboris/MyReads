@@ -25,6 +25,7 @@ export default class App extends React.Component {
         let book1 = {
             title: "The Power of Habit: Why We Do What We Do in Life and Business",
             authors: ["Charles Duhigg"],
+            image: "https://images-na.ssl-images-amazon.com/images/I/517FwF49v%2BL._SX322_BO1,204,203,200_.jpg",
             pages: 375
         };
         let book2 = {

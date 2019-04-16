@@ -33,6 +33,9 @@ const appSizes = {
         return this.screenHeight() - this.appMarginTop();
     },
 
+    appContentHeight: function() {
+        return this.appHeight();
+    },
 
     goldenSegments: function(value, level = 1) {
         const a = value / PHI;
@@ -50,7 +53,7 @@ const appSizes = {
     },
 
     appHeightGoldenSegments: function(level = 1) {
-        return this.goldenSegments(this.appHeight(), level);
+        return this.goldenSegments(this.appContentHeight(), level);
     },
 
     entryWidth: function() {
@@ -66,7 +69,7 @@ const appSizes = {
     },
 
     resultSingleHeight: function() {
-        return this.appHeight();
+        return this.appContentHeight();
     },
 
     resultSingleSectionA1Height: function() {
