@@ -6,29 +6,23 @@ import {
 } from 'react-native';
 import localizer from 'utils/Localizer';
 import BookImageComponent from './BookImageComponent';
+import BookDetailsComponent from './BookDetailsComponent';
+import ReadingSessionProgressComponent from 'components/reading-session/ReadingSessionProgressComponent';
 import Button from 'components/button/Button';
 import Image from 'components/image/Image';
 import appStyles from 'styles/AppStyles';
 import appColors from 'styles/AppColors';
 
 function BookComponent(props) {
-    const { book, onReadClick, onEditClick, onDeleteClick } = props;
+    const { book, readingSessionProgress, onReadClick, onEditClick, onDeleteClick } = props;
     const openBook = require('../../assets/images/open-book.png');
     return (
         <View style={[appStyles.resultSingle, appStyles.vertical, appStyles.justifySpaceBetween]}>
             <View style={[appStyles.resultSingleSectionB1, appStyles.vertical, appStyles.justifySpaceBetween]}>
                 <View style={[appStyles.horizontal, appStyles.justifyStart, appStyles.alignItemsCenter]}>
                     <Image image={{source: openBook}} size="largeSquare"/>
-                    <View style={[appStyles.vertical, appStyles.justifyCenter, appStyles.resultSingleSectionA2]}>
-                        <Text style={[appStyles.text, appStyles.title]}>
-                            {book.title}
-                        </Text>
-                        <Text style={[appStyles.text]}>
-                            {localizer.localize('book-by-label')} {book.authors.join(', ')}
-                        </Text>
-                        <Text style={[appStyles.text]}>
-                            {book.pages} {localizer.localize('book-pages-label')}
-                        </Text>
+                    <View style={[appStyles.resultSingleSectionA2]}>
+                        <ReadingSessionProgressComponent readingSessionProgress={readingSessionProgress}/>
                     </View>
                 </View>
                 <Button style={[appStyles.button]}
@@ -39,16 +33,8 @@ function BookComponent(props) {
             <View style={[appStyles.resultDetail, appStyles.resultSingleSectionA1, appStyles.vertical, appStyles.justifySpaceBetween]}>
                 <View style={[appStyles.horizontal, appStyles.justifyStart, appStyles.alignItemsCenter]}>
                     <BookImageComponent image={book.image} size="largeRectangle"/>
-                    <View style={[appStyles.vertical, appStyles.justifyCenter, appStyles.resultSingleSectionA2]}>
-                        <Text style={[appStyles.text, appStyles.title]}>
-                            {book.title}
-                        </Text>
-                        <Text style={[appStyles.text]}>
-                            {localizer.localize('book-by-label')} {book.authors.join(', ')}
-                        </Text>
-                        <Text style={[appStyles.text]}>
-                            {book.pages} {localizer.localize('book-pages-label')}
-                        </Text>
+                    <View style={[appStyles.resultSingleSectionA2]}>
+                        <BookDetailsComponent book={book}/>
                     </View>
                 </View>
                 <View style={[appStyles.vertical, appStyles.justifyCenter]}>
@@ -78,6 +64,16 @@ BookComponent.propTypes = {
             PropTypes.string
         ]).isRequired,
     }).isRequired,
+    readingSessionProgress: PropTypes.shape({
+        readPercentage: PropTypes.number.isRequired,
+        averagePagesPerDay: PropTypes.number.isRequired,
+        pagesTotal: PropTypes.number.isRequired,
+        lastReadPage: PropTypes.number.isRequired,
+        estimatedReadDaysLeft: PropTypes.number.isRequired,
+        estimatedDaysLeft: PropTypes.number.isRequired,
+        estimatedFinishDate: PropTypes.string.isRequired,
+        deadline: PropTypes.string
+    }),
     onReadClick: PropTypes.func.isRequired,
     onEditClick: PropTypes.func.isRequired,
     onDeleteClick: PropTypes.func.isRequired

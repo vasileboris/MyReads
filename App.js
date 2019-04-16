@@ -33,9 +33,23 @@ export default class App extends React.Component {
             authors: ["Jurgen Appelo"],
             pages: 123
         };
+
+        let book1ReadingSessionProgress = {
+            bookUuid: 'c83446f8-6648-4dc2-b78b-889586c139b8',
+            lastReadPage: 138,
+            pagesTotal: 375,
+            readPercentage: 35,
+            averagePagesPerDay: 17,
+            estimatedReadDaysLeft: 15,
+            estimatedDaysLeft: 90,
+            estimatedFinishDate: '2019-07-15',
+            deadline: null
+        };
+
         return isLocalizerInitialized && (
             <View style={[appStyles.app, appStyles.container, appStyles.vertical, appStyles.justifyStart]}>
                 <BookComponent book={book1}
+                               readingSessionProgress={book1ReadingSessionProgress}
                                onReadClick={book => console.log(book.title)}
                                onEditClick={book => console.log(book.title)}
                                onDeleteClick={book => console.log(book.title)}/>
