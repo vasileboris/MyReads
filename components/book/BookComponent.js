@@ -18,7 +18,7 @@ function BookComponent(props) {
     const openBook = require('../../assets/images/open-book.png');
     return (
         <View style={[appStyles.resultSingle, appStyles.vertical, appStyles.justifySpaceBetween]}>
-            <View style={[appStyles.resultSingleSectionB1, appStyles.vertical, appStyles.justifySpaceBetween]}>
+            <View style={[appStyles.resultSingleSectionB1, appStyles.vertical, appStyles.justifyCenter]}>
                 <View style={[appStyles.horizontal, appStyles.justifyStart, appStyles.alignItemsCenter]}>
                     <Image image={{source: openBook}} size="largeSquare"/>
                     <View style={[appStyles.resultSingleSectionA2]}>
@@ -30,7 +30,7 @@ function BookComponent(props) {
                         onPress={() => onReadClick(book)}
                         title={localizer.localize('read-button')}/>
             </View>
-            <View style={[appStyles.resultDetail, appStyles.resultSingleSectionA1, appStyles.vertical, appStyles.justifySpaceBetween]}>
+            <View style={[appStyles.resultDetail, appStyles.resultSingleSectionA1, appStyles.vertical, appStyles.justifyCenter]}>
                 <View style={[appStyles.horizontal, appStyles.justifyStart, appStyles.alignItemsCenter]}>
                     <BookImageComponent image={book.image} size="largeRectangle"/>
                     <View style={[appStyles.resultSingleSectionA2]}>

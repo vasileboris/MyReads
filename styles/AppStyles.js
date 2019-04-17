@@ -87,12 +87,10 @@ const appStyles = StyleSheet.create({
     },
 
     resultSingleSectionA1: {
-        paddingTop: appSizes.margin,
         height: appSizes.resultSingleSectionA1Height(),
     },
 
     resultSingleSectionB1: {
-        paddingTop: appSizes.margin,
         height: appSizes.resultSingleSectionB1Height(),
     },
 
