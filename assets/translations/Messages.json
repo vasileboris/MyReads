@@ -33,6 +33,7 @@
   "date-reading-session-bookmark-text": "Bookmark",
   "date-reading-session-last-read-page-label": "{0} pages read",
   "date-reading-session-bookmark-label": "Continue with",
+  "reading-session-progress-none": "No reading added yet",
   "reading-session-progress-status-label": "Read up to",
   "reading-session-progress-average-pages-label": "pages / day",
   "reading-session-progress-estimated-pages-left-label": "remaining pages",

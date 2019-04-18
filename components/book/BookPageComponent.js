@@ -15,6 +15,10 @@ import appColors from 'styles/AppColors';
 
 function BookPageComponent(props) {
     const { book, readingSessionProgress, onReadClick, onEditClick, onDeleteClick } = props;
+    if(!book) {
+        //Todo - add some sort of loading
+        return null;
+    }
     const openBook = require('../../assets/images/open-book.png');
     return (
         <View style={[appStyles.resultSingle, appStyles.vertical, appStyles.justifySpaceBetween]}>

@@ -10,7 +10,13 @@ import appStyles from 'styles/AppStyles';
 function ReadingSessionProgressComponent (props) {
     const  { readingSessionProgress } = props;
     if(!readingSessionProgress) {
-        return null;
+        return (
+            <View style={[appStyles.vertical, appStyles.justifyCenter]}>
+                <Text style={[appStyles.text, appStyles.title]}>
+                    {localizer.localize('reading-session-progress-none')}
+                </Text>
+            </View>
+        );
     }
     return (
         <View style={[appStyles.vertical, appStyles.justifyCenter]}>

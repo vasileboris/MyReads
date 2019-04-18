@@ -48,13 +48,15 @@ export default class App extends React.Component {
 
         return isLocalizerInitialized && (
             <View style={[appStyles.app, appStyles.container, appStyles.vertical, appStyles.justifyStart]}>
-                <BookComponent book={book1}/>
-{/*
                 <BookPageComponent book={book1}
+/*
                                    readingSessionProgress={book1ReadingSessionProgress}
+*/
                                    onReadClick={book => console.log(book.title)}
                                    onEditClick={book => console.log(book.title)}
                                    onDeleteClick={book => console.log(book.title)}/>
+{/*
+                <BookComponent book={book1}/>
                 <BookComponent book={book2}/>
 */}
             </View>
