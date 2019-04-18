@@ -99,9 +99,9 @@ const appStyles = StyleSheet.create({
         paddingLeft: appSizes.margin,
     },
 
-    resultText: {
+    resultDetailsSection: {
         marginLeft: appSizes.margin,
-        width: appSizes.resultTextWidth()
+        width: appSizes.resultDetailsSectionWidth()
     }
 });
 

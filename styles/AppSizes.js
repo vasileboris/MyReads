@@ -64,7 +64,7 @@ const appSizes = {
         return this.appWidth();
     },
 
-    resultTextWidth: function() {
+    resultDetailsSectionWidth: function() {
         return this.resultWidth() - this.smallImageWidth() - this.margin;
     },
 
