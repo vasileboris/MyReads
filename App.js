@@ -1,22 +1,30 @@
 import React from 'react';
 import {
-    View,
-    Text,
-    ScrollView
+    createStore,
+    applyMiddleware
+} from 'redux';
+import createSagaMiddleware from 'redux-saga';
+import rootSaga from 'sagas/RootSagas';
+import {
+    View
 } from 'react-native';
+import { Provider } from 'react-redux';
+import { library }  from 'reducers/LibraryReducer';
 import localizer from 'utils/Localizer';
-import BookComponent from 'components/book/BookComponent';
 import BookPageComponent from 'components/book/BookPageComponent';
 import appStyles from 'styles/AppStyles';
-import appSizes from "./styles/AppSizes";
 
-export default class App extends React.Component {
+class App extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
             isLocalizerInitialized: false
         };
+
+        const sagaMiddleware = createSagaMiddleware();
+        this.store = createStore(library, applyMiddleware(sagaMiddleware));
+        sagaMiddleware.run(rootSaga);
     }
 
     render() {
@@ -48,17 +56,9 @@ export default class App extends React.Component {
 
         return isLocalizerInitialized && (
             <View style={[appStyles.app, appStyles.container, appStyles.vertical, appStyles.justifyStart]}>
-                <BookPageComponent book={book1}
-/*
-                                   readingSessionProgress={book1ReadingSessionProgress}
-*/
-                                   onReadClick={book => console.log(book.title)}
-                                   onEditClick={book => console.log(book.title)}
-                                   onDeleteClick={book => console.log(book.title)}/>
-{/*
-                <BookComponent book={book1}/>
-                <BookComponent book={book2}/>
-*/}
+                <Provider store={this.store}>
+                    <BookPageComponent bookUuid={'949c149c-daa3-4b20-a3ce-208c184c593d'}/>
+                </Provider>
             </View>
         );
     }
@@ -71,3 +71,5 @@ export default class App extends React.Component {
         });
     }
 }
+
+export default App;
