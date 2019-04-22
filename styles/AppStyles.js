@@ -52,15 +52,6 @@ const appStyles = StyleSheet.create({
         color: appColors.color3,
     },
 
-    entry: {
-        width: appSizes.entryWidth(),
-        marginTop: appSizes.margin,
-        marginRight: appSizes.margin,
-        marginBottom: 0,
-        marginLeft: appSizes.margin,
-        padding: appSizes.padding,
-    },
-
     button: {
         marginTop: appSizes.margin,
         marginBottom: appSizes.margin,
@@ -80,6 +71,7 @@ const appStyles = StyleSheet.create({
     },
 
     resultSingle: {
+        marginTop: appSizes.margin,
         marginLeft: appSizes.margin,
         marginRight: appSizes.margin,
         width: appSizes.resultWidth(),
@@ -102,7 +94,8 @@ const appStyles = StyleSheet.create({
     resultDetailsSection: {
         marginLeft: appSizes.margin,
         width: appSizes.resultDetailsSectionWidth()
-    }
+    },
+
 });
 
 export default appStyles;

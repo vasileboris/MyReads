@@ -5,10 +5,12 @@ import {
     StyleSheet
 } from 'react-native';
 import appStyles from 'styles/AppStyles';
+import appSizes from 'styles/AppSizes';
 import appColors from 'styles/AppColors';
 
 const styles = StyleSheet.create({
-    text: {
+    message: {
+        padding: appSizes.padding,
         color: appColors.colorTextMessage,
         backgroundColor: appColors.colorMessage,
         textAlign: "center"
@@ -18,7 +20,7 @@ const styles = StyleSheet.create({
 const MessageComponent = props => {
     const { message } = props;
     return message && (
-        <Text style={[appStyles.entry, appStyles.text, styles.text]}>{message}</Text>
+        <Text style={[appStyles.text, styles.message]}>{message}</Text>
     );
 };
 
