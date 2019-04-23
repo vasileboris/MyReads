@@ -23,7 +23,7 @@ class BookPageComponent extends React.Component {
     }
 
     render() {
-        const { bookUuid, message, books, readingSessionsProgress, onReadClick, onEditClick, onDeleteClick} = this.props;
+        const { bookUuid, message, books, readingSessionsProgress } = this.props;
         const book = books && books[bookUuid],
             readingSessionProgress = readingSessionsProgress && readingSessionsProgress[bookUuid];
 
@@ -47,7 +47,7 @@ class BookPageComponent extends React.Component {
                         </View>
                         <Button style={[appStyles.button]}
                                 color={appColors.color3}
-                                onPress={() => onReadClick(book)}
+                                onPress={() => this.onReadClick(book)}
                                 title={localizer.localize('read-button')}/>
                     </View>
                     <View
@@ -61,11 +61,11 @@ class BookPageComponent extends React.Component {
                         <View style={[appStyles.vertical, appStyles.justifyCenter]}>
                             <Button style={[appStyles.button]}
                                     color={appColors.color3}
-                                    onPress={() => onEditClick(book)}
+                                    onPress={() => this.onEditClick(book)}
                                     title={localizer.localize('edit-button')}/>
                             <Button style={[appStyles.button]}
                                     color={appColors.color3}
-                                    onPress={() => onDeleteClick(book)}
+                                    onPress={() => this.onDeleteClick(book)}
                                     title={localizer.localize('delete-button')}/>
                         </View>
                     </View>
@@ -77,8 +77,8 @@ class BookPageComponent extends React.Component {
     }
 
     componentDidMount() {
-       // this.retrieveBook();
-        //this.retrieveCurrentReadingSession();
+       this.retrieveBook();
+       this.retrieveCurrentReadingSession();
     }
 
     retrieveBook() {
@@ -107,35 +107,18 @@ class BookPageComponent extends React.Component {
 BookPageComponent.propTypes = {
     bookUuid: PropTypes.string.isRequired,
     message: PropTypes.string,
-    books: PropTypes.arrayOf(PropTypes.shape({
-        isbn10: PropTypes.string,
-        isbn13: PropTypes.string,
-        image: PropTypes.string,
-        title: PropTypes.string.isRequired,
-        authors: PropTypes.arrayOf(PropTypes.string).isRequired,
-        pages: PropTypes.oneOfType([
-            PropTypes.number,
-            PropTypes.string
-        ]).isRequired,
-    })),
-    readingSessionProgress: PropTypes.arrayOf(PropTypes.shape({
-        readPercentage: PropTypes.number.isRequired,
-        averagePagesPerDay: PropTypes.number.isRequired,
-        pagesTotal: PropTypes.number.isRequired,
-        lastReadPage: PropTypes.number.isRequired,
-        estimatedReadDaysLeft: PropTypes.number.isRequired,
-        estimatedDaysLeft: PropTypes.number.isRequired,
-        estimatedFinishDate: PropTypes.string.isRequired,
-        deadline: PropTypes.string
-    }))
+    books: PropTypes.object,
+    readingSessionProgress: PropTypes.object
 };
 
 const mapStateToProps = state => {
-    const { message, books, readingSessions } = state;
+    const { message, books, readingSessions } = state,
+        { readingSessionsProgress } = readingSessions;
+
     return {
         message,
         books,
-        readingSessionsProgress:  { readingSessions }
+        readingSessionsProgress
     };
 };
 
@@ -144,5 +127,4 @@ const mapDispatchToProps = {
     fetchCurrentReadingSessionAction
 };
 
-//export default BookPageComponent;
 export default connect(mapStateToProps, mapDispatchToProps)(BookPageComponent);
