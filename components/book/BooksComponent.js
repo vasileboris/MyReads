@@ -8,7 +8,7 @@ import BookComponent from './BookComponent';
 function BooksComponent(props) {
     const { books, onBookClick } = props;
     return (
-        <FlatList style={[{height: 200}]}
+        <FlatList
             data={Object.values(books)}
             keyExtractor={book => `${book.isbn10}-${book.isbn13}-${book.title}`}
             renderItem={ ({item}) => (

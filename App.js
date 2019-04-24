@@ -11,7 +11,7 @@ import {
 import { Provider } from 'react-redux';
 import { library }  from 'reducers/LibraryReducer';
 import localizer from 'utils/Localizer';
-import BooksComponent from 'components/book/BooksComponent';
+import BooksScreenComponent from 'components/screens/BooksScreenComponent';
 import BookScreenComponent from 'components/screens/BookScreenComponent';
 import appStyles from 'styles/AppStyles';
 
@@ -45,11 +45,8 @@ class App extends React.Component {
         return isLocalizerInitialized && (
             <View style={[appStyles.app, appStyles.container, appStyles.vertical, appStyles.justifyStart]}>
                 <Provider store={store}>
-                    <BookScreenComponent bookUuid={'1e4014b1-a551-4310-9f30-590c3140b695'}/>
+                    <BooksScreenComponent/>
                 </Provider>
-{/*
-                <BooksComponent books={books} onBookClick={book => console.log(`Clicked on ${book.title}`)}/>
-*/}
             </View>
         );
     }
