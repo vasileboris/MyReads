@@ -27,18 +27,13 @@ class BookScreenComponent extends React.Component {
         const book = books && books[bookUuid],
             readingSessionProgress = readingSessionsProgress && readingSessionsProgress[bookUuid];
 
-        if(!book && !message) {
-            //Add a loading mechanism
-            return null;
-        }
-
         const openBook = require('../../assets/images/open-book.png');
         return (
             <View style={[appStyles.resultSingle, appStyles.vertical, appStyles.justifySpaceBetween]}>
-                <MessageComponent message={message}/>
-                { book && (
-                <React.Fragment>
-                    <View style={[appStyles.resultSingleSectionB1, appStyles.vertical, appStyles.justifyCenter]}>
+                <View style={[appStyles.resultSingleSectionB1, appStyles.vertical, appStyles.justifyCenter]}>
+                    <MessageComponent message={message}/>
+                    { book && (
+                    <React.Fragment>
                         <View style={[appStyles.horizontal, appStyles.justifyStart, appStyles.alignItemsCenter]}>
                             <Image image={{source: openBook}} size="largeSquare"/>
                             <View style={[appStyles.resultSingleSectionA2]}>
@@ -49,9 +44,12 @@ class BookScreenComponent extends React.Component {
                                 color={appColors.color3}
                                 onPress={() => this.onReadClick(book)}
                                 title={localizer.localize('read-button')}/>
-                    </View>
-                    <View
-                        style={[appStyles.resultDetail, appStyles.resultSingleSectionA1, appStyles.vertical, appStyles.justifyCenter]}>
+                    </React.Fragment>
+                    )}
+                </View>
+                <View style={[appStyles.resultDetail, appStyles.resultSingleSectionA1, appStyles.vertical, appStyles.justifyCenter]}>
+                    { book && (
+                    <React.Fragment>
                         <View style={[appStyles.horizontal, appStyles.justifyStart, appStyles.alignItemsCenter]}>
                             <BookImageComponent image={book.image} size="largeRectangle"/>
                             <View style={[appStyles.resultSingleSectionA2]}>
@@ -68,9 +66,9 @@ class BookScreenComponent extends React.Component {
                                     onPress={() => this.onDeleteClick(book)}
                                     title={localizer.localize('delete-button')}/>
                         </View>
-                    </View>
-                </React.Fragment>
-                )}
+                    </React.Fragment>
+                    )}
+                </View>
             </View>
         );
 
