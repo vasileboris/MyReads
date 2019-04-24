@@ -45,7 +45,12 @@ class App extends React.Component {
         return isLocalizerInitialized && (
             <View style={[appStyles.app, appStyles.container, appStyles.vertical, appStyles.justifyStart]}>
                 <Provider store={store}>
+
                     <BooksScreenComponent/>
+
+{/*
+                    <BookScreenComponent bookUuid={'77b57545-41f1-40e0-845b-d2fc45f15644'}/>
+*/}
                 </Provider>
             </View>
         );

@@ -52,22 +52,16 @@ const appStyles = StyleSheet.create({
         color: appColors.color3,
     },
 
+    textEntry: {
+        padding: appSizes.smallPadding,
+        width: appSizes.entryWidth(),
+        borderColor: appColors.color3,
+        borderWidth: 1
+    },
+
     button: {
         marginTop: appSizes.margin,
         marginBottom: appSizes.margin,
-    },
-
-    result: {
-        width: appSizes.resultWidth(),
-        marginTop: appSizes.margin,
-        marginRight: appSizes.margin,
-        marginBottom: 0,
-        marginLeft: appSizes.margin,
-    },
-
-    resultDetail: {
-        borderTopColor: appColors.color3,
-        borderTopWidth: 1,
     },
 
     resultSingle: {
@@ -96,6 +90,16 @@ const appStyles = StyleSheet.create({
         width: appSizes.resultDetailsSectionWidth()
     },
 
+    result: {
+        width: appSizes.resultWidth(),
+        marginTop: appSizes.margin,
+        marginBottom: 0,
+    },
+
+    resultDetail: {
+        borderTopColor: appColors.color3,
+        borderTopWidth: 1,
+    },
 });
 
 export default appStyles;

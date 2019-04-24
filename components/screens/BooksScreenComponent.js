@@ -6,21 +6,27 @@ import {
 import { connect } from 'react-redux';
 import MessageComponent from 'components/message/MessageComponent';
 import BooksComponent from 'components/book/BooksComponent';
+import SearchBooksComponent from 'components/book/SearchBooksComponent';
 import appStyles from 'styles/AppStyles';
+import { receiveBooksSearchTextAction } from 'actions/BooksSearchAction';
 import { fetchBooksAction } from 'actions/BookAction';
 
 class BooksScreenComponent extends React.Component {
 
     constructor(props) {
         super(props);
+        this.onSearchInputChange = this.onSearchInputChange.bind(this);
     }
 
     render() {
         const { message, books } = this.props;
 
         return (
-            <View style={[appStyles.vertical, appStyles.justifyStart]}>
+            <View style={[appStyles.resultSingle, appStyles.vertical, appStyles.justifyStart]}>
                 <MessageComponent message={message}/>
+                <SearchBooksComponent
+                    onInputChange={this.onSearchInputChange}
+                    onAddClick={() => console.log('on add click')}/>
                 <BooksComponent books={books} onBookClick={book => console.log(`Clicked on ${book.title}`)}/>
             </View>
         );
@@ -35,6 +41,14 @@ class BooksScreenComponent extends React.Component {
         const { fetchBooksAction } = this.props;
         fetchBooksAction();
     }
+
+    onSearchInputChange(text) {
+        const booksSearchText = text,
+            { receiveBooksSearchTextAction, fetchBooksAction } = this.props;
+        receiveBooksSearchTextAction(booksSearchText);
+        fetchBooksAction(booksSearchText.trim());
+    }
+
 }
 
 BooksScreenComponent.propTypes = {
@@ -52,6 +66,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
+    receiveBooksSearchTextAction,
     fetchBooksAction
 };
 

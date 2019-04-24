@@ -4,11 +4,12 @@ import {
     FlatList
 } from 'react-native';
 import BookComponent from './BookComponent';
+import appStyles from "styles/AppStyles";
 
 function BooksComponent(props) {
     const { books, onBookClick } = props;
     return (
-        <FlatList
+        <FlatList style={[appStyles.resultDetail]}
             data={Object.values(books)}
             keyExtractor={book => `${book.isbn10}-${book.isbn13}-${book.title}`}
             renderItem={ ({item}) => (
