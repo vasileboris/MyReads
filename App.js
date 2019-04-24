@@ -31,26 +31,10 @@ class App extends React.Component {
     render() {
         const { isLocalizerInitialized } = this.state;
 
-        const books = {};
-        for(let i=1; i<11; i++ ) {
-            const book = {
-                uuid: `uuid-${i}`,
-                title: `Book ${i}`,
-                authors: [`Author ${i}`],
-                pages: i
-            };
-            books[book.uuid] = book;
-        }
-
         return isLocalizerInitialized && (
             <View style={[appStyles.app, appStyles.container, appStyles.vertical, appStyles.justifyStart]}>
                 <Provider store={store}>
-
                     <BooksScreenComponent/>
-
-{/*
-                    <BookScreenComponent bookUuid={'77b57545-41f1-40e0-845b-d2fc45f15644'}/>
-*/}
                 </Provider>
             </View>
         );
