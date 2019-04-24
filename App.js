@@ -43,7 +43,7 @@ class App extends React.Component {
 
         return isLocalizerInitialized && (
             <View style={[appStyles.app, appStyles.container, appStyles.vertical, appStyles.justifyStart]}>
-                <BooksComponent books={books}/>
+                <BooksComponent books={books} onBookClick={book => console.log(`Clicked on ${book.title}`)}/>
             </View>
         );
     }
