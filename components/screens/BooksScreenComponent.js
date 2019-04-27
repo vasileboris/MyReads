@@ -26,7 +26,7 @@ class BooksScreenComponent extends React.Component {
         const { message, books, navigation } = this.props;
 
         return (
-            <View style={[appStyles.resultSingle, appStyles.vertical, appStyles.justifyStart]}>
+            <View style={[appStyles.screen, appStyles.vertical, appStyles.justifyStart]}>
                 <MessageComponent message={message}/>
                 <SearchBooksComponent
                     onInputChange={this.onSearchInputChange}

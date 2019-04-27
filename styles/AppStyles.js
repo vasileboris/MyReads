@@ -53,6 +53,43 @@ const appStyles = StyleSheet.create({
         alignItems: 'center',
     },
 
+    screen: {
+        marginTop: appSizes.margin,
+        marginLeft: appSizes.margin,
+        marginRight: appSizes.margin,
+        width: appSizes.resultWidth(),
+        height: appSizes.appHeight()
+    },
+
+    screenSectionA1: {
+        height: appSizes.screenSectionA1Height(),
+    },
+
+    screenSectionB1: {
+        height: appSizes.screenSingleSectionB1Height(),
+    },
+
+    screenSectionA2: {
+        width: appSizes.screenSectionA1Width(),
+        paddingLeft: appSizes.margin,
+    },
+
+    result: {
+        width: appSizes.resultWidth(),
+        marginTop: appSizes.margin,
+        marginBottom: 0,
+    },
+
+    resultDetail: {
+        borderTopColor: appColors.color3,
+        borderTopWidth: 1,
+    },
+
+    resultDetailsSection: {
+        marginLeft: appSizes.margin,
+        width: appSizes.resultDetailsSectionWidth()
+    },
+
     text: {
         fontFamily: 'sans-serif',
         fontSize: 16
@@ -75,42 +112,6 @@ const appStyles = StyleSheet.create({
         marginBottom: appSizes.margin,
     },
 
-    resultSingle: {
-        marginTop: appSizes.margin,
-        marginLeft: appSizes.margin,
-        marginRight: appSizes.margin,
-        width: appSizes.resultWidth(),
-        height: appSizes.resultSingleHeight()
-    },
-
-    resultSingleSectionA1: {
-        height: appSizes.resultSingleSectionA1Height(),
-    },
-
-    resultSingleSectionB1: {
-        height: appSizes.resultSingleSectionB1Height(),
-    },
-
-    resultSingleSectionA2: {
-        width: appSizes.resultSingleSectionA1Width(),
-        paddingLeft: appSizes.margin,
-    },
-
-    resultDetailsSection: {
-        marginLeft: appSizes.margin,
-        width: appSizes.resultDetailsSectionWidth()
-    },
-
-    result: {
-        width: appSizes.resultWidth(),
-        marginTop: appSizes.margin,
-        marginBottom: 0,
-    },
-
-    resultDetail: {
-        borderTopColor: appColors.color3,
-        borderTopWidth: 1,
-    },
 });
 
 export default appStyles;

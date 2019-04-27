@@ -35,14 +35,14 @@ class BookScreenComponent extends React.Component {
             openBook = require('../../assets/images/open-book.png');
 
         return (
-            <View style={[appStyles.resultSingle, appStyles.vertical, appStyles.justifySpaceBetween]}>
-                <View style={[appStyles.resultSingleSectionB1, appStyles.vertical, appStyles.justifyCenter]}>
+            <View style={[appStyles.screen, appStyles.vertical, appStyles.justifySpaceBetween]}>
+                <View style={[appStyles.screenSectionB1, appStyles.vertical, appStyles.justifyCenter]}>
                     <MessageComponent message={message}/>
                     { book && (
                     <React.Fragment>
                         <View style={[appStyles.horizontal, appStyles.justifyStart, appStyles.alignItemsCenter]}>
                             <Image image={{source: openBook}} size="largeSquare"/>
-                            <View style={[appStyles.resultSingleSectionA2]}>
+                            <View style={[appStyles.screenSectionA2]}>
                                 <ReadingSessionProgressComponent readingSessionProgress={readingSessionProgress}/>
                             </View>
                         </View>
@@ -53,12 +53,12 @@ class BookScreenComponent extends React.Component {
                     </React.Fragment>
                     )}
                 </View>
-                <View style={[appStyles.resultDetail, appStyles.resultSingleSectionA1, appStyles.vertical, appStyles.justifyCenter]}>
+                <View style={[appStyles.screenSectionA1, appStyles.resultDetail, appStyles.vertical, appStyles.justifyCenter]}>
                     { book && (
                     <React.Fragment>
                         <View style={[appStyles.horizontal, appStyles.justifyStart, appStyles.alignItemsCenter]}>
                             <BookImageComponent image={book.image} size="largeRectangle"/>
-                            <View style={[appStyles.resultSingleSectionA2]}>
+                            <View style={[appStyles.screenSectionA2]}>
                                 <BookDetailsComponent book={book}/>
                             </View>
                         </View>

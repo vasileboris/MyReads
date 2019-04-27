@@ -14,28 +14,28 @@ const appSizes = {
     smallPadding: 5,
     padding: 10,
 
-    statusBarHeight: function() {
+    phoneStatusBarHeight: function() {
         return 'android' === Platform.OS ? Constants.statusBarHeight : 0;
+    },
+
+    phoneScreenWidth: function() {
+        return Dimensions.get('window').width
+    },
+
+    phoneScreenHeight: function() {
+        return Dimensions.get('window').height
     },
 
     appMarginTop: function() {
         return 0;
     },
 
-    screenWidth: function() {
-        return Dimensions.get('window').width
-    },
-
-    screenHeight: function() {
-        return Dimensions.get('window').height
-    },
-
     appWidth: function() {
-        return this.screenWidth() - 2 * this.margin;
+        return this.phoneScreenWidth() - 2 * this.margin;
     },
 
     appHeight: function() {
-        return this.screenHeight() - this.statusBarHeight() - this.navigationBarHeight - 2 * this.margin;
+        return this.phoneScreenHeight() - this.phoneStatusBarHeight() - this.navigationBarHeight - 2 * this.margin;
     },
 
     goldenSegments: function(value, level = 1) {
@@ -57,6 +57,22 @@ const appSizes = {
         return this.goldenSegments(this.appHeight(), level);
     },
 
+    screenSectionA1Height: function() {
+        return this.appHeightGoldenSegments(1).a;
+    },
+
+    screenSingleSectionB1Height: function() {
+        return this.appHeightGoldenSegments(1).b;
+    },
+
+    screenSectionA1Width: function() {
+        return this.appWidthGoldenSegments(1).a;
+    },
+
+    screenSectionB1Width: function() {
+        return this.appWidthGoldenSegments(1).b;
+    },
+
     entryWidth: function() {
         return this.appWidth();
     },
@@ -67,26 +83,6 @@ const appSizes = {
 
     resultDetailsSectionWidth: function() {
         return this.resultWidth() - this.smallImageWidth() - this.margin;
-    },
-
-    resultSingleHeight: function() {
-        return this.appHeight();
-    },
-
-    resultSingleSectionA1Height: function() {
-        return this.appHeightGoldenSegments(1).a;
-    },
-
-    resultSingleSectionB1Height: function() {
-        return this.appHeightGoldenSegments(1).b;
-    },
-
-    resultSingleSectionA1Width: function() {
-        return this.appWidthGoldenSegments(1).a;
-    },
-
-    resultSingleSectionB1Width: function() {
-        return this.appWidthGoldenSegments(1).b;
     },
 
     largeImageWidth: function() {
