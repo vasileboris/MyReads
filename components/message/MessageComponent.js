@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
+    View,
     Text,
     StyleSheet
 } from 'react-native';
@@ -9,7 +10,10 @@ import appSizes from 'styles/AppSizes';
 import appColors from 'styles/AppColors';
 
 const styles = StyleSheet.create({
-    message: {
+    messageView: {
+        marginBottom: appSizes.margin
+    },
+    messageText: {
         padding: appSizes.padding,
         color: appColors.colorTextMessage,
         backgroundColor: appColors.colorMessage,
@@ -20,7 +24,9 @@ const styles = StyleSheet.create({
 const MessageComponent = props => {
     const { message } = props;
     return message && (
-        <Text style={[appStyles.text, styles.message]}>{message}</Text>
+        <View style={[styles.messageView]}>
+            <Text style={[appStyles.text, styles.messageText]}>{message}</Text>
+        </View>
     );
 };
 

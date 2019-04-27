@@ -8,7 +8,7 @@ const PHI = 1.618;
 const BOOK_HW_RATIO = 1.5;
 
 const appSizes = {
-    navigationBarHeight: 40,
+    navigationBarHeight: 50,
     smallMargin: 5,
     margin: 10,
     smallPadding: 5,

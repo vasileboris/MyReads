@@ -45,6 +45,10 @@ const appStyles = StyleSheet.create({
         justifyContent: 'space-between',
     },
 
+    justifySpaceAround: {
+        justifyContent: 'space-around',
+    },
+
     justifyEnd: {
         justifyContent: 'flex-end',
     },

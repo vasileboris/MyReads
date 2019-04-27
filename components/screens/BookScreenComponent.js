@@ -36,10 +36,10 @@ class BookScreenComponent extends React.Component {
 
         return (
             <View style={[appStyles.screen, appStyles.vertical, appStyles.justifySpaceBetween]}>
-                <View style={[appStyles.screenSectionB1, appStyles.vertical, appStyles.justifyCenter]}>
-                    <MessageComponent message={message}/>
-                    { book && (
-                    <React.Fragment>
+                <MessageComponent message={message}/>
+                { book && (
+                <React.Fragment>
+                    <View style={[appStyles.screenSectionB1, appStyles.vertical, appStyles.justifyCenter]}>
                         <View style={[appStyles.horizontal, appStyles.justifyStart, appStyles.alignItemsCenter]}>
                             <Image image={{source: openBook}} size="largeSquare"/>
                             <View style={[appStyles.screenSectionA2]}>
@@ -50,12 +50,8 @@ class BookScreenComponent extends React.Component {
                                 color={appColors.color3}
                                 onPress={() => this.onReadClick(book)}
                                 title={localizer.localize('read-button')}/>
-                    </React.Fragment>
-                    )}
-                </View>
-                <View style={[appStyles.screenSectionA1, appStyles.resultDetail, appStyles.vertical, appStyles.justifyCenter]}>
-                    { book && (
-                    <React.Fragment>
+                    </View>
+                    <View style={[appStyles.screenSectionA1, appStyles.resultDetail, appStyles.vertical, appStyles.justifyCenter]}>
                         <View style={[appStyles.horizontal, appStyles.justifyStart, appStyles.alignItemsCenter]}>
                             <BookImageComponent image={book.image} size="largeRectangle"/>
                             <View style={[appStyles.screenSectionA2]}>
@@ -72,9 +68,9 @@ class BookScreenComponent extends React.Component {
                                     onPress={() => this.onDeleteClick(book)}
                                     title={localizer.localize('delete-button')}/>
                         </View>
-                    </React.Fragment>
-                    )}
-                </View>
+                    </View>
+                </React.Fragment>
+                )}
             </View>
         );
 
