@@ -8,13 +8,18 @@ const PHI = 1.618;
 const BOOK_HW_RATIO = 1.5;
 
 const appSizes = {
+    navigationBarHeight: 40,
     smallMargin: 5,
     margin: 10,
     smallPadding: 5,
     padding: 10,
 
+    statusBarHeight: function() {
+        return 'android' === Platform.OS ? Constants.statusBarHeight : 0;
+    },
+
     appMarginTop: function() {
-        return 'android' === Platform.OS ? Constants.statusBarHeight : 0
+        return 0;
     },
 
     screenWidth: function() {
@@ -30,11 +35,7 @@ const appSizes = {
     },
 
     appHeight: function() {
-        return this.screenHeight() - this.appMarginTop();
-    },
-
-    appContentHeight: function() {
-        return this.appHeight();
+        return this.screenHeight() - this.statusBarHeight() - this.navigationBarHeight - 2 * this.margin;
     },
 
     goldenSegments: function(value, level = 1) {
@@ -53,7 +54,7 @@ const appSizes = {
     },
 
     appHeightGoldenSegments: function(level = 1) {
-        return this.goldenSegments(this.appContentHeight(), level);
+        return this.goldenSegments(this.appHeight(), level);
     },
 
     entryWidth: function() {
@@ -69,7 +70,7 @@ const appSizes = {
     },
 
     resultSingleHeight: function() {
-        return this.appContentHeight();
+        return this.appHeight();
     },
 
     resultSingleSectionA1Height: function() {

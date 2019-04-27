@@ -8,10 +8,14 @@ import MessageComponent from 'components/message/MessageComponent';
 import BooksComponent from 'components/book/BooksComponent';
 import SearchBooksComponent from 'components/book/SearchBooksComponent';
 import appStyles from 'styles/AppStyles';
+import { receiveMessageAction } from 'actions/MessageAction';
 import { receiveBooksSearchTextAction } from 'actions/BooksSearchAction';
 import { fetchBooksAction } from 'actions/BookAction';
 
 class BooksScreenComponent extends React.Component {
+    static navigationOptions = {
+        title: 'My Reads'
+    };
 
     constructor(props) {
         super(props);
@@ -19,7 +23,7 @@ class BooksScreenComponent extends React.Component {
     }
 
     render() {
-        const { message, books } = this.props;
+        const { message, books, navigation } = this.props;
 
         return (
             <View style={[appStyles.resultSingle, appStyles.vertical, appStyles.justifyStart]}>
@@ -27,14 +31,23 @@ class BooksScreenComponent extends React.Component {
                 <SearchBooksComponent
                     onInputChange={this.onSearchInputChange}
                     onAddClick={() => console.log('on add click')}/>
-                <BooksComponent books={books} onBookClick={book => console.log(`Clicked on ${book.title}`)}/>
+                <BooksComponent books={books}
+                                onBookClick={book => navigation.navigate('Book', { bookUuid: book.uuid, bookTitle: book.title })}/>
             </View>
         );
 
     }
 
     componentDidMount() {
-       this.retrieveBooks();
+        const { navigation, receiveMessageAction } = this.props;
+        this.willFocus = navigation.addListener('willFocus', () => receiveMessageAction(null));
+        this.retrieveBooks();
+    }
+
+    componentWillUnmount() {
+        if(this.willFocus) {
+            this.willFocus.remove();
+        }
     }
 
     retrieveBooks() {
@@ -66,6 +79,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
+    receiveMessageAction,
     receiveBooksSearchTextAction,
     fetchBooksAction
 };

@@ -17,17 +17,23 @@ import { fetchBookAction } from 'actions/BookAction';
 import { fetchCurrentReadingSessionAction } from 'actions/ReadingSessionAction';
 
 class BookScreenComponent extends React.Component {
+    static navigationOptions = ({ navigation }) => {
+        return {
+            title: navigation.getParam('bookTitle', localizer.localize('book-title-text'))
+        };
+    };
 
     constructor(props) {
         super(props);
     }
 
     render() {
-        const { bookUuid, message, books, readingSessionsProgress } = this.props;
-        const book = books && books[bookUuid],
-            readingSessionProgress = readingSessionsProgress && readingSessionsProgress[bookUuid];
+        const {  message, books, readingSessionsProgress, navigation} = this.props;
+        const bookUuid = navigation.getParam('bookUuid'),
+            book = books && books[bookUuid],
+            readingSessionProgress = readingSessionsProgress && readingSessionsProgress[bookUuid],
+            openBook = require('../../assets/images/open-book.png');
 
-        const openBook = require('../../assets/images/open-book.png');
         return (
             <View style={[appStyles.resultSingle, appStyles.vertical, appStyles.justifySpaceBetween]}>
                 <View style={[appStyles.resultSingleSectionB1, appStyles.vertical, appStyles.justifyCenter]}>
@@ -75,17 +81,19 @@ class BookScreenComponent extends React.Component {
     }
 
     componentDidMount() {
-       this.retrieveBook();
-       this.retrieveCurrentReadingSession();
+        this.retrieveBook();
+        this.retrieveCurrentReadingSession();
     }
 
     retrieveBook() {
-        const { fetchBookAction, bookUuid } = this.props;
+        const { navigation, fetchBookAction } = this.props;
+        const bookUuid = navigation.getParam('bookUuid');
         fetchBookAction(bookUuid);
     }
 
     retrieveCurrentReadingSession() {
-        const { fetchCurrentReadingSessionAction, bookUuid } = this.props;
+        const { navigation, fetchCurrentReadingSessionAction } = this.props;
+        const bookUuid = navigation.getParam('bookUuid');
         fetchCurrentReadingSessionAction(bookUuid);
     }
 
@@ -103,7 +111,6 @@ class BookScreenComponent extends React.Component {
 }
 
 BookScreenComponent.propTypes = {
-    bookUuid: PropTypes.string.isRequired,
     message: PropTypes.string,
     books: PropTypes.object,
     readingSessionProgress: PropTypes.object

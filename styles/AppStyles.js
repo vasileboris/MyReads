@@ -8,6 +8,17 @@ const appStyles = StyleSheet.create({
         backgroundColor: appColors.color2,
     },
 
+    navigationBarHeaderStyle: {
+        height: appSizes.navigationBarHeight,
+        backgroundColor: appColors.color1
+    },
+
+    navigationBarTitleStyle: {
+        fontFamily: 'sans-serif',
+        fontSize: 18,
+        fontWeight: 'bold'
+    },
+
     container: {
         flex: 1,
     },
@@ -69,7 +80,7 @@ const appStyles = StyleSheet.create({
         marginLeft: appSizes.margin,
         marginRight: appSizes.margin,
         width: appSizes.resultWidth(),
-        height: appSizes.resultSingleHeight(),
+        height: appSizes.resultSingleHeight()
     },
 
     resultSingleSectionA1: {

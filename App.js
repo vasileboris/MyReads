@@ -9,15 +9,33 @@ import {
     View
 } from 'react-native';
 import { Provider } from 'react-redux';
+import { createStackNavigator, createAppContainer } from "react-navigation";
 import { library }  from 'reducers/LibraryReducer';
 import localizer from 'utils/Localizer';
 import BooksScreenComponent from 'components/screens/BooksScreenComponent';
 import BookScreenComponent from 'components/screens/BookScreenComponent';
 import appStyles from 'styles/AppStyles';
+import appColors from 'styles/AppColors';
 
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(library, applyMiddleware(sagaMiddleware));
 sagaMiddleware.run(rootSaga);
+
+const AppNavigator = createStackNavigator(
+    {
+        Books: BooksScreenComponent,
+        Book: BookScreenComponent
+    },
+    {
+        initialRouteName: 'Books',
+        defaultNavigationOptions: {
+            headerStyle: appStyles.navigationBarHeaderStyle,
+            headerTintColor: appColors.color3,
+            headerTitleStyle: appStyles.navigationBarTitleStyle
+        },
+    }
+);
+const AppContainer = createAppContainer(AppNavigator);
 
 class App extends React.Component {
     constructor(props) {
@@ -34,7 +52,7 @@ class App extends React.Component {
         return isLocalizerInitialized && (
             <View style={[appStyles.app, appStyles.container, appStyles.vertical, appStyles.justifyStart]}>
                 <Provider store={store}>
-                    <BooksScreenComponent/>
+                    <AppContainer/>
                 </Provider>
             </View>
         );
