@@ -41,19 +41,7 @@ class BookScreenComponent extends React.Component {
                 <React.Fragment>
                     <View style={[appStyles.screenSectionB1, appStyles.vertical, appStyles.justifyCenter]}>
                         <View style={[appStyles.horizontal, appStyles.justifyStart, appStyles.alignItemsCenter]}>
-                            <Image image={{source: openBook}} size="largeSquare"/>
-                            <View style={[appStyles.screenSectionA2]}>
-                                <ReadingSessionProgressComponent readingSessionProgress={readingSessionProgress}/>
-                            </View>
-                        </View>
-                        <Button style={[appStyles.button]}
-                                color={appColors.color3}
-                                onPress={() => this.onReadClick(book)}
-                                title={localizer.localize('read-button')}/>
-                    </View>
-                    <View style={[appStyles.screenSectionA1, appStyles.resultDetail, appStyles.vertical, appStyles.justifyCenter]}>
-                        <View style={[appStyles.horizontal, appStyles.justifyStart, appStyles.alignItemsCenter]}>
-                            <BookImageComponent image={book.image} size="largeRectangle"/>
+                            <BookImageComponent image={book.image} size="smallRectangle"/>
                             <View style={[appStyles.screenSectionA2]}>
                                 <BookDetailsComponent book={book}/>
                             </View>
@@ -68,6 +56,18 @@ class BookScreenComponent extends React.Component {
                                     onPress={() => this.onDeleteClick(book)}
                                     title={localizer.localize('delete-button')}/>
                         </View>
+                    </View>
+                    <View style={[appStyles.screenSectionA1, appStyles.vertical, appStyles.justifyCenter, appStyles.resultDetail]}>
+                        <View style={[appStyles.horizontal, appStyles.justifyStart, appStyles.alignItemsCenter]}>
+                            <Image image={{source: openBook}} size="largeSquare"/>
+                            <View style={[appStyles.screenSectionA2]}>
+                                <ReadingSessionProgressComponent readingSessionProgress={readingSessionProgress}/>
+                            </View>
+                        </View>
+                        <Button style={[appStyles.button]}
+                                color={appColors.color3}
+                                onPress={() => this.onReadClick(book)}
+                                title={localizer.localize('read-button')}/>
                     </View>
                 </React.Fragment>
                 )}
