@@ -4,6 +4,7 @@ import {
     View
 } from 'react-native';
 import appStyles from 'styles/AppStyles';
+import appColors from 'styles/AppColors';
 import localizer from 'utils/Localizer';
 import TextInput from 'components/input/TextInput';
 import NumberInput from 'components/input/NumberInput';
@@ -39,7 +40,7 @@ const InputBookComponent = props => {
             )}
             {'delete' === operation && (
             <Button onPress={onDeleteButtonClick}
-                    title={localizer.localize('delete-button')}/>
+                    title={localizer.localize('delete-button')} color={appColors.colorDelete}/>
             )}
             <Button onPress={onCancelButtonClick}
                     title={localizer.localize('cancel-button')}/>

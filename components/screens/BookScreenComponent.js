@@ -17,7 +17,8 @@ import {
     fetchBookAction,
     changeBookFieldAction,
     updateBookAction,
-    resetBookAction
+    resetBookAction,
+    deleteBookAction
 } from 'actions/BookAction';
 import { fetchCurrentReadingSessionAction } from 'actions/ReadingSessionAction';
 import { changeBookOperationAction } from 'actions/OperationAction';
@@ -34,6 +35,7 @@ class BookScreenComponent extends React.Component {
         this.onEditButtonClick = this.onEditButtonClick.bind(this);
         this.onBookInputChange = this.onBookInputChange.bind(this);
         this.onUpdateButtonClick = this.onUpdateButtonClick.bind(this);
+        this.onReallyDeleteButtonClick = this.onReallyDeleteButtonClick.bind(this);
         this.onCancelButtonClick = this.onCancelButtonClick.bind(this);
     }
 
@@ -51,6 +53,7 @@ class BookScreenComponent extends React.Component {
                                     book={book}
                                     onInputChange={this.onBookInputChange}
                                     onUpdateButtonClick={this.onUpdateButtonClick}
+                                    onDeleteButtonClick={this.onReallyDeleteButtonClick}
                                     onCancelButtonClick={this.onCancelButtonClick}/>
                 )}
 
@@ -112,9 +115,9 @@ class BookScreenComponent extends React.Component {
         changeBookOperationAction('edit');
     }
 
-    onDeleteButtonClick(book) {
-        console.log('onDeleteClick: ' + book.title);
-        console.log(book.title)
+    onDeleteButtonClick() {
+        const { changeBookOperationAction } = this.props;
+        changeBookOperationAction('delete');
     }
 
     onBookInputChange(value, name) {
@@ -130,6 +133,14 @@ class BookScreenComponent extends React.Component {
             { book, updateBookAction } = this.props;
 
         updateBookAction(booksSearchText, book);
+    }
+
+    onReallyDeleteButtonClick() {
+        const booksSearchText = this.props.booksSearchText.trim(),
+            { book, deleteBookAction, navigation } = this.props;
+
+        navigation.navigate('books');
+        deleteBookAction(booksSearchText, book.uuid);
     }
 
     onCancelButtonClick() {
@@ -168,7 +179,8 @@ const mapDispatchToProps = {
     changeBookFieldAction,
     updateBookAction,
     resetBookAction,
-    receiveMessageAction
+    receiveMessageAction,
+    deleteBookAction
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BookScreenComponent);

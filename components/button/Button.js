@@ -8,10 +8,10 @@ import appStyles from 'styles/AppStyles';
 import appColors from 'styles/AppColors';
 
 const Button = props => {
-    const { title, onPress } = props;
+    const { title, onPress, color } = props;
     return title && (
         <View style={[appStyles.button]}>
-            <RNButton color={appColors.color3}
+            <RNButton color={color ? color : appColors.color3}
                       onPress={onPress}
                       title={title}/>
         </View>
@@ -20,7 +20,8 @@ const Button = props => {
 
 Button.propTypes = {
     title: PropTypes.string.isRequired,
-    onPress: PropTypes.func.isRequired
+    onPress: PropTypes.func.isRequired,
+    color: PropTypes.string
 };
 
 export default Button;

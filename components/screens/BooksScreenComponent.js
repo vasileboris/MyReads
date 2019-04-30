@@ -71,7 +71,8 @@ class BooksScreenComponent extends React.Component {
     }
 
     onBookClick(book) {
-        const { changeBookOperationAction, resetBookAction, navigation } = this.props;
+        const { receiveMessageAction, changeBookOperationAction, resetBookAction, navigation } = this.props;
+        receiveMessageAction(null);
         changeBookOperationAction('view');
         resetBookAction(book);
         navigation.navigate('book');
