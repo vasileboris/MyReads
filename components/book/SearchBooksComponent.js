@@ -1,22 +1,21 @@
 import React from 'react';
-import localizer from 'utils/Localizer';
 import PropTypes from 'prop-types';
 import {
-    View,
-    TextInput
+    View
 } from 'react-native';
 import Button from 'components/button/Button';
+import TextInput from 'components/input/TextInput';
 import appStyles from "styles/AppStyles";
 import appColors from "styles/AppColors";
+import localizer from 'utils/Localizer';
 
 function SearchBooksComponent(props) {
     const { booksSearchText, onInputChange, onAddClick } = props;
     return (
         <View style={[appStyles.vertical, appStyles.justifyStart]}>
-            <TextInput style={[appStyles.text, appStyles.textEntry]}
-                   placeholder={localizer.localize('books-search-text')}
+            <TextInput placeholder={localizer.localize('books-search-text')}
                    value={booksSearchText}
-                   onChangeText={(text) => onInputChange(text)}/>
+                   onInputChange={onInputChange}/>
             <Button style={[appStyles.button]}
                     color={appColors.color3}
                     onPress={onAddClick}

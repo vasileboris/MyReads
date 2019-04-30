@@ -113,7 +113,7 @@ ReadingSessionProgressComponent.propTypes = {
         lastReadPage: PropTypes.number.isRequired,
         estimatedReadDaysLeft: PropTypes.number.isRequired,
         estimatedDaysLeft: PropTypes.number.isRequired,
-        estimatedFinishDate: PropTypes.string.isRequired,
+        estimatedFinishDate: PropTypes.string,
         deadline: PropTypes.string
     })
 };

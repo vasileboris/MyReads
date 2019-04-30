@@ -78,6 +78,12 @@ const appStyles = StyleSheet.create({
         paddingLeft: appSizes.margin,
     },
 
+    entry: {
+        width: appSizes.resultWidth(),
+        marginTop: appSizes.margin,
+        marginBottom: 0,
+    },
+
     result: {
         width: appSizes.resultWidth(),
         marginTop: appSizes.margin,
