@@ -75,19 +75,16 @@ const appStyles = StyleSheet.create({
 
     screenSectionA2: {
         width: appSizes.screenSectionA1Width(),
-        paddingLeft: appSizes.margin,
+        paddingLeft: appSizes.padding,
     },
 
     entry: {
-        width: appSizes.resultWidth(),
-        marginTop: appSizes.margin,
-        marginBottom: 0,
+        width: appSizes.entryWidth(),
     },
 
     result: {
         width: appSizes.resultWidth(),
         marginTop: appSizes.margin,
-        marginBottom: 0,
     },
 
     resultDetail: {
@@ -111,7 +108,6 @@ const appStyles = StyleSheet.create({
     },
 
     textEntry: {
-        marginTop: appSizes.margin,
         marginBottom: appSizes.margin,
         padding: appSizes.smallPadding,
         width: appSizes.entryWidth(),
@@ -120,9 +116,12 @@ const appStyles = StyleSheet.create({
     },
 
     button: {
-        marginTop: appSizes.margin,
         marginBottom: appSizes.margin,
     },
+
+    marginBottom: {
+        marginBottom: appSizes.margin
+    }
 
 });
 

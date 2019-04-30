@@ -24,10 +24,9 @@ import { changeBookOperationAction } from 'actions/OperationAction';
 class BookScreenComponent extends React.Component {
     static navigationOptions = ({ navigation }) => {
         return {
-            title: navigation.getParam('title', localizer.localize('book-title-text'))
+            title: localizer.localize('book-details-screen')
         };
     };
-
     constructor(props) {
         super(props);
         this.onEditButtonClick = this.onEditButtonClick.bind(this);
@@ -56,7 +55,7 @@ class BookScreenComponent extends React.Component {
                 { 'view' === operation && book && (
                 <React.Fragment>
                     <View style={[appStyles.screenSectionB1, appStyles.vertical, appStyles.justifyCenter]}>
-                        <View style={[appStyles.horizontal, appStyles.justifyStart, appStyles.alignItemsCenter]}>
+                        <View style={[appStyles.horizontal, appStyles.justifyStart, appStyles.alignItemsCenter, appStyles.marginBottom]}>
                             <BookImageComponent image={book.image} size="smallRectangle"/>
                             <View style={[appStyles.screenSectionA2]}>
                                 <BookDetailsComponent book={book}/>

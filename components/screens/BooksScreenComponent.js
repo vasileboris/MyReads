@@ -15,10 +15,13 @@ import {
     resetBookAction
 } from 'actions/BookAction';
 import { changeBookOperationAction } from 'actions/OperationAction';
+import localizer from 'utils/Localizer';
 
 class BooksScreenComponent extends React.Component {
-    static navigationOptions = {
-        title: 'My Reads'
+    static navigationOptions = ({ navigation }) => {
+        return {
+            title: localizer.localize('app-title')
+        };
     };
 
     constructor(props) {
@@ -71,7 +74,7 @@ class BooksScreenComponent extends React.Component {
         const { changeBookOperationAction, resetBookAction, navigation } = this.props;
         changeBookOperationAction('view');
         resetBookAction(book);
-        navigation.navigate('book', { title: book.title });
+        navigation.navigate('book');
     }
 
 }
