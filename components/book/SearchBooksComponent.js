@@ -6,7 +6,6 @@ import {
 import Button from 'components/button/Button';
 import TextInput from 'components/input/TextInput';
 import appStyles from "styles/AppStyles";
-import appColors from "styles/AppColors";
 import localizer from 'utils/Localizer';
 
 function SearchBooksComponent(props) {
@@ -14,11 +13,9 @@ function SearchBooksComponent(props) {
     return (
         <View style={[appStyles.vertical, appStyles.justifyStart]}>
             <TextInput placeholder={localizer.localize('books-search-text')}
-                   value={booksSearchText}
-                   onInputChange={onInputChange}/>
-            <Button style={[appStyles.button]}
-                    color={appColors.color3}
-                    onPress={onAddClick}
+                       value={booksSearchText}
+                       onInputChange={onInputChange}/>
+            <Button onPress={onAddClick}
                     title={localizer.localize('book-add-button')}/>
         </View>
     );

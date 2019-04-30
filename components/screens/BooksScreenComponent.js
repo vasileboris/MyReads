@@ -10,7 +10,11 @@ import SearchBooksComponent from 'components/book/SearchBooksComponent';
 import appStyles from 'styles/AppStyles';
 import { receiveMessageAction } from 'actions/MessageAction';
 import { receiveBooksSearchTextAction } from 'actions/BooksSearchAction';
-import { fetchBooksAction } from 'actions/BookAction';
+import {
+    fetchBooksAction,
+    resetBookAction
+} from 'actions/BookAction';
+import { changeBookOperationAction } from 'actions/OperationAction';
 
 class BooksScreenComponent extends React.Component {
     static navigationOptions = {
@@ -20,6 +24,7 @@ class BooksScreenComponent extends React.Component {
     constructor(props) {
         super(props);
         this.onSearchInputChange = this.onSearchInputChange.bind(this);
+        this.onBookClick = this.onBookClick.bind(this);
     }
 
     render() {
@@ -32,7 +37,7 @@ class BooksScreenComponent extends React.Component {
                     onInputChange={this.onSearchInputChange}
                     onAddClick={() => console.log('on add click')}/>
                 <BooksComponent books={books}
-                                onBookClick={book => navigation.navigate('Book', { bookUuid: book.uuid, bookTitle: book.title })}/>
+                                onBookClick={this.onBookClick}/>
             </View>
         );
 
@@ -62,6 +67,13 @@ class BooksScreenComponent extends React.Component {
         fetchBooksAction(booksSearchText.trim());
     }
 
+    onBookClick(book) {
+        const { changeBookOperationAction, resetBookAction, navigation } = this.props;
+        changeBookOperationAction('view');
+        resetBookAction(book);
+        navigation.navigate('book', { title: book.title });
+    }
+
 }
 
 BooksScreenComponent.propTypes = {
@@ -81,7 +93,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
     receiveMessageAction,
     receiveBooksSearchTextAction,
-    fetchBooksAction
+    fetchBooksAction,
+    resetBookAction,
+    changeBookOperationAction
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BooksScreenComponent);

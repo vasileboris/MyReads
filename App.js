@@ -23,11 +23,11 @@ sagaMiddleware.run(rootSaga);
 
 const AppNavigator = createStackNavigator(
     {
-        Books: BooksScreenComponent,
-        Book: BookScreenComponent
+        books: BooksScreenComponent,
+        book: BookScreenComponent
     },
     {
-        initialRouteName: 'Books',
+        initialRouteName: 'books',
         defaultNavigationOptions: {
             headerStyle: appStyles.navigationBarHeaderStyle,
             headerTintColor: appColors.color3,

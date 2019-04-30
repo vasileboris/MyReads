@@ -12,14 +12,13 @@ import ReadingSessionProgressComponent from 'components/reading-session/ReadingS
 import Button from 'components/button/Button';
 import Image from 'components/image/Image';
 import appStyles from 'styles/AppStyles';
-import appColors from 'styles/AppColors';
 import { fetchBookAction } from 'actions/BookAction';
 import { fetchCurrentReadingSessionAction } from 'actions/ReadingSessionAction';
 
 class BookScreenComponent extends React.Component {
     static navigationOptions = ({ navigation }) => {
         return {
-            title: navigation.getParam('bookTitle', localizer.localize('book-title-text'))
+            title: navigation.getParam('title', localizer.localize('book-title-text'))
         };
     };
 
@@ -28,16 +27,14 @@ class BookScreenComponent extends React.Component {
     }
 
     render() {
-        const {  message, books, readingSessionsProgress, navigation} = this.props;
-        const bookUuid = navigation.getParam('bookUuid'),
-            book = books && books[bookUuid],
-            readingSessionProgress = readingSessionsProgress && readingSessionsProgress[bookUuid],
+        const { operation, message, book, readingSessionsProgress } = this.props;
+        const readingSessionProgress = readingSessionsProgress && readingSessionsProgress[book.uuid],
             openBook = require('../../assets/images/open-book.png');
 
         return (
             <View style={[appStyles.screen, appStyles.vertical, appStyles.justifySpaceBetween]}>
                 <MessageComponent message={message}/>
-                { book && (
+                { 'view' === operation && book && (
                 <React.Fragment>
                     <View style={[appStyles.screenSectionB1, appStyles.vertical, appStyles.justifyCenter]}>
                         <View style={[appStyles.horizontal, appStyles.justifyStart, appStyles.alignItemsCenter]}>
@@ -47,13 +44,9 @@ class BookScreenComponent extends React.Component {
                             </View>
                         </View>
                         <View style={[appStyles.vertical, appStyles.justifyCenter]}>
-                            <Button style={[appStyles.button]}
-                                    color={appColors.color3}
-                                    onPress={() => this.onEditClick(book)}
+                            <Button onPress={() => this.onEditClick(book)}
                                     title={localizer.localize('edit-button')}/>
-                            <Button style={[appStyles.button]}
-                                    color={appColors.color3}
-                                    onPress={() => this.onDeleteClick(book)}
+                            <Button onPress={() => this.onDeleteClick(book)}
                                     title={localizer.localize('delete-button')}/>
                         </View>
                     </View>
@@ -64,9 +57,7 @@ class BookScreenComponent extends React.Component {
                                 <ReadingSessionProgressComponent readingSessionProgress={readingSessionProgress}/>
                             </View>
                         </View>
-                        <Button style={[appStyles.button]}
-                                color={appColors.color3}
-                                onPress={() => this.onReadClick(book)}
+                        <Button onPress={() => this.onReadClick(book)}
                                 title={localizer.localize('read-button')}/>
                     </View>
                 </React.Fragment>
@@ -82,15 +73,13 @@ class BookScreenComponent extends React.Component {
     }
 
     retrieveBook() {
-        const { navigation, fetchBookAction } = this.props;
-        const bookUuid = navigation.getParam('bookUuid');
-        fetchBookAction(bookUuid);
+        const { book, fetchBookAction } = this.props;
+        fetchBookAction(book.uuid);
     }
 
     retrieveCurrentReadingSession() {
-        const { navigation, fetchCurrentReadingSessionAction } = this.props;
-        const bookUuid = navigation.getParam('bookUuid');
-        fetchCurrentReadingSessionAction(bookUuid);
+        const { book, fetchCurrentReadingSessionAction } = this.props;
+        fetchCurrentReadingSessionAction(book.uuid);
     }
 
     onReadClick(book) {
@@ -107,18 +96,20 @@ class BookScreenComponent extends React.Component {
 }
 
 BookScreenComponent.propTypes = {
+    operation: PropTypes.oneOf(['view', 'add', 'edit', 'delete']),
     message: PropTypes.string,
     books: PropTypes.object,
     readingSessionProgress: PropTypes.object
 };
 
 const mapStateToProps = state => {
-    const { message, books, readingSessions } = state,
+    const { operation, message, book, readingSessions } = state,
         { readingSessionsProgress } = readingSessions;
 
     return {
+        operation,
         message,
-        books,
+        book,
         readingSessionsProgress
     };
 };
