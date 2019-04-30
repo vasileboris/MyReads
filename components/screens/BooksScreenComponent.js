@@ -18,7 +18,7 @@ import { changeBookOperationAction } from 'actions/OperationAction';
 import localizer from 'utils/Localizer';
 
 class BooksScreenComponent extends React.Component {
-    static navigationOptions = ({ navigation }) => {
+    static navigationOptions = () => {
         return {
             title: localizer.localize('app-title')
         };
@@ -31,7 +31,7 @@ class BooksScreenComponent extends React.Component {
     }
 
     render() {
-        const { message, books, navigation } = this.props;
+        const { message, books } = this.props;
 
         return (
             <View style={[appStyles.screen, appStyles.vertical, appStyles.justifyStart]}>

@@ -22,7 +22,7 @@ import { fetchCurrentReadingSessionAction } from 'actions/ReadingSessionAction';
 import { changeBookOperationAction } from 'actions/OperationAction';
 
 class BookScreenComponent extends React.Component {
-    static navigationOptions = ({ navigation }) => {
+    static navigationOptions = () => {
         return {
             title: localizer.localize('book-details-screen')
         };
