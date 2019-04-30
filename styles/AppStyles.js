@@ -111,6 +111,8 @@ const appStyles = StyleSheet.create({
     },
 
     textEntry: {
+        marginTop: appSizes.margin,
+        marginBottom: appSizes.margin,
         padding: appSizes.smallPadding,
         width: appSizes.entryWidth(),
         borderColor: appColors.color3,

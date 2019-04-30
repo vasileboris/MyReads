@@ -9,11 +9,17 @@ import MessageComponent from 'components/message/MessageComponent';
 import BookImageComponent from 'components/book/BookImageComponent';
 import BookDetailsComponent from 'components/book/BookDetailsComponent';
 import ReadingSessionProgressComponent from 'components/reading-session/ReadingSessionProgressComponent';
+import InputBookComponent from 'components/book/InputBookComponent';
 import Button from 'components/button/Button';
 import Image from 'components/image/Image';
 import appStyles from 'styles/AppStyles';
-import { fetchBookAction } from 'actions/BookAction';
+import {
+    fetchBookAction,
+    changeBookFieldAction,
+    updateBookAction
+} from 'actions/BookAction';
 import { fetchCurrentReadingSessionAction } from 'actions/ReadingSessionAction';
+import { changeBookOperationAction } from 'actions/OperationAction';
 
 class BookScreenComponent extends React.Component {
     static navigationOptions = ({ navigation }) => {
@@ -24,6 +30,10 @@ class BookScreenComponent extends React.Component {
 
     constructor(props) {
         super(props);
+        this.onEditButtonClick = this.onEditButtonClick.bind(this);
+        this.onBookInputChange = this.onBookInputChange.bind(this);
+        this.onUpdateButtonClick = this.onUpdateButtonClick.bind(this);
+        this.onCancelButtonClick = this.onCancelButtonClick.bind(this);
     }
 
     render() {
@@ -32,8 +42,17 @@ class BookScreenComponent extends React.Component {
             openBook = require('../../assets/images/open-book.png');
 
         return (
-            <View style={[appStyles.screen, appStyles.vertical, appStyles.justifySpaceBetween]}>
+            <View style={[appStyles.screen, appStyles.vertical, appStyles.justifyStart]}>
                 <MessageComponent message={message}/>
+
+                { 'view' !== operation && book && (
+                <InputBookComponent operation={operation}
+                                    book={book}
+                                    onInputChange={this.onBookInputChange}
+                                    onUpdateButtonClick={this.onUpdateButtonClick}
+                                    onCancelButtonClick={this.onCancelButtonClick}/>
+                )}
+
                 { 'view' === operation && book && (
                 <React.Fragment>
                     <View style={[appStyles.screenSectionB1, appStyles.vertical, appStyles.justifyCenter]}>
@@ -44,9 +63,9 @@ class BookScreenComponent extends React.Component {
                             </View>
                         </View>
                         <View style={[appStyles.vertical, appStyles.justifyCenter]}>
-                            <Button onPress={() => this.onEditClick(book)}
+                            <Button onPress={this.onEditButtonClick}
                                     title={localizer.localize('edit-button')}/>
-                            <Button onPress={() => this.onDeleteClick(book)}
+                            <Button onPress={() => this.onDeleteButtonClick(book)}
                                     title={localizer.localize('delete-button')}/>
                         </View>
                     </View>
@@ -57,7 +76,7 @@ class BookScreenComponent extends React.Component {
                                 <ReadingSessionProgressComponent readingSessionProgress={readingSessionProgress}/>
                             </View>
                         </View>
-                        <Button onPress={() => this.onReadClick(book)}
+                        <Button onPress={() => this.onReadButtonClick(book)}
                                 title={localizer.localize('read-button')}/>
                     </View>
                 </React.Fragment>
@@ -82,16 +101,39 @@ class BookScreenComponent extends React.Component {
         fetchCurrentReadingSessionAction(book.uuid);
     }
 
-    onReadClick(book) {
+    onReadButtonClick(book) {
+        console.log('onReadClick: ' + book.title);
         console.log(book.title)
     }
 
-    onEditClick(book) {
+    onEditButtonClick() {
+        const { changeBookOperationAction } = this.props;
+        changeBookOperationAction('edit');
+    }
+
+    onDeleteButtonClick(book) {
+        console.log('onDeleteClick: ' + book.title);
         console.log(book.title)
     }
 
-    onDeleteClick(book) {
-        console.log(book.title)
+    onBookInputChange(value, name) {
+        const { changeBookFieldAction } = this.props;
+        if('authors' === name) {
+            value = value.split(',');
+        }
+        changeBookFieldAction(name, value);
+    }
+
+    onUpdateButtonClick() {
+        const booksSearchText = this.props.booksSearchText.trim(),
+            { book, updateBookAction } = this.props;
+
+        updateBookAction(booksSearchText, book);
+    }
+
+    onCancelButtonClick() {
+        const { changeBookOperationAction } = this.props;
+        changeBookOperationAction('view');
     }
 }
 
@@ -103,20 +145,24 @@ BookScreenComponent.propTypes = {
 };
 
 const mapStateToProps = state => {
-    const { operation, message, book, readingSessions } = state,
+    const { operation, message, book, readingSessions, booksSearchText } = state,
         { readingSessionsProgress } = readingSessions;
 
     return {
         operation,
         message,
         book,
-        readingSessionsProgress
+        booksSearchText,
+        readingSessionsProgress,
     };
 };
 
 const mapDispatchToProps = {
     fetchBookAction,
-    fetchCurrentReadingSessionAction
+    fetchCurrentReadingSessionAction,
+    changeBookOperationAction,
+    changeBookFieldAction,
+    updateBookAction
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BookScreenComponent);

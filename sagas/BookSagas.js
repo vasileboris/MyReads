@@ -25,6 +25,7 @@ import {
 import { receiveMessageAction } from 'actions/MessageAction';
 import { receiveBooksSearchTextAction } from 'actions/BooksSearchAction';
 import { changeBookOperationAction } from 'actions/OperationAction';
+import { fetchCurrentReadingSessionAction } from 'actions/ReadingSessionAction';
 
 //Needed for Uncaught ReferenceError: regeneratorRuntime is not defined
 import 'babel-polyfill';
@@ -101,6 +102,7 @@ function* callUpdateBook(action) {
         yield put(resetBookAction(book));
         yield call(validateBook, book);
         yield call(updateBook, book);
+        yield put(fetchCurrentReadingSessionAction(book.uuid));
         yield dispatchBookSearchData(action);
     } catch(error) {
         yield put(receiveMessageAction(error));
@@ -111,8 +113,7 @@ function* dispatchBookSearchData(action) {
     try {
         const searchText = action.payload.searchText;
         yield put(receiveMessageAction(null));
-        yield put(changeBookOperationAction('search'));
-        yield put(resetBookAction({}));
+        yield put(changeBookOperationAction('view'));
         yield put(receiveBooksSearchTextAction(searchText));
         const response = yield call(fetchBooks, searchText);
         yield put(receiveBooksAction(response.data));
