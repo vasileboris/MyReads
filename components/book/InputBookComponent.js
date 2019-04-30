@@ -6,6 +6,7 @@ import {
 import appStyles from 'styles/AppStyles';
 import localizer from 'utils/Localizer';
 import TextInput from 'components/input/TextInput';
+import NumberInput from 'components/input/NumberInput';
 import Button from 'components/button/Button';
 
 const InputBookComponent = props => {
@@ -22,11 +23,11 @@ const InputBookComponent = props => {
                        value={book.authors ? book.authors.join(',') : ''}
                        onInputChange={onInputChange}
                        editable={'delete' !== operation}/>
-            <TextInput name="pages"
-                       placeholder={localizer.localize('book-pages-text')}
-                       value={book.pages ? book.pages + '' : ''}
-                       onInputChange={onInputChange}
-                       editable={'delete' !== operation}/>
+            <NumberInput name="pages"
+                         placeholder={localizer.localize('book-pages-text')}
+                         value={book.pages ? book.pages : '' }
+                         onInputChange={onInputChange}
+                         editable={'delete' !== operation}/>
 
             {'add' === operation && (
             <Button onPress={onAddButtonClick}

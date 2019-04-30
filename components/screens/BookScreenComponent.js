@@ -16,10 +16,12 @@ import appStyles from 'styles/AppStyles';
 import {
     fetchBookAction,
     changeBookFieldAction,
-    updateBookAction
+    updateBookAction,
+    resetBookAction
 } from 'actions/BookAction';
 import { fetchCurrentReadingSessionAction } from 'actions/ReadingSessionAction';
 import { changeBookOperationAction } from 'actions/OperationAction';
+import { receiveMessageAction } from 'actions/MessageAction';
 
 class BookScreenComponent extends React.Component {
     static navigationOptions = () => {
@@ -131,7 +133,9 @@ class BookScreenComponent extends React.Component {
     }
 
     onCancelButtonClick() {
-        const { changeBookOperationAction } = this.props;
+        const { book, books, receiveMessageAction, resetBookAction, changeBookOperationAction } = this.props;
+        receiveMessageAction(null);
+        resetBookAction(books[book.uuid]);
         changeBookOperationAction('view');
     }
 }
@@ -144,13 +148,14 @@ BookScreenComponent.propTypes = {
 };
 
 const mapStateToProps = state => {
-    const { operation, message, book, readingSessions, booksSearchText } = state,
+    const { operation, message, book, books, readingSessions, booksSearchText } = state,
         { readingSessionsProgress } = readingSessions;
 
     return {
         operation,
         message,
         book,
+        books,
         booksSearchText,
         readingSessionsProgress,
     };
@@ -161,7 +166,9 @@ const mapDispatchToProps = {
     fetchCurrentReadingSessionAction,
     changeBookOperationAction,
     changeBookFieldAction,
-    updateBookAction
+    updateBookAction,
+    resetBookAction,
+    receiveMessageAction
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BookScreenComponent);
