@@ -26,6 +26,10 @@ const Localizer = {
             [idx]: value
         }) , {});
         return i18next.t(key, values);
+    },
+
+    localizeWithCount: function (key, value) {
+        return i18next.t(key, {count: value});
     }
 
 };
