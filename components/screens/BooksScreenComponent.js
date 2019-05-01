@@ -28,6 +28,7 @@ class BooksScreenComponent extends React.Component {
         super(props);
         this.onSearchInputChange = this.onSearchInputChange.bind(this);
         this.onBookClick = this.onBookClick.bind(this);
+        this.onAddBookClick = this.onAddBookClick.bind(this);
     }
 
     render() {
@@ -38,7 +39,7 @@ class BooksScreenComponent extends React.Component {
                 <MessageComponent message={message}/>
                 <SearchBooksComponent
                     onInputChange={this.onSearchInputChange}
-                    onAddClick={() => console.log('on add click')}/>
+                    onAddClick={this.onAddBookClick}/>
                 <BooksComponent books={books}
                                 onBookClick={this.onBookClick}/>
             </View>
@@ -78,6 +79,13 @@ class BooksScreenComponent extends React.Component {
         navigation.navigate('book');
     }
 
+    onAddBookClick() {
+        const { receiveMessageAction, changeBookOperationAction, resetBookAction, navigation } = this.props;
+        receiveMessageAction(null);
+        changeBookOperationAction('add');
+        resetBookAction({});
+        navigation.navigate('book');
+    }
 }
 
 BooksScreenComponent.propTypes = {

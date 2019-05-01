@@ -25,10 +25,10 @@ const sanitiseValue = (value) => value
 TextInput.propTypes = {
     name: PropTypes.string,
     placeholder: PropTypes.string,
-    value: PropTypes.oneOf(
+    value: PropTypes.oneOfType([
         PropTypes.number,
         PropTypes.string
-    ),
+    ]),
     onInputChange: PropTypes.func.isRequired,
     editable: PropTypes.bool
 };
