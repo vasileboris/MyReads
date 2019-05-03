@@ -11,18 +11,16 @@ function DateReadingSessionComponent(props) {
     const { dateReadingSession } = props;
 
     return (
-        <View style={[appStyles.result, appStyles.horizontal, appStyles.justifyStart, appStyles.alignItemsCenter]}>
+        <View style={[appStyles.result, appStyles.vertical, appStyles.justifyStart]}>
             <Text style={[appStyles.text, appStyles.title]}>{localizer.toLocaleDateString(dateReadingSession.date)}</Text>
-            <View style={[appStyles.resultDetailsSection, appStyles.vertical, appStyles.justifyCenter]}>
-                <Text style={[appStyles.text, appStyles.title]}>
-                    {localizer.localize('date-reading-session-last-read-page-label', dateReadingSession.lastReadPage)}
+            <Text style={[appStyles.text]}>
+                {localizer.localize('date-reading-session-last-read-page-label', dateReadingSession.lastReadPage)}
+            </Text>
+            {dateReadingSession.bookmark && (
+                <Text style={[appStyles.text]}>
+                    {localizer.localize('date-reading-session-bookmark-label')} {dateReadingSession.bookmark}
                 </Text>
-                {dateReadingSession.bookmark && (
-                    <Text style={[appStyles.text]}>
-                        {localizer.localize('date-reading-session-bookmark-label')} {dateReadingSession.bookmark}
-                    </Text>
-                )}
-            </View>
+            )}
         </View>
     );
 }

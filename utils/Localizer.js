@@ -33,7 +33,7 @@ const Localizer = {
     },
 
     toLocaleDateString: function (date) {
-        return date;
+        return new Date(date).toDateString();
     }
 };
 
