@@ -30,8 +30,11 @@ const Localizer = {
 
     localizeWithCount: function (key, value) {
         return i18next.t(key, {count: value});
-    }
+    },
 
+    toLocaleDateString: function (date) {
+        return date;
+    }
 };
 
 export default Localizer;

@@ -22,8 +22,10 @@ import {
     deleteBookAction
 } from 'actions/BookAction';
 import { fetchCurrentReadingSessionAction } from 'actions/ReadingSessionAction';
+import { clearDateReadingSessionAction } from 'actions/DateReadingSessionAction';
 import { changeBookOperationAction } from 'actions/OperationAction';
 import { receiveMessageAction } from 'actions/MessageAction';
+import { changeDateReadingSessionOperationAction } from 'actions/OperationAction';
 
 class BookScreenComponent extends React.Component {
     static navigationOptions = () => {
@@ -31,14 +33,16 @@ class BookScreenComponent extends React.Component {
             title: localizer.localize('book-details-screen')
         };
     };
+
     constructor(props) {
         super(props);
         this.onEditButtonClick = this.onEditButtonClick.bind(this);
         this.onBookInputChange = this.onBookInputChange.bind(this);
         this.onAddButtonClick = this.onAddButtonClick.bind(this);
         this.onUpdateButtonClick = this.onUpdateButtonClick.bind(this);
-        this.onReallyDeleteButtonClick = this.onReallyDeleteButtonClick.bind(this);
+        this.onConfirmDeleteDateReadingSessionClick = this.onConfirmDeleteDateReadingSessionClick.bind(this);
         this.onCancelButtonClick = this.onCancelButtonClick.bind(this);
+        this.onReadButtonClick = this.onReadButtonClick.bind(this);
     }
 
     render() {
@@ -56,7 +60,7 @@ class BookScreenComponent extends React.Component {
                                     onInputChange={this.onBookInputChange}
                                     onAddButtonClick={this.onAddButtonClick}
                                     onUpdateButtonClick={this.onUpdateButtonClick}
-                                    onDeleteButtonClick={this.onReallyDeleteButtonClick}
+                                    onDeleteButtonClick={this.onConfirmDeleteDateReadingSessionClick}
                                     onCancelButtonClick={this.onCancelButtonClick}/>
                 )}
 
@@ -83,7 +87,7 @@ class BookScreenComponent extends React.Component {
                                 <ReadingSessionProgressComponent readingSessionProgress={readingSessionProgress}/>
                             </View>
                         </View>
-                        <Button onPress={() => this.onReadButtonClick(book)}
+                        <Button onPress={this.onReadButtonClick}
                                 title={localizer.localize('read-button')}/>
                     </View>
                 </React.Fragment>
@@ -94,10 +98,17 @@ class BookScreenComponent extends React.Component {
     }
 
     componentDidMount() {
-        const { operation } = this.props;
+        const { operation, navigation } = this.props;
         if('add' !== operation) {
             this.retrieveBook();
             this.retrieveCurrentReadingSession();
+        }
+        this.willFocus = navigation.addListener('willFocus', () => receiveMessageAction(null));
+    }
+
+    componentWillUnmount() {
+        if(this.willFocus) {
+            this.willFocus.remove();
         }
     }
 
@@ -111,9 +122,17 @@ class BookScreenComponent extends React.Component {
         fetchCurrentReadingSessionAction(book.uuid);
     }
 
-    onReadButtonClick(book) {
-        console.log('onReadClick: ' + book.title);
-        console.log(book.title)
+    onReadButtonClick() {
+        const {
+            receiveMessageAction,
+            changeDateReadingSessionOperationAction,
+            clearDateReadingSessionAction,
+            navigation } = this.props;
+
+        receiveMessageAction(null);
+        changeDateReadingSessionOperationAction('add');
+        clearDateReadingSessionAction();
+        navigation.navigate('currentReadingSession');
     }
 
     onEditButtonClick() {
@@ -148,7 +167,7 @@ class BookScreenComponent extends React.Component {
         updateBookAction(booksSearchText, book);
     }
 
-    onReallyDeleteButtonClick() {
+    onConfirmDeleteDateReadingSessionClick() {
         const booksSearchText = this.props.booksSearchText.trim(),
             { book, deleteBookAction, navigation } = this.props;
 
@@ -208,6 +227,8 @@ const mapDispatchToProps = {
     resetBookAction,
     receiveMessageAction,
     deleteBookAction,
+    clearDateReadingSessionAction,
+    changeDateReadingSessionOperationAction
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BookScreenComponent);

@@ -30,6 +30,7 @@
   "book-retrieve-error": "Book cannot be retrieved. Please try again!",
   "book-has-reading-session-error": "Book cannot be deleted. It has a current reading session!",
   "book-delete-error": "Book cannot be deleted. Please try again!",
+  "current-reading-session-screen": "Current reading session",
   "date-reading-session-date-text": "Date",
   "date-reading-session-last-read-page-text": "Last read page",
   "date-reading-session-bookmark-text": "Bookmark",

@@ -14,6 +14,7 @@ import { library }  from 'reducers/LibraryReducer';
 import localizer from 'utils/Localizer';
 import BooksScreenComponent from 'components/screens/BooksScreenComponent';
 import BookScreenComponent from 'components/screens/BookScreenComponent';
+import CurrentReadingSessionScreen from 'components/screens/CurrentReadingSessionScreen';
 import appStyles from 'styles/AppStyles';
 import appColors from 'styles/AppColors';
 
@@ -24,7 +25,8 @@ sagaMiddleware.run(rootSaga);
 const AppNavigator = createStackNavigator(
     {
         books: BooksScreenComponent,
-        book: BookScreenComponent
+        book: BookScreenComponent,
+        currentReadingSession: CurrentReadingSessionScreen
     },
     {
         initialRouteName: 'books',
