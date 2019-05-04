@@ -88,7 +88,8 @@ function* callAddBook(action) {
         const book = sanitizeBook(action.payload.book);
         yield put(resetBookAction(book));
         yield call(validateBook, book);
-        yield call(addBook, book);
+        const response = yield call(addBook, book);
+        yield put(resetBookAction(response.data));
         yield dispatchBookSearchData(action);
     } catch(error) {
         yield put(receiveMessageAction(error));
