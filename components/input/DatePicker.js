@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
         alignItems: 'flex-start'
     },
     dateText: {
-        padding: appSizes.smallPadding
+        padding: appSizes.smallPadding,
     },
 });
 
@@ -30,11 +30,12 @@ const DatePicker = props => {
             format='YYYY-MM-DD'
             minDate='2019-01-01'
             maxDate='2099-12-31'
-            hideText={false}
+            showIcon={editable}
             customStyles={{
                 dateIcon: [styles.dateIcon],
                 dateInput: [styles.dateInput],
-                dateText: [appStyles.text, styles.dateText]
+                dateText: [appStyles.text, styles.dateText],
+                disabled: [appStyles.disabled]
             }}
             onDateChange={date => onInputChange(date, name)}
             disabled={!editable}

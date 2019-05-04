@@ -7,8 +7,12 @@ import appStyles from 'styles/AppStyles';
 
 const TextInput = props => {
     const { name, placeholder, value, onInputChange, editable = true } = props;
+    const styles = [appStyles.text, appStyles.textEntry];
+    if(!editable) {
+        styles.push(appStyles.disabled);
+    }
     return (
-        <RNTextInput style={[appStyles.text, appStyles.textEntry]}
+        <RNTextInput style={styles}
                      name={name}
                      placeholder={placeholder}
                      value={value}

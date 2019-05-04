@@ -128,6 +128,10 @@ const appStyles = StyleSheet.create({
 
     marginBottom: {
         marginBottom: appSizes.margin
+    },
+
+    disabled: {
+        backgroundColor: appColors.colorDisabled
     }
 
 });

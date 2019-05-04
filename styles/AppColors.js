@@ -5,7 +5,8 @@ const appColors = {
     colorTextButton: 'white',
     colorDelete: 'red',
     colorTextMessage: 'white',
-    colorMessage: 'red'
+    colorMessage: 'red',
+    colorDisabled: '#e9e9e9',
 };
 
 export default appColors;
