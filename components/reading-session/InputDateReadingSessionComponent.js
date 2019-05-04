@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-    View
+    View,
+    Text
 } from 'react-native';
 import appStyles from 'styles/AppStyles';
 import appColors from 'styles/AppColors';
 import localizer from 'utils/Localizer';
 import TextInput from 'components/input/TextInput';
+import DatePicker from 'components/input/DatePicker';
 import NumberInput from 'components/input/NumberInput';
 import Button from 'components/button/Button';
 
@@ -23,11 +25,11 @@ const InputDateReadingSessionComponent = props => {
     } = props;
     return (
         <View style={[appStyles.entry, appStyles.vertical, appStyles.justifyStart]}>
-            <TextInput name="date"
-                       placeholder={localizer.localize('date-reading-session-date-text')}
-                       value={dateReadingSession.date ? dateReadingSession.date : ''}
-                       onInputChange={onInputChange}
-                       editable={'add' === operation}/>
+            <DatePicker name="date"
+                        placeholder={localizer.localize('date-reading-session-date-text')}
+                        value={dateReadingSession.date ? dateReadingSession.date : ''}
+                        onInputChange={onInputChange}
+                        editable={'add' === operation}/>
             <NumberInput name="lastReadPage"
                          placeholder={localizer.localize('date-reading-session-last-read-page-text')}
                          value={dateReadingSession.lastReadPage ? dateReadingSession.lastReadPage : ""}

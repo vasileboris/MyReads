@@ -115,6 +115,13 @@ const appStyles = StyleSheet.create({
         borderWidth: 1
     },
 
+    dateEntry: {
+        marginBottom: appSizes.margin,
+        width: appSizes.entryWidth(),
+        borderColor: appColors.color3,
+        borderWidth: 1
+    },
+
     button: {
         marginBottom: appSizes.margin,
     },
