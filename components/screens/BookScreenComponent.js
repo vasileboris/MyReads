@@ -98,12 +98,14 @@ class BookScreenComponent extends React.Component {
     }
 
     componentDidMount() {
-        const { operation, navigation } = this.props;
+        const { operation, navigation, receiveMessageAction } = this.props;
         if('add' !== operation) {
             this.retrieveBook();
             this.retrieveCurrentReadingSession();
         }
-        this.willFocus = navigation.addListener('willFocus', () => receiveMessageAction(null));
+        this.willFocus = navigation.addListener('willFocus', () => {
+            receiveMessageAction(null);
+        });
     }
 
     componentWillUnmount() {
@@ -136,12 +138,14 @@ class BookScreenComponent extends React.Component {
     }
 
     onEditButtonClick() {
-        const { changeBookOperationAction } = this.props;
+        const { receiveMessageAction, changeBookOperationAction } = this.props;
+        receiveMessageAction(null);
         changeBookOperationAction('edit');
     }
 
     onDeleteButtonClick() {
-        const { changeBookOperationAction } = this.props;
+        const { receiveMessageAction, changeBookOperationAction } = this.props;
+        receiveMessageAction(null);
         changeBookOperationAction('delete');
     }
 

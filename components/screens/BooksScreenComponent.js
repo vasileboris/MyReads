@@ -49,7 +49,9 @@ class BooksScreenComponent extends React.Component {
 
     componentDidMount() {
         const { navigation, receiveMessageAction } = this.props;
-        this.willFocus = navigation.addListener('willFocus', () => receiveMessageAction(null));
+        this.willFocus = navigation.addListener('willFocus', () => {
+            receiveMessageAction(null);
+        });
         this.retrieveBooks();
     }
 

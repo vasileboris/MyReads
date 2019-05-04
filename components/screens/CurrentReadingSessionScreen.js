@@ -6,6 +6,7 @@ import {
 import { connect } from 'react-redux';
 import MessageComponent from 'components/message/MessageComponent';
 import DateReadingSessionsComponent from 'components/reading-session/DateReadingSessionsComponent';
+import InputDateReadingSessionComponent from 'components/reading-session/InputDateReadingSessionComponent';
 import {
     changeDateReadingSessionFieldAction,
     changeDateReadingSessionAction,
@@ -46,6 +47,15 @@ class CurrentReadingSessionScreen extends React.Component {
         return (
             <View style={[appStyles.screen, appStyles.vertical, appStyles.justifyStart]}>
                 <MessageComponent message={message}/>
+                <InputDateReadingSessionComponent
+                    operation={operation}
+                    dateReadingSession={dateReadingSession}
+                    onInputChange={this.onInputChange}
+                    onAddButtonClick={this.onAddDateReadingSessionClick}
+                    onUpdateButtonClick={this.onUpdateDateReadingSessionClick}
+                    onDeleteButtonClick={this.onDeleteDateReadingSessionClick}
+                    onConfirmDeleteButtonClick={this.onConfirmDeleteDateReadingSessionClick}
+                    onCancelButtonClick={this.switchToAddDateReadingSession}/>
                 <DateReadingSessionsComponent dateReadingSessions={dateReadingSessions}
                                               onDateReadingSessionClick={this.onEditDateReadingSessionClick}/>
             </View>
@@ -66,32 +76,34 @@ class CurrentReadingSessionScreen extends React.Component {
         fetchCurrentReadingSessionAction(bookUuid);
     }
 
-    onAddDateReadingSessionClick(dateReadingSession) {
-        const { createDateReadingSessionAction, bookUuid, currentReadingSessions } = this.props,
+    onAddDateReadingSessionClick() {
+        const { dateReadingSession, createDateReadingSessionAction, bookUuid, currentReadingSessions } = this.props,
             currentReadingSession = currentReadingSessions[bookUuid];
         createDateReadingSessionAction(bookUuid, currentReadingSession.uuid, dateReadingSession);
     }
 
     onEditDateReadingSessionClick(dateReadingSession) {
         const { changeDateReadingSessionOperationAction, changeDateReadingSessionAction } = this.props;
+        receiveMessageAction(null);
         changeDateReadingSessionOperationAction('edit');
         changeDateReadingSessionAction(dateReadingSession);
     }
 
-    onUpdateDateReadingSessionClick(dateReadingSession) {
-        const { updateDateReadingSessionAction, bookUuid, currentReadingSessions } = this.props,
+    onUpdateDateReadingSessionClick() {
+        const { dateReadingSession, updateDateReadingSessionAction, bookUuid, currentReadingSessions } = this.props,
             currentReadingSession = currentReadingSessions[bookUuid];
         updateDateReadingSessionAction(bookUuid, currentReadingSession.uuid, dateReadingSession);
     }
 
-    onDeleteDateReadingSessionClick(dateReadingSession) {
-        const { changeDateReadingSessionOperationAction, changeDateReadingSessionAction } = this.props;
+    onDeleteDateReadingSessionClick() {
+        const { dateReadingSession, changeDateReadingSessionOperationAction, changeDateReadingSessionAction } = this.props;
+        receiveMessageAction(null);
         changeDateReadingSessionOperationAction('delete');
         changeDateReadingSessionAction(dateReadingSession);
     }
 
-    onConfirmDeleteDateReadingSessionClick(dateReadingSession) {
-        const { deleteDateReadingSessionAction, bookUuid, currentReadingSessions } = this.props,
+    onConfirmDeleteDateReadingSessionClick() {
+        const { dateReadingSession, deleteDateReadingSessionAction, bookUuid, currentReadingSessions } = this.props,
             currentReadingSession = currentReadingSessions[bookUuid];
         deleteDateReadingSessionAction(bookUuid, currentReadingSession.uuid, dateReadingSession.date);
     }
