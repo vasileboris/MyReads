@@ -83,7 +83,7 @@ function ReadingSessionProgressComponent (props) {
                         {' '}
                     </Text>
                     <Text style={[appStyles.text, appStyles.title]}>
-                        {readingSessionProgress.estimatedFinishDate}
+                        {localizer.toLocaleDateString(readingSessionProgress.estimatedFinishDate)}
                     </Text>
                 </Text>
                 {readingSessionProgress.deadline ? (
