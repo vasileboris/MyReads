@@ -83,7 +83,7 @@ class CurrentReadingSessionScreen extends React.Component {
     }
 
     onEditDateReadingSessionClick(dateReadingSession) {
-        const { changeDateReadingSessionOperationAction, changeDateReadingSessionAction } = this.props;
+        const { receiveMessageAction, changeDateReadingSessionOperationAction, changeDateReadingSessionAction } = this.props;
         receiveMessageAction(null);
         changeDateReadingSessionOperationAction('edit');
         changeDateReadingSessionAction(dateReadingSession);
@@ -96,7 +96,7 @@ class CurrentReadingSessionScreen extends React.Component {
     }
 
     onDeleteDateReadingSessionClick() {
-        const { dateReadingSession, changeDateReadingSessionOperationAction, changeDateReadingSessionAction } = this.props;
+        const { receiveMessageAction, dateReadingSession, changeDateReadingSessionOperationAction, changeDateReadingSessionAction } = this.props;
         receiveMessageAction(null);
         changeDateReadingSessionOperationAction('delete');
         changeDateReadingSessionAction(dateReadingSession);
