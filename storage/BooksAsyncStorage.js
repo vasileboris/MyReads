@@ -1,5 +1,5 @@
 import {AsyncStorage} from 'react-native';
-import uuid from 'react-native-uuid';
+import uuid from 'uuid';
 
 const BOOKS_KEY = 'MyReads:Books';
 
