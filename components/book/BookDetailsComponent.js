@@ -18,7 +18,7 @@ function BookDetailsComponent(props) {
                 {localizer.localize('book-by-label')} {book.authors.join(', ')}
             </Text>
             <Text style={[appStyles.text]}>
-                {localizer.localizeWithCount('book-page-label', book.pages)}
+                {localizer.localizeWithCount('book-page-label', parseInt(book.pages))}
             </Text>
         </View>
     );

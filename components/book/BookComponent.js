@@ -25,7 +25,10 @@ function BookComponent(props) {
 BookComponent.propTypes = {
     book: PropTypes.shape({
         authors: PropTypes.arrayOf(PropTypes.string).isRequired,
-        pages: PropTypes.number.isRequired
+        pages: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.number
+        ]).isRequired
     }).isRequired,
     onClick: PropTypes.func.isRequired
 };

@@ -1,4 +1,3 @@
-import axios from 'axios';
 import user from 'User';
 import localizer from 'utils/Localizer';
 import {
@@ -14,12 +13,19 @@ import {
     isRequired
 } from 'validation/Rule';
 import validate from 'validation/Validator';
+import {
+    fetchBookFromStore,
+    fetchBooksFromStore,
+    addBookInStore,
+    updateBookInStore,
+    deleteBookFromStore
+} from 'storage/BooksAsyncStorage';
 
 export const BOOKS_ENDPOINT = `http://192.168.0.87:8080/users/${user.id}/books`;
 
 export function fetchBook(uuid) {
     return new Promise((resolve, reject) => {
-        axios.get(bookEndpoint(uuid))
+        fetchBookFromStore(uuid)
             .then(response => resolve(response))
             .catch(error => reject(fetchBookErrorMessage(error)))
     });
@@ -27,7 +33,7 @@ export function fetchBook(uuid) {
 
 export function fetchBooks(searchText) {
     return new Promise((resolve, reject) => {
-        axios.get(searchEndpoint(searchText))
+        fetchBooksFromStore(searchText)
             .then(response => resolve(response))
             .catch(error => reject(fetchBooksErrorMessage(error)))
     });
@@ -35,7 +41,7 @@ export function fetchBooks(searchText) {
 
 export function deleteBook(uuid) {
     return new Promise((resolve, reject) => {
-        axios.delete(bookEndpoint(uuid))
+        deleteBookFromStore(uuid)
             .then(response => resolve(response))
             .catch(error => reject(deleteBookErrorMessage(error)))
     });
@@ -43,7 +49,7 @@ export function deleteBook(uuid) {
 
 export function addBook(book) {
     return new Promise((resolve, reject) => {
-        axios.post(BOOKS_ENDPOINT, book)
+        addBookInStore(book)
             .then(response => resolve(response))
             .catch(error => reject(addBookErrorMessage(error)))
     });
@@ -51,20 +57,10 @@ export function addBook(book) {
 
 export function updateBook(book) {
     return new Promise((resolve, reject) => {
-        axios.put(bookEndpoint(book.uuid), book)
+        updateBookInStore(book)
             .then(response => resolve(response))
             .catch(error => reject(updateBookErrorMessage(error)))
     });
-}
-
-const bookEndpoint = uuid => `${BOOKS_ENDPOINT}/${uuid}`;
-
-function searchEndpoint(searchText) {
-    let endpoint = BOOKS_ENDPOINT;
-    if (searchText) {
-        endpoint = `${endpoint}?searchText=${searchText}`;
-    }
-    return endpoint;
 }
 
 export function validateBook(book) {

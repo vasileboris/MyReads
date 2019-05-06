@@ -11,7 +11,7 @@ function BooksComponent(props) {
     return (
         <FlatList style={[appStyles.resultDetail]}
             data={Object.values(books).sort((book1, book2) => book1.title.localeCompare(book2.title))}
-            keyExtractor={book => `${book.isbn10}-${book.isbn13}-${book.title}`}
+            keyExtractor={book => book.uuid}
             renderItem={ ({item}) => (
                 <BookComponent book={item} onClick={onBookClick}/>
             )}
