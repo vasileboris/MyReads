@@ -1,9 +1,8 @@
 import {AsyncStorage} from 'react-native';
 import uuid from 'uuid';
-
+import { isString } from 'utils/TypeCheck';
 const BOOKS_KEY = 'MyReads:Books';
 
-//TODO - Implement search
 export const fetchBooksFromStore = searchText => {
     return new Promise((resolve, reject) => {
         AsyncStorage.getItem(BOOKS_KEY)
@@ -12,7 +11,17 @@ export const fetchBooksFromStore = searchText => {
                     resolve({ data: [] });
                 }
                 const books = JSON.parse(rawBooks);
-                resolve({ data: Object.values(books) });
+                let filteredBooks = books;
+                if(searchText && isString(searchText)) {
+                    const sanitizedSearchText = searchText.trim().toLowerCase();
+                    filteredBooks = Object.values(books)
+                        .filter(book =>
+                            (book.title && book.title.toLowerCase().includes(sanitizedSearchText))
+                            || (book.authors && book.authors.join(',').toLowerCase().includes(sanitizedSearchText))
+                        )
+                        .reduce((result, book) => ({...result, [book.uuid]: book}), {})
+                }
+                resolve({ data: Object.values(filteredBooks) });
             })
             .catch(error => {
                 reject(error);
