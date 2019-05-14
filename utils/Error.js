@@ -8,3 +8,11 @@ export const getReason = function (error) {
     }
     return reason;
 };
+
+export const buildError = status => (
+    {
+        response: {
+            status
+        }
+    }
+);

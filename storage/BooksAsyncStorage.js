@@ -1,6 +1,9 @@
 import {AsyncStorage} from 'react-native';
 import uuid from 'uuid';
 import { isString } from 'utils/TypeCheck';
+import { buildError } from 'utils/Error';
+import { buildResponse } from 'utils/Response';
+
 const BOOKS_KEY = 'MyReads:Books';
 
 export const fetchBooksFromStore = searchText => {
@@ -8,7 +11,7 @@ export const fetchBooksFromStore = searchText => {
         AsyncStorage.getItem(BOOKS_KEY)
             .then(rawBooks => {
                 if(!rawBooks) {
-                    resolve({ data: [] });
+                    resolve(buildResponse([]));
                 }
                 const books = JSON.parse(rawBooks);
                 let filteredBooks = books;
@@ -21,7 +24,7 @@ export const fetchBooksFromStore = searchText => {
                         )
                         .reduce((result, book) => ({...result, [book.uuid]: book}), {})
                 }
-                resolve({ data: Object.values(filteredBooks) });
+                resolve(buildResponse(Object.values(filteredBooks)));
             })
             .catch(error => {
                 reject(error);
@@ -38,9 +41,9 @@ export const fetchBookFromStore = uuid => {
                 }
                 const books = JSON.parse(rawBooks);
                 if(!books[uuid]) {
-                    reject({error: {status: 404}});
+                    reject(buildError(404));
                 }
-                resolve({ data: books[uuid] });
+                resolve(buildResponse(books[uuid]));
             })
             .catch(error => {
                 reject(error);
@@ -61,7 +64,7 @@ export const addBookInStore = book => {
                 books[savedBook.uuid] = savedBook;
                 AsyncStorage.setItem(BOOKS_KEY, JSON.stringify(books))
                     .then( () => {
-                        resolve({ data: savedBook });
+                        resolve(buildResponse(savedBook));
                     })
                     .catch(error => {
                         reject(error);
@@ -82,7 +85,7 @@ export const updateBookInStore = book => {
                 }
                 const books = JSON.parse(rawBooks);
                 if(!books[book.uuid]) {
-                    reject({error: {status: 404}});
+                    reject(buildError(404));
                 }
                 books[book.uuid] = book;
                 AsyncStorage.setItem(BOOKS_KEY, JSON.stringify(books))
@@ -108,7 +111,7 @@ export const deleteBookFromStore = uuid => {
                 }
                 const books = JSON.parse(rawBooks);
                 if(!books[uuid]) {
-                    reject({error: {status: 404}});
+                    reject(buildError(404));
                 }
                 delete books[uuid];
                 AsyncStorage.setItem(BOOKS_KEY, JSON.stringify(books))
