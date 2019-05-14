@@ -80,9 +80,6 @@ export const updateBookInStore = book => {
     return new Promise((resolve, reject) => {
         AsyncStorage.getItem(BOOKS_KEY)
             .then(rawBooks => {
-                if(!rawBooks) {
-                    rawBooks = "{}";
-                }
                 const books = JSON.parse(rawBooks);
                 if(!books[book.uuid]) {
                     reject(buildError(404));
@@ -102,13 +99,11 @@ export const updateBookInStore = book => {
     });
 };
 
+//TODO - Check for current reading session and delete only if empty. Delete also empty reading session
 export const deleteBookFromStore = uuid => {
     return new Promise((resolve, reject) => {
         AsyncStorage.getItem(BOOKS_KEY)
             .then(rawBooks => {
-                if(!rawBooks) {
-                    rawBooks = "{}";
-                }
                 const books = JSON.parse(rawBooks);
                 if(!books[uuid]) {
                     reject(buildError(404));

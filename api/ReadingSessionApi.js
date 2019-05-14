@@ -1,25 +1,19 @@
-import { BOOKS_ENDPOINT } from './BookApi';
-import axios from 'axios';
 import localizer from 'utils/Localizer';
 import {
     getReason
 } from 'utils/Error';
-
-function readingSessionsEndpoint(bookUuid) {
-    return `${BOOKS_ENDPOINT}/${bookUuid}/reading-sessions`;
-}
-
-function currentReadingSessionEndpoint(bookUuid) {
-    return `${BOOKS_ENDPOINT}/${bookUuid}/current-reading-session`;
-}
+import {
+    fetchCurrentReadingSessionFromStore,
+    addCurrentReadingSessionInStore
+} from 'storage/ReadingSessionAsyncStorage';
 
 export function fetchCurrentReadingSession(bookUuid) {
     return new Promise((resolve, reject) => {
-        axios.get(currentReadingSessionEndpoint(bookUuid))
+        fetchCurrentReadingSessionFromStore(bookUuid)
             .then(response => resolve(response))
             .catch(error => {
                 if(404 === getReason(error)) {
-                    axios.post(readingSessionsEndpoint(bookUuid), { bookUuid })
+                    addCurrentReadingSessionInStore(bookUuid)
                         .then(response => resolve(response))
                         .catch(error => reject(fetchCurrentReadingSessionMessage(error)))
                 } else {
