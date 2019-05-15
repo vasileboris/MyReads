@@ -68,16 +68,19 @@ export function validateBook(book) {
         let message = validate(book.title, [isRequired]);
         if(message) {
             reject(localizer.localize(message, localizer.localize('book-title-text')));
+            return;
         }
 
         message = validate(book.authors, [isRequired]);
         if(message) {
             reject(localizer.localize(message, localizer.localize('book-authors-text')));
+            return;
         }
 
         message = validate(book.pages, [isRequired, isPositiveNumber]);
         if(message) {
             reject(localizer.localize(message, localizer.localize('book-pages-text')));
+            return;
         }
 
         resolve();

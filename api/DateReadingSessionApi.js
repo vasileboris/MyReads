@@ -1,5 +1,3 @@
-import {BOOKS_ENDPOINT} from './BookApi';
-import axios from 'axios';
 import localizer from 'utils/Localizer';
 import {
     getReason
@@ -14,18 +12,15 @@ import {
     isRequired
 } from 'validation/Rule';
 import validate from 'validation/Validator';
-
-function dateReadingSessionsEndpoint(bookUuid, uuid) {
-    return `${BOOKS_ENDPOINT}/${bookUuid}/reading-sessions/${uuid}/date-reading-sessions`;
-}
-
-function dateReadingSessionEndpoint(bookUuid, uuid, date) {
-    return `${dateReadingSessionsEndpoint(bookUuid, uuid)}/${date}`;
-}
+import {
+    addDateReadingSessionInStore,
+    updateDateReadingSessionInStore,
+    deleteDateReadingSessionInStore
+} from 'storage/ReadingSessionAsyncStorage';
 
 export function createDateReadingSession(bookUuid, uuid, dateReadingSession) {
     return new Promise((resolve, reject) => {
-        axios.post(dateReadingSessionsEndpoint(bookUuid, uuid), dateReadingSession)
+        addDateReadingSessionInStore(bookUuid, uuid, dateReadingSession)
             .then(response => resolve(response))
             .catch(error => reject(createDateReadingSessionErrorMessage(error)))
     });
@@ -33,7 +28,7 @@ export function createDateReadingSession(bookUuid, uuid, dateReadingSession) {
 
 export function updateDateReadingSession(bookUuid, uuid, dateReadingSession) {
     return new Promise((resolve, reject) => {
-        axios.put(dateReadingSessionEndpoint(bookUuid, uuid, dateReadingSession.date), dateReadingSession)
+        updateDateReadingSessionInStore(bookUuid, uuid, dateReadingSession)
             .then(response => resolve(response))
             .catch(error => reject(updateDateReadingSessionErrorMessage(error)))
     });
@@ -41,7 +36,7 @@ export function updateDateReadingSession(bookUuid, uuid, dateReadingSession) {
 
 export function deleteDateReadingSession(bookUuid, uuid, date) {
     return new Promise((resolve, reject) => {
-        axios.delete(dateReadingSessionEndpoint(bookUuid, uuid, date))
+        deleteDateReadingSessionInStore(bookUuid, uuid, date)
             .then(response => resolve(response))
             .catch(error => reject(deleteDateReadingSessionErrorMessage(error)))
     });
@@ -52,11 +47,13 @@ export function validateDateReadingSession(dateReadingSession) {
         let message = validate(dateReadingSession.date, [isRequired, isDate]);
         if(message) {
             reject(localizer.localize(message, localizer.localize('date-reading-session-date-text')));
+            return;
         }
 
         message = validate(dateReadingSession.lastReadPage, [isRequired, isPositiveNumber]);
         if(message) {
             reject(localizer.localize(message, localizer.localize('date-reading-session-last-read-page-text')));
+            return;
         }
 
         resolve();

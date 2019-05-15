@@ -12,8 +12,10 @@ export const fetchBooksFromStore = searchText => {
             .then(rawBooks => {
                 if(!rawBooks) {
                     resolve(buildResponse([]));
+                    return;
                 }
                 const books = JSON.parse(rawBooks);
+
                 let filteredBooks = books;
                 if(searchText && isString(searchText)) {
                     const sanitizedSearchText = searchText.trim().toLowerCase();
@@ -40,9 +42,12 @@ export const fetchBookFromStore = uuid => {
                     rawBooks = "{}";
                 }
                 const books = JSON.parse(rawBooks);
+
                 if(!books[uuid]) {
                     reject(buildError(404));
+                    return;
                 }
+
                 resolve(buildResponse(books[uuid]));
             })
             .catch(error => {
@@ -58,9 +63,10 @@ export const addBookInStore = book => {
                 if(!rawBooks) {
                     rawBooks = "{}";
                 }
+                const books = JSON.parse(rawBooks);
+
                 const savedBook = {...book};
                 savedBook.uuid = uuid.v1();
-                const books = JSON.parse(rawBooks);
                 books[savedBook.uuid] = savedBook;
                 AsyncStorage.setItem(BOOKS_KEY, JSON.stringify(books))
                     .then( () => {
@@ -81,9 +87,12 @@ export const updateBookInStore = book => {
         AsyncStorage.getItem(BOOKS_KEY)
             .then(rawBooks => {
                 const books = JSON.parse(rawBooks);
+
                 if(!books[book.uuid]) {
                     reject(buildError(404));
+                    return;
                 }
+
                 books[book.uuid] = book;
                 AsyncStorage.setItem(BOOKS_KEY, JSON.stringify(books))
                     .then( () => {
@@ -105,9 +114,12 @@ export const deleteBookFromStore = uuid => {
         AsyncStorage.getItem(BOOKS_KEY)
             .then(rawBooks => {
                 const books = JSON.parse(rawBooks);
+
                 if(!books[uuid]) {
                     reject(buildError(404));
+                    return;
                 }
+
                 delete books[uuid];
                 AsyncStorage.setItem(BOOKS_KEY, JSON.stringify(books))
                     .then( () => {
