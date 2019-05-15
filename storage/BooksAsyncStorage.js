@@ -1,8 +1,15 @@
 import {AsyncStorage} from 'react-native';
 import uuid from 'uuid';
 import { isString } from 'utils/TypeCheck';
-import { buildError } from 'utils/Error';
+import {
+    buildError,
+    getReason
+} from 'utils/Error';
 import { buildResponse } from 'utils/Response';
+import {
+    fetchCurrentReadingSessionFromStore,
+    deleteCurrentReadingSessionInStore
+} from './ReadingSessionAsyncStorage';
 
 const BOOKS_KEY = 'MyReads:Books';
 
@@ -108,7 +115,17 @@ export const updateBookInStore = book => {
     });
 };
 
-//TODO - Check for current reading session and delete only if empty. Delete also empty reading session
+const safeDeleteBookFromStore = (books, uuid, resolve, reject) => {
+    delete books[uuid];
+    AsyncStorage.setItem(BOOKS_KEY, JSON.stringify(books))
+        .then(() => {
+            resolve();
+        })
+        .catch(error => {
+            reject(error);
+        });
+};
+
 export const deleteBookFromStore = uuid => {
     return new Promise((resolve, reject) => {
         AsyncStorage.getItem(BOOKS_KEY)
@@ -120,13 +137,22 @@ export const deleteBookFromStore = uuid => {
                     return;
                 }
 
-                delete books[uuid];
-                AsyncStorage.setItem(BOOKS_KEY, JSON.stringify(books))
-                    .then( () => {
-                        resolve();
+                fetchCurrentReadingSessionFromStore(uuid)
+                    .then(() => {
+                        deleteCurrentReadingSessionInStore(uuid)
+                            .then(() => {
+                                safeDeleteBookFromStore(books, uuid, resolve, reject);
+                            })
+                            .catch(error => {
+                                reject(error);
+                            });
                     })
                     .catch(error => {
-                        reject(error);
+                        if(404 === getReason(error)) {
+                            safeDeleteBookFromStore(books, uuid, resolve, reject);
+                        } else {
+                            reject(buildError(500));
+                        }
                     });
             })
             .catch(error => {

@@ -58,6 +58,40 @@ export const addCurrentReadingSessionInStore = bookUuid => {
     });
 };
 
+export const deleteCurrentReadingSessionInStore = bookUuid => {
+    return new Promise((resolve, reject) => {
+        AsyncStorage.getItem(READING_SESSIONS_KEY)
+            .then(rawReadingSessions => {
+                if(!rawReadingSessions) {
+                    rawReadingSessions = "{}";
+                }
+                const readingSessions = JSON.parse(rawReadingSessions);
+
+                const readingSession = readingSessions[bookUuid];
+                if(!readingSession) {
+                    reject(buildError(404));
+                    return;
+                }
+                if(readingSession.dateReadingSessions.length > 0){
+                    reject(buildError(403));
+                    return;
+                }
+
+                delete readingSessions[bookUuid];
+                AsyncStorage.setItem(READING_SESSIONS_KEY, JSON.stringify(readingSessions))
+                    .then( () => {
+                        resolve(buildResponse(readingSession.uuid));
+                    })
+                    .catch(error => {
+                        reject(error);
+                    });
+            })
+            .catch(error => {
+                reject(error);
+            });
+    });
+};
+
 export const addDateReadingSessionInStore = (bookUuid, uuid, dateReadingSession) => {
     return new Promise((resolve, reject) => {
         AsyncStorage.getItem(READING_SESSIONS_KEY)
