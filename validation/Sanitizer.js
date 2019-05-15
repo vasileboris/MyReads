@@ -33,5 +33,5 @@ export function sanitizeNumber(value) {
         return value;
     }
 
-    return sanitize(value);
+    return parseInt(sanitize(value));
 }

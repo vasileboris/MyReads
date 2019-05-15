@@ -10,7 +10,7 @@ export const fetchCurrentReadingSessionFromStore = bookUuid => {
         AsyncStorage.getItem(READING_SESSIONS_KEY)
             .then(rawReadingSessions => {
                 if(!rawReadingSessions) {
-                    rawReadingSessions = "{}";
+                    rawReadingSessions = '{}';
                 }
                 const readingSessions = JSON.parse(rawReadingSessions);
 
@@ -33,7 +33,7 @@ export const addCurrentReadingSessionInStore = bookUuid => {
         AsyncStorage.getItem(READING_SESSIONS_KEY)
             .then(rawReadingSessions => {
                 if(!rawReadingSessions) {
-                    rawReadingSessions = "{}";
+                    rawReadingSessions = '{}';
                 }
                 const readingSessions = JSON.parse(rawReadingSessions);
 
@@ -63,7 +63,7 @@ export const deleteCurrentReadingSessionInStore = bookUuid => {
         AsyncStorage.getItem(READING_SESSIONS_KEY)
             .then(rawReadingSessions => {
                 if(!rawReadingSessions) {
-                    rawReadingSessions = "{}";
+                    rawReadingSessions = '{}';
                 }
                 const readingSessions = JSON.parse(rawReadingSessions);
 

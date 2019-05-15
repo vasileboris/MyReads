@@ -46,7 +46,7 @@ export const fetchBookFromStore = uuid => {
         AsyncStorage.getItem(BOOKS_KEY)
             .then(rawBooks => {
                 if(!rawBooks) {
-                    rawBooks = "{}";
+                    rawBooks = '{}';
                 }
                 const books = JSON.parse(rawBooks);
 
@@ -68,7 +68,7 @@ export const addBookInStore = book => {
         AsyncStorage.getItem(BOOKS_KEY)
             .then(rawBooks => {
                 if(!rawBooks) {
-                    rawBooks = "{}";
+                    rawBooks = '{}';
                 }
                 const books = JSON.parse(rawBooks);
 
