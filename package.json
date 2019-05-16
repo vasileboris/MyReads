@@ -7,7 +7,6 @@
     "eject": "expo eject"
   },
   "dependencies": {
-    "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
     "expo": "^32.0.6",
     "i18next": "^15.0.9",

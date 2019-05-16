@@ -1,15 +1,10 @@
-import { BOOKS_ENDPOINT } from './BookApi';
-import axios from 'axios';
-import {getReason} from "../utils/Error";
-import localizer from "../utils/Localizer";
-
-function readingSessionProgressEndpoint(bookUuid, uuid) {
-    return `${BOOKS_ENDPOINT}/${bookUuid}/reading-sessions/${uuid}/progress`;
-}
+import { getReason } from 'utils/Error';
+import localizer from 'utils/Localizer';
+import { fetchCurrentReadingSessionProgressFromStore } from 'storage/ReadingSessionAsyncStorage';
 
 export function fetchReadingSessionProgress(bookUuid, uuid) {
     return new Promise((resolve, reject) => {
-        axios.get(readingSessionProgressEndpoint(bookUuid, uuid))
+        fetchCurrentReadingSessionProgressFromStore(bookUuid, uuid)
             .then(response => resolve(response))
             .catch(error => reject(fetchReadingSessionProgressMessage(error)))
     });

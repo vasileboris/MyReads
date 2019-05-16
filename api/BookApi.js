@@ -1,4 +1,3 @@
-import user from 'User';
 import localizer from 'utils/Localizer';
 import {
     getReason
@@ -20,8 +19,6 @@ import {
     updateBookInStore,
     deleteBookFromStore
 } from 'storage/BooksAsyncStorage';
-
-export const BOOKS_ENDPOINT = `http://192.168.0.87:8080/users/${user.id}/books`;
 
 export function fetchBook(uuid) {
     return new Promise((resolve, reject) => {
