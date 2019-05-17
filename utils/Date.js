@@ -1,5 +1,14 @@
-export const getISODate = (date) => {
-    return `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
+const padValueZero = (value, length = 2) => {
+    let paddedValue = `${value}`;
+    let diff = length - paddedValue.length;
+    if(diff > 0) {
+        paddedValue = '0'.repeat(diff) + paddedValue;
+    }
+    return paddedValue;
+};
+
+export const getISODate = date => {
+    return `${date.getFullYear()}-${padValueZero(date.getMonth())}-${padValueZero(date.getDate())}`;
 };
 
 export const addDays = (date, days) => {
