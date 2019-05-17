@@ -8,7 +8,7 @@ const padValueZero = (value, length = 2) => {
 };
 
 export const getISODate = date => {
-    return `${date.getFullYear()}-${padValueZero(date.getMonth())}-${padValueZero(date.getDate())}`;
+    return `${date.getFullYear()}-${padValueZero(date.getMonth() + 1)}-${padValueZero(date.getDate())}`;
 };
 
 export const addDays = (date, days) => {
