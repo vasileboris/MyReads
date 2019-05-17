@@ -1,6 +1,6 @@
 import { getReason } from 'utils/Error';
 import localizer from 'utils/Localizer';
-import { fetchCurrentReadingSessionProgressFromStore } from 'storage/ReadingSessionAsyncStorage';
+import { fetchCurrentReadingSessionProgressFromStore } from 'storage/ReadingSessionProgressAsyncStorage';
 
 export function fetchReadingSessionProgress(bookUuid, uuid) {
     return new Promise((resolve, reject) => {
