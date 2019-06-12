@@ -15,6 +15,7 @@ import localizer from 'utils/Localizer';
 import BooksScreenComponent from 'components/screens/BooksScreenComponent';
 import BookScreenComponent from 'components/screens/BookScreenComponent';
 import CurrentReadingSessionScreen from 'components/screens/CurrentReadingSessionScreen';
+import Help from 'components/help/Help';
 import appStyles from 'styles/AppStyles';
 import appColors from 'styles/AppColors';
 
@@ -26,7 +27,8 @@ const AppNavigator = createStackNavigator(
     {
         books: BooksScreenComponent,
         book: BookScreenComponent,
-        currentReadingSession: CurrentReadingSessionScreen
+        currentReadingSession: CurrentReadingSessionScreen,
+        help: Help
     },
     {
         initialRouteName: 'books',
