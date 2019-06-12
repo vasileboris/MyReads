@@ -7,7 +7,9 @@ const rules={
         react: (node, output, state) => (
             <AssetImage
                 key={state.key}
+                folder='help'
                 image={node.target}
+                size='large'
             />
         ),
     },
@@ -25,7 +27,6 @@ You can even [**link your website**](https://twitter.com/Charles_Mangwa) or if y
 Spice it up with some GIFs 💃:
 
 ![Some GIF](book.png)
-
 `;
 
 

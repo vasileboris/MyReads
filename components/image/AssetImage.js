@@ -3,21 +3,23 @@ import PropTypes from 'prop-types';
 import Image from './Image';
 
 const assets = {
-    'book.png': require('../../assets/images/book.png')
+    '/help/book.png': require('../../assets/help/book.png')
 };
 
 function AssetImage(props) {
-    const { image } = props;
-    return <Image image={buildImage(image)} size='large'/>;
+    const { folder, image, size } = props;
+    return <Image image={buildImage(folder, image)} size={size}/>;
 }
 
-function buildImage(image) {
-    const source = assets[image];
+function buildImage(folder, image) {
+    const source = assets[`/${folder}/${image}`];
     return { source };
 }
 
 AssetImage.propTypes = {
-    image: PropTypes.string
+    folder: PropTypes.string,
+    image: PropTypes.string,
+    size: PropTypes.string
 };
 
 export default AssetImage;
