@@ -49,5 +49,6 @@
   "date-reading-session-already-exists-error": "Reading session cannot be saved. The same date is already used!",
   "date-reading-session-save-error": "An error occurred. Please try again!",
   "date-reading-session-delete-error": "An error occurred. Please try again!",
-  "help-screen": "Help"
+  "help-screen": "Help",
+  "about-screen": "About"
 }

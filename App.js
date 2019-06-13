@@ -16,6 +16,7 @@ import BooksScreenComponent from 'components/screens/BooksScreenComponent';
 import BookScreenComponent from 'components/screens/BookScreenComponent';
 import CurrentReadingSessionScreen from 'components/screens/CurrentReadingSessionScreen';
 import HelpScreen from 'components/screens/HelpScreen';
+import AboutScreen from 'components/screens/AboutScreen';
 import appStyles from 'styles/AppStyles';
 import appColors from 'styles/AppColors';
 
@@ -28,7 +29,8 @@ const AppNavigator = createStackNavigator(
         books: BooksScreenComponent,
         book: BookScreenComponent,
         currentReadingSession: CurrentReadingSessionScreen,
-        help: HelpScreen
+        help: HelpScreen,
+        about: AboutScreen
     },
     {
         initialRouteName: 'books',

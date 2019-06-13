@@ -6,14 +6,14 @@ import Markdown from 'react-native-simple-markdown';
 import AssetImage from 'components/image/AssetImage';
 import localizer from 'utils/Localizer';
 import appStyles from 'styles/AppStyles';
-import { content } from 'assets/help/HelpContent';
+import { content } from 'assets/about/AboutContent';
 
 const rules={
     image: {
         react: (node, output, state) => (
             <AssetImage
                 key={state.key}
-                folder='help'
+                folder='about'
                 image={node.target}
                 size='large'
             />
@@ -21,10 +21,10 @@ const rules={
     },
 };
 
-class HelpScreen extends React.Component {
+class AboutScreen extends React.Component {
     static navigationOptions = () => {
         return {
-            title: localizer.localize('help-screen')
+            title: localizer.localize('about-screen')
         };
     };
 
@@ -37,4 +37,4 @@ class HelpScreen extends React.Component {
     }
 };
 
-export default HelpScreen;
+export default AboutScreen;
