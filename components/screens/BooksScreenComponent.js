@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
+    Text,
+    TouchableOpacity,
     View
 } from 'react-native';
 import { connect } from 'react-redux';
@@ -18,9 +20,16 @@ import { changeBookOperationAction } from 'actions/OperationAction';
 import localizer from 'utils/Localizer';
 
 class BooksScreenComponent extends React.Component {
-    static navigationOptions = () => {
+    static navigationOptions = ({navigation}) => {
+        console.log(JSON.stringify(navigation));
         return {
-            title: localizer.localize('app-title')
+            title: localizer.localize('app-title'),
+            headerLeft: (
+                <TouchableOpacity
+                    onPress={() => navigation.openDrawer()}>
+                    <Text>Menu</Text>
+                </TouchableOpacity>
+            )
         };
     };
 

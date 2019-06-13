@@ -1,6 +1,8 @@
 import React from 'react';
 import {
-    ScrollView
+    ScrollView,
+    Text,
+    TouchableOpacity
 } from 'react-native';
 import Markdown from 'react-native-simple-markdown';
 import AssetImage from 'components/image/AssetImage';
@@ -22,9 +24,15 @@ const rules={
 };
 
 class HelpScreen extends React.Component {
-    static navigationOptions = () => {
+    static navigationOptions = ({navigation}) => {
         return {
-            title: localizer.localize('help-screen')
+            title: localizer.localize('help-screen'),
+            headerLeft: (
+                <TouchableOpacity
+                    onPress={() => navigation.openDrawer()}>
+                    <Text>Menu</Text>
+                </TouchableOpacity>
+            )
         };
     };
 
