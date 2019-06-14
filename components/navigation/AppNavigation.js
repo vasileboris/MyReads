@@ -50,23 +50,32 @@ const AboutStackNavigator = createStackNavigator(
 );
 
 export const createAppDrawerNavigator = () => createDrawerNavigator(
-{
-    stackNavigator: {
-        screen: BooksStackNavigator,
-        navigationOptions: {
-            drawerLabel: localizer.localize('app-title')
+    {
+        stackNavigator: {
+            screen: BooksStackNavigator,
+            navigationOptions: {
+                drawerLabel: localizer.localize('app-title')
+            }
+        },
+        help: {
+            screen: HelpStackNavigator,
+            navigationOptions: {
+                drawerLabel: localizer.localize('help-screen')
+            }
+        },
+        about: {
+            screen: AboutStackNavigator,
+            navigationOptions: {
+                drawerLabel: localizer.localize('about-screen')
+            }
         }
-    },
-    help: {
-        screen: HelpStackNavigator,
-        navigationOptions: {
-            drawerLabel: localizer.localize('help-screen')
-        }
-    },
-    about: {
-        screen: AboutStackNavigator,
-        navigationOptions: {
-            drawerLabel: localizer.localize('about-screen')
+    }, {
+        drawerBackgroundColor: appColors.color2,
+        contentOptions: {
+            activeTintColor: appColors.color3,
+            activeBackgroundColor: appColors.color1,
+            labelStyle: appStyles.navigationBarMenuStyle,
+            activeLabelStyle: appStyles.activeNavigationBarMenuStyle
         }
     }
-});
+);

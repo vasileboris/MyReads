@@ -19,6 +19,18 @@ const appStyles = StyleSheet.create({
         fontWeight: 'bold'
     },
 
+    navigationBarMenuStyle: {
+        fontFamily: 'sans-serif',
+        fontSize: 18,
+        fontWeight: 'normal'
+    },
+
+    activeNavigationBarMenuStyle: {
+        fontFamily: 'sans-serif',
+        fontSize: 18,
+        fontWeight: 'bold'
+    },
+
     container: {
         flex: 1,
     },
