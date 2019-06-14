@@ -21,7 +21,6 @@ import localizer from 'utils/Localizer';
 
 class BooksScreenComponent extends React.Component {
     static navigationOptions = ({navigation}) => {
-        console.log(JSON.stringify(navigation));
         return {
             title: localizer.localize('app-title'),
             headerLeft: (
