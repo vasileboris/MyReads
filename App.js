@@ -1,66 +1,23 @@
 import React from 'react';
 import {
+    View
+} from 'react-native';
+import {
     createStore,
     applyMiddleware
 } from 'redux';
+import { Provider } from 'react-redux';
+import { createAppContainer } from 'react-navigation';
 import createSagaMiddleware from 'redux-saga';
 import rootSaga from 'sagas/RootSagas';
-import {
-    View
-} from 'react-native';
-import { Provider } from 'react-redux';
-import { createStackNavigator, createDrawerNavigator, createAppContainer } from "react-navigation";
+import { createAppDrawerNavigator } from 'components/navigation/AppNavigation';
 import { library }  from 'reducers/LibraryReducer';
 import localizer from 'utils/Localizer';
-import BooksScreenComponent from 'components/screens/BooksScreenComponent';
-import BookScreenComponent from 'components/screens/BookScreenComponent';
-import CurrentReadingSessionScreen from 'components/screens/CurrentReadingSessionScreen';
-import HelpScreen from 'components/screens/HelpScreen';
-import AboutScreen from 'components/screens/AboutScreen';
 import appStyles from 'styles/AppStyles';
-import appColors from 'styles/AppColors';
 
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(library, applyMiddleware(sagaMiddleware));
 sagaMiddleware.run(rootSaga);
-
-const defaultNavigationOptions = {
-    headerStyle: appStyles.navigationBarHeaderStyle,
-    headerTintColor: appColors.color3,
-    headerTitleStyle: appStyles.navigationBarTitleStyle
-};
-
-const BooksStackNavigator = createStackNavigator(
-    {
-        books: BooksScreenComponent,
-        book: BookScreenComponent,
-        currentReadingSession: CurrentReadingSessionScreen
-    },
-    {
-        initialRouteName: 'books',
-        defaultNavigationOptions
-    }
-);
-
-const HelpStackNavigator = createStackNavigator(
-    {
-        help: HelpScreen
-    },
-    {
-        initialRouteName: 'help',
-        defaultNavigationOptions
-    }
-);
-
-const AboutStackNavigator = createStackNavigator(
-    {
-        about: AboutScreen
-    },
-    {
-        initialRouteName: 'about',
-        defaultNavigationOptions
-    }
-);
 
 class App extends React.Component {
     constructor(props) {
@@ -78,29 +35,8 @@ class App extends React.Component {
             return null;
         }
 
-        const AppNavigator = createDrawerNavigator(
-            {
-                stackNavigator: {
-                    screen: BooksStackNavigator,
-                    navigationOptions: {
-                        drawerLabel: localizer.localize('app-title')
-                    }
-                },
-                help: {
-                    screen: HelpStackNavigator,
-                    navigationOptions: {
-                        drawerLabel: localizer.localize('help-screen')
-                    }
-                },
-                about: {
-                    screen: AboutStackNavigator,
-                    navigationOptions: {
-                        drawerLabel: localizer.localize('about-screen')
-                    }
-                }
-            }
-        ),
-        AppContainer = createAppContainer(AppNavigator);
+        const AppDrawerNavigator = createAppDrawerNavigator(),
+            AppContainer = createAppContainer(AppDrawerNavigator);
 
         return (
             <View style={[appStyles.app, appStyles.container, appStyles.vertical, appStyles.justifyStart]}>
