@@ -62,31 +62,6 @@ const AboutStackNavigator = createStackNavigator(
     }
 );
 
-const AppNavigator = createDrawerNavigator(
-    {
-        stackNavigator: {
-            screen: BooksStackNavigator,
-            navigationOptions: {
-                drawerLabel: 'Books'
-            }
-        },
-        help: {
-            screen: HelpStackNavigator,
-            navigationOptions: {
-                drawerLabel: 'Help'
-            }
-        },
-        about: {
-            screen: AboutStackNavigator,
-            navigationOptions: {
-                drawerLabel: 'About'
-            }
-        }
-    }
-);
-
-const AppContainer = createAppContainer(AppNavigator);
-
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -99,7 +74,35 @@ class App extends React.Component {
     render() {
         const { isLocalizerInitialized } = this.state;
 
-        return isLocalizerInitialized && (
+        if(!isLocalizerInitialized) {
+            return null;
+        }
+
+        const AppNavigator = createDrawerNavigator(
+            {
+                stackNavigator: {
+                    screen: BooksStackNavigator,
+                    navigationOptions: {
+                        drawerLabel: localizer.localize('app-title')
+                    }
+                },
+                help: {
+                    screen: HelpStackNavigator,
+                    navigationOptions: {
+                        drawerLabel: localizer.localize('help-screen')
+                    }
+                },
+                about: {
+                    screen: AboutStackNavigator,
+                    navigationOptions: {
+                        drawerLabel: localizer.localize('about-screen')
+                    }
+                }
+            }
+        ),
+        AppContainer = createAppContainer(AppNavigator);
+
+        return (
             <View style={[appStyles.app, appStyles.container, appStyles.vertical, appStyles.justifyStart]}>
                 <Provider store={store}>
                     <AppContainer/>
