@@ -101,6 +101,14 @@ const appSizes = {
         return this.smallImageWidth() * BOOK_HW_RATIO;
     },
 
+    menuImageWidth: function() {
+        return 24;
+    },
+
+    menuImageHeight: function() {
+        return 24;
+    },
+
 };
 
 export default appSizes;

@@ -1,15 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-    Text,
-    TouchableOpacity,
     View
 } from 'react-native';
 import { connect } from 'react-redux';
 import MessageComponent from 'components/message/MessageComponent';
 import BooksComponent from 'components/book/BooksComponent';
 import SearchBooksComponent from 'components/book/SearchBooksComponent';
-import appStyles from 'styles/AppStyles';
+import { createDrawerHeaderLeft } from 'components/navigation/AppNavigation';
 import { receiveMessageAction } from 'actions/MessageAction';
 import { receiveBooksSearchTextAction } from 'actions/BooksSearchAction';
 import {
@@ -18,17 +16,13 @@ import {
 } from 'actions/BookAction';
 import { changeBookOperationAction } from 'actions/OperationAction';
 import localizer from 'utils/Localizer';
+import appStyles from 'styles/AppStyles';
 
 class BooksScreenComponent extends React.Component {
     static navigationOptions = ({navigation}) => {
         return {
             title: localizer.localize('app-title'),
-            headerLeft: (
-                <TouchableOpacity
-                    onPress={() => navigation.openDrawer()}>
-                    <Text>Menu</Text>
-                </TouchableOpacity>
-            )
+            headerLeft: createDrawerHeaderLeft(navigation)
         };
     };
 

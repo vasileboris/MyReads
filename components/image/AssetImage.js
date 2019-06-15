@@ -3,7 +3,11 @@ import PropTypes from 'prop-types';
 import Image from './Image';
 
 const assets = {
-    '/help/book.png': require('../../assets/help/book.png')
+    '/help/book.png': require('../../assets/help/book.png'),
+    '/menu/menu.png': require('../../assets/menu/menu.png'),
+    '/menu/home.png': require('../../assets/menu/home.png'),
+    '/menu/info.png': require('../../assets/menu/info.png'),
+    '/menu/help.png': require('../../assets/menu/help.png'),
 };
 
 function AssetImage(props) {

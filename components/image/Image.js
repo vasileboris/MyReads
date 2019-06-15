@@ -7,6 +7,10 @@ import {
 import appSizes from 'styles/AppSizes';
 
 const styles = StyleSheet.create({
+    menuImage: {
+        width: appSizes.menuImageWidth(),
+        height: appSizes.menuImageHeight()
+    },
     smallRectangleImage: {
         width: appSizes.smallImageWidth(),
         height: appSizes.smallImageHeight()
