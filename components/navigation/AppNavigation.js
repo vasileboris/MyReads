@@ -74,19 +74,43 @@ export const createAppDrawerNavigator = () => createDrawerNavigator(
         stackNavigator: {
             screen: BooksStackNavigator,
             navigationOptions: {
-                drawerLabel: localizer.localize('app-title')
+                drawerLabel: localizer.localize('app-title'),
+                drawerIcon: () => (
+                    <AssetImage
+                        key='home.png'
+                        folder='menu'
+                        image='home.png'
+                        size='menu'
+                    />
+                ),
             }
         },
         help: {
             screen: HelpStackNavigator,
             navigationOptions: {
-                drawerLabel: localizer.localize('help-screen')
+                drawerLabel: localizer.localize('help-screen'),
+                drawerIcon: () => (
+                    <AssetImage
+                        key='help.png'
+                        folder='menu'
+                        image='help.png'
+                        size='menu'
+                    />
+                ),
             }
         },
         about: {
             screen: AboutStackNavigator,
             navigationOptions: {
-                drawerLabel: localizer.localize('about-screen')
+                drawerLabel: localizer.localize('about-screen'),
+                drawerIcon: () => (
+                    <AssetImage
+                        key='info.png'
+                        folder='menu'
+                        image='info.png'
+                        size='menu'
+                    />
+                ),
             }
         }
     }, {
