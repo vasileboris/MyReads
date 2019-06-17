@@ -4,7 +4,7 @@ import {
 } from 'react-native';
 import Markdown from 'react-native-simple-markdown';
 import AssetImage from 'components/image/AssetImage';
-import { createDrawerHeaderLeft } from 'components/navigation/AppNavigation';
+import { createDrawerHeaderLeft } from 'components/navigation/ScreenNavigation';
 import localizer from 'utils/Localizer';
 import appStyles from 'styles/AppStyles';
 import { content } from 'assets/help/HelpContent';

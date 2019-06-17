@@ -13,6 +13,28 @@ const appSizes = {
     margin: 10,
     smallPadding: 5,
     padding: 10,
+    fontSize: 16,
+    h6Size: function() {
+        return 0.75 * this.fontSize
+    },
+    h5Size: function() {
+        return 0.875 * this.fontSize
+    },
+    h4Size: function() {
+        return this.fontSize
+    },
+    h3Size: function() {
+        return 1.125 * this.fontSize
+    },
+    h2Size: function() {
+        return 1.5 * this.fontSize
+    },
+    h1Size: function() {
+        return 2 * this.fontSize;
+    },
+    navigationBarFontSize: function() {
+        return 1.125 * this.fontSize
+    },
 
     phoneStatusBarHeight: function() {
         return 'android' === Platform.OS ? Constants.statusBarHeight : 0;

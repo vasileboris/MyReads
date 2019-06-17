@@ -4,9 +4,10 @@ import {
 } from 'react-native';
 import Markdown from 'react-native-simple-markdown';
 import AssetImage from 'components/image/AssetImage';
-import { createDrawerHeaderLeft } from 'components/navigation/AppNavigation';
+import { createDrawerHeaderLeft } from 'components/navigation/ScreenNavigation';
 import localizer from 'utils/Localizer';
 import appStyles from 'styles/AppStyles';
+import markdownStyles from 'styles/MarkdownStyles';
 import { content } from 'assets/about/AboutContent';
 
 const rules={
@@ -31,9 +32,9 @@ class AboutScreen extends React.Component {
     };
 
     render() {
-        return (
+       return (
             <ScrollView style={[appStyles.screen]}>
-                <Markdown rules={rules}>{content}</Markdown>
+                <Markdown styles={markdownStyles} rules={rules}>{content}</Markdown>
             </ScrollView>
         );
     }

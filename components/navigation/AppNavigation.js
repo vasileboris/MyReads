@@ -1,7 +1,3 @@
-import {
-    TouchableOpacity,
-    View
-} from 'react-native';
 import React from 'react';
 import {
     createDrawerNavigator,
@@ -53,20 +49,6 @@ const AboutStackNavigator = createStackNavigator(
         initialRouteName: 'about',
         defaultNavigationOptions
     }
-);
-
-export const createDrawerHeaderLeft = (navigation) => (
-    <TouchableOpacity
-        onPress={() => navigation.openDrawer()}>
-        <View style={{marginLeft: 18}}>
-            <AssetImage
-                key='menu.png'
-                folder='menu'
-                image='menu.png'
-                size='menu'
-            />
-        </View>
-    </TouchableOpacity>
 );
 
 export const createAppDrawerNavigator = () => createDrawerNavigator(

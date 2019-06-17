@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
-import appColors from "./AppColors";
-import appSizes from "./AppSizes";
+import appColors from './AppColors';
+import appSizes from './AppSizes';
 
 const appStyles = StyleSheet.create({
     app: {
@@ -15,19 +15,19 @@ const appStyles = StyleSheet.create({
 
     navigationBarTitleStyle: {
         fontFamily: 'sans-serif',
-        fontSize: 18,
+        fontSize: appSizes.navigationBarFontSize(),
         fontWeight: 'bold'
     },
 
     navigationBarMenuStyle: {
         fontFamily: 'sans-serif',
-        fontSize: 18,
+        fontSize: appSizes.navigationBarFontSize(),
         fontWeight: 'normal'
     },
 
     activeNavigationBarMenuStyle: {
         fontFamily: 'sans-serif',
-        fontSize: 18,
+        fontSize: appSizes.navigationBarFontSize(),
         fontWeight: 'bold'
     },
 
@@ -111,7 +111,7 @@ const appStyles = StyleSheet.create({
 
     text: {
         fontFamily: 'sans-serif',
-        fontSize: 16
+        fontSize: appSizes.fontSize
     },
 
     title: {

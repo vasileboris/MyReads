@@ -1,12 +1,9 @@
 export const content = `
-# Application details
-
-## Author
-
-[Vasile Boris][about-me]
+# My Reads
 
 ## Application details
 
+* Author: [Vasile Boris][about-me]
 * Version: 1.0.0
 * License: [MIT][license-mit]
 
@@ -23,15 +20,15 @@ export const content = `
 ### book, open-book icons
 
 * Author: [Icons Field][school-education-32-author]
-* License: [Attribution 3.0 Unported (CC BY 3.0)][creativecommons-unported-3.0] 
 * Source: [School & Education, Iconfinder][school-education-32-source]
+* License: [Attribution 3.0 Unported (CC BY 3.0)][creativecommons-unported-3.0] 
 * Changes: Updated format from svg to png and changed color
 
 ### menu, home, help, info icons
 
 * Author: [Stephen Hutchings][typicons-2-author]
-* License: [Attribution 3.0 Unported (CC BY 3.0)][creativecommons-unported-3.0] 
 * Source: [School & Education, Iconfinder][typicons-2-source]
+* License: [Attribution 3.0 Unported (CC BY 3.0)][creativecommons-unported-3.0] 
 * Changes: Updated format from svg to png and changed color
 
 [about-me]: https://espressoprogrammer.com/about-me/
