@@ -7,7 +7,7 @@ export const content = `
 * Version: 1.0.0
 * License: [MIT][license-mit]
 
-## Application details
+## Built with Open Source Software
 
 * [React Native][react-native]
 * [React Navigation][react-navigation]
