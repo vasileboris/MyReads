@@ -8,7 +8,7 @@ const assets = {
     '/menu/info.png': require('../../assets/menu/info.png'),
     '/menu/help.png': require('../../assets/menu/help.png'),
 
-    '/help/book.png': require('../../assets/help/book.png'),
+    '/help/reading-session-progress.png': require('../../assets/help/reading-session-progress.png'),
 
     '/about/book.png': require('../../assets/about/book.png'),
     '/about/open-book.png': require('../../assets/about/open-book.png'),

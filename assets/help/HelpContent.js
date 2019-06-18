@@ -1,29 +1,7 @@
 export const content = `
-#Markdown in react-native is so cool!
+# My Reads
 
-![Some GIF](book.png)
+## Why
 
-You can **emphasize** what you want, or just _suggest it_ 😏…
-
-You can even [**link your website**](https://twitter.com/Charles_Mangwa) or if you prefer: [email somebody](mailto:email@somebody.com)
-
-Spice it up with some GIFs 💃:
-
-![Some GIF](book.png)
-
-You can **emphasize** what you want, or just _suggest it_ 😏…
-
-You can even [**link your website**](https://twitter.com/Charles_Mangwa) or if you prefer: [email somebody](mailto:email@somebody.com)
-
-Spice it up with some GIFs 💃:
-
-![Some GIF](book.png)
-
-You can **emphasize** what you want, or just _suggest it_ 😏…
-
-You can even [**link your website**](https://twitter.com/Charles_Mangwa) or if you prefer: [email somebody](mailto:email@somebody.com)
-
-Spice it up with some GIFs 💃:
-
-![Some GIF](book.png)
+![reading-session-progress](reading-session-progress.png)
 `;

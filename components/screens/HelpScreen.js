@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    ScrollView,
+    ScrollView
 } from 'react-native';
 import Markdown from 'react-native-simple-markdown';
 import AssetImage from 'components/image/AssetImage';
