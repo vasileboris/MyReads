@@ -17,7 +17,7 @@ const rules={
                 key={state.key}
                 folder='about'
                 image={node.target}
-                size='largeRectangle'
+                size='original'
             />
         ),
     },

@@ -16,7 +16,7 @@ const rules={
                 key={state.key}
                 folder='help'
                 image={node.target}
-                size='largeRectangle'
+                size='original'
             />
         ),
     },

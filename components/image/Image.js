@@ -27,6 +27,8 @@ const styles = StyleSheet.create({
         width: appSizes.largeImageWidth(),
         height: appSizes.largeImageWidth()
     },
+    originalImage: {
+    },
 });
 
 function Image(props) {
