@@ -36,4 +36,22 @@ Tap the book, choose EDIT, change the details and press UPDATE.
 Tap the book, choose DELETE. You'll have to confirm.
 
 ![delete-book](delete-book.png)
+
+## Add a reading session
+
+Tap the book, choose ADD READING, fill the details and press ADD.
+
+![add-reading-session](add-reading-session.png)
+
+## Update a reading session
+
+Tap the book, choose ADD READING, tap the reading session, update the details and press UPDATE.
+
+![edit-reading-session](edit-reading-session.png)
+
+## Delete a reading session
+
+Tap the book, choose ADD READING, tap the reading session, choose DELETE. You'll have to confirm.
+
+![delete-reading-session](delete-reading-session.png)
 `;

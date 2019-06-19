@@ -14,6 +14,9 @@ const assets = {
     '/help/delete-book.png': require('../../assets/help/delete-book.png'),
     '/help/all-books.png': require('../../assets/help/all-books.png'),
     '/help/filtered-books.png': require('../../assets/help/filtered-books.png'),
+    '/help/add-reading-session.png': require('../../assets/help/add-reading-session.png'),
+    '/help/edit-reading-session.png': require('../../assets/help/edit-reading-session.png'),
+    '/help/delete-reading-session.png': require('../../assets/help/delete-reading-session.png'),
 
     '/about/book.png': require('../../assets/about/book.png'),
     '/about/open-book.png': require('../../assets/about/open-book.png'),
