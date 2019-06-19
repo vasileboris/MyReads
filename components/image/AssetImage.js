@@ -12,6 +12,8 @@ const assets = {
     '/help/add-book.png': require('../../assets/help/add-book.png'),
     '/help/edit-book.png': require('../../assets/help/edit-book.png'),
     '/help/delete-book.png': require('../../assets/help/delete-book.png'),
+    '/help/all-books.png': require('../../assets/help/all-books.png'),
+    '/help/filtered-books.png': require('../../assets/help/filtered-books.png'),
 
     '/about/book.png': require('../../assets/about/book.png'),
     '/about/open-book.png': require('../../assets/about/open-book.png'),

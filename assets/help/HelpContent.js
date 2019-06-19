@@ -15,6 +15,16 @@ Choose ADD BOOK in the main screen, fill the details and press ADD.
 
 ![add-book](add-book.png)
 
+## Search a book
+
+After adding several books, your list will look like
+
+![all-books](all-books.png)
+
+You could find a book by title or by author by adding a search term in the entry box like
+
+![filtered-books](filtered-books.png)
+
 ## Edit a book
 
 Tap the book, choose EDIT, change the details and press UPDATE.
