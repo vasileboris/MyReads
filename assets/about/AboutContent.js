@@ -10,6 +10,7 @@ export const content = `
 ## Built with Open Source Software
 
 * [React Native][react-native]
+* [Expo][expo]
 * [React Navigation][react-navigation]
 * [React][react]
 * [Redux][redux]
@@ -34,6 +35,7 @@ export const content = `
 [about-me]: https://espressoprogrammer.com/about-me/
 [license-mit]: https://opensource.org/licenses/MIT
 [react-native]: https://facebook.github.io/react-native/
+[expo]: https://expo.io/
 [react-navigation]: https://reactnavigation.org/en/
 [react]: https://reactjs.org/
 [redux]: https://redux.js.org/
