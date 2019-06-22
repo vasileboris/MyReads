@@ -3,7 +3,7 @@ export const content = `
 
 ## Application details
 
-* Author: [Vasile Boris][about-me]
+* Author: [Espresso Programmer][about-me]
 * Version: 1.0.0
 * License: [MIT][license-mit]
 
