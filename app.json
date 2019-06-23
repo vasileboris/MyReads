@@ -28,7 +28,8 @@
       "bundleIdentifier": "com.espressoprogrammer.myreads"
     },
     "android": {
-      "package": "com.espressoprogrammer.myreads"
+      "package": "com.espressoprogrammer.myreads",
+      "permissions": []
     }
   }
 }
