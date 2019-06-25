@@ -29,7 +29,8 @@
     },
     "android": {
       "package": "com.espressoprogrammer.myreads",
-      "permissions": []
+      "permissions": [],
+      "versionCode": 2
     }
   }
 }
