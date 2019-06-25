@@ -7,6 +7,7 @@ const assets = {
     '/menu/home.png': require('../../assets/menu/home.png'),
     '/menu/info.png': require('../../assets/menu/info.png'),
     '/menu/help.png': require('../../assets/menu/help.png'),
+    '/menu/lock.png': require('../../assets/menu/lock.png'),
 
     '/help/reading-session-progress.png': require('../../assets/help/reading-session-progress.png'),
     '/help/add-book.png': require('../../assets/help/add-book.png'),
@@ -24,6 +25,7 @@ const assets = {
     '/about/home.png': require('../../assets/about/home.png'),
     '/about/info.png': require('../../assets/about/info.png'),
     '/about/help.png': require('../../assets/about/help.png'),
+    '/about/lock.png': require('../../assets/about/lock.png'),
 };
 
 function AssetImage(props) {

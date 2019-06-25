@@ -50,5 +50,6 @@
   "date-reading-session-save-error": "An error occurred. Please try again!",
   "date-reading-session-delete-error": "An error occurred. Please try again!",
   "help-screen": "Help",
-  "about-screen": "About"
+  "about-screen": "About",
+  "privacy-policy-screen": "Privacy Policy"
 }

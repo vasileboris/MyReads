@@ -14,19 +14,19 @@ const appStyles = StyleSheet.create({
     },
 
     navigationBarTitleStyle: {
-        fontFamily: 'sans-serif',
+        fontFamily: 'Roboto',
         fontSize: appSizes.navigationBarFontSize(),
         fontWeight: 'bold'
     },
 
     navigationBarMenuStyle: {
-        fontFamily: 'sans-serif',
+        fontFamily: 'Roboto',
         fontSize: appSizes.navigationBarFontSize(),
         fontWeight: 'normal'
     },
 
     activeNavigationBarMenuStyle: {
-        fontFamily: 'sans-serif',
+        fontFamily: 'Roboto',
         fontSize: appSizes.navigationBarFontSize(),
         fontWeight: 'bold'
     },
@@ -110,7 +110,7 @@ const appStyles = StyleSheet.create({
     },
 
     text: {
-        fontFamily: 'sans-serif',
+        fontFamily: 'Roboto',
         fontSize: appSizes.fontSize
     },
 

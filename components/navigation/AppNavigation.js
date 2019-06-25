@@ -8,6 +8,7 @@ import BookScreenComponent from 'components/screens/BookScreenComponent';
 import CurrentReadingSessionScreen from 'components/screens/CurrentReadingSessionScreen';
 import HelpScreen from 'components/screens/HelpScreen';
 import AboutScreen from 'components/screens/AboutScreen';
+import PrivacyPolicyScreen from 'components/screens/PrivacyPolicyScreen';
 import AssetImage from 'components/image/AssetImage';
 import appStyles from 'styles/AppStyles';
 import appColors from 'styles/AppColors';
@@ -51,6 +52,16 @@ const AboutStackNavigator = createStackNavigator(
     }
 );
 
+const PrivacyPolicyStackNavigator = createStackNavigator(
+    {
+        privacyPolicy: PrivacyPolicyScreen
+    },
+    {
+        initialRouteName: 'privacyPolicy',
+        defaultNavigationOptions
+    }
+);
+
 export const createAppDrawerNavigator = () => createDrawerNavigator(
     {
         stackNavigator: {
@@ -90,6 +101,20 @@ export const createAppDrawerNavigator = () => createDrawerNavigator(
                         key='info.png'
                         folder='menu'
                         image='info.png'
+                        size='menu'
+                    />
+                ),
+            }
+        },
+        privacyPolicy: {
+            screen: PrivacyPolicyStackNavigator,
+            navigationOptions: {
+                drawerLabel: localizer.localize('privacy-policy-screen'),
+                drawerIcon: () => (
+                    <AssetImage
+                        key='lock.png'
+                        folder='menu'
+                        image='lock.png'
                         size='menu'
                     />
                 ),

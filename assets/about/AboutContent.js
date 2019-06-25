@@ -4,9 +4,8 @@ export const content = `
 ## Application details
 
 * Author: [Espresso Programmer][about-me]
-* Version: 1.0.1
+* Version: 1.0.2
 * License: [MIT][license-mit]
-* [Privacy Policy][privacy-policy]
 
 ## Built with Open Source Software
 
@@ -26,7 +25,7 @@ export const content = `
 * License: [Attribution 3.0 Unported (CC BY 3.0)][creativecommons-unported-3.0] 
 * Changes: Updated format from svg to png and changed color
 
-### ![menu](menu.png), ![home](home.png), ![help](help.png), ![info](info.png) images
+### ![menu](menu.png), ![home](home.png), ![help](help.png), ![info](info.png), ![lock](lock.png) images
 
 * Author: [Stephen Hutchings][typicons-2-author]
 * Source: [School & Education, Iconfinder][typicons-2-source]
@@ -35,7 +34,6 @@ export const content = `
 
 [about-me]: https://espressoprogrammer.com/about-me/
 [license-mit]: https://opensource.org/licenses/MIT
-[privacy-policy]: https://espressoprogrammer.com/my-reads/privacy-policy/
 [react-native]: https://facebook.github.io/react-native/
 [expo]: https://expo.io/
 [react-navigation]: https://reactnavigation.org/en/
