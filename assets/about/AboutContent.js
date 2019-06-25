@@ -6,6 +6,7 @@ export const content = `
 * Author: [Espresso Programmer][about-me]
 * Version: 1.0.0
 * License: [MIT][license-mit]
+* [Privacy Policy][privacy-policy]
 
 ## Built with Open Source Software
 
@@ -34,6 +35,7 @@ export const content = `
 
 [about-me]: https://espressoprogrammer.com/about-me/
 [license-mit]: https://opensource.org/licenses/MIT
+[privacy-policy]: https://espressoprogrammer.com/my-reads/privacy-policy/
 [react-native]: https://facebook.github.io/react-native/
 [expo]: https://expo.io/
 [react-navigation]: https://reactnavigation.org/en/
