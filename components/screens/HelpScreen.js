@@ -7,6 +7,7 @@ import AssetImage from 'components/image/AssetImage';
 import { createDrawerHeaderLeft } from 'components/navigation/ScreenNavigation';
 import localizer from 'utils/Localizer';
 import appStyles from 'styles/AppStyles';
+import markdownStyles from 'styles/MarkdownStyles';
 import { content } from 'assets/help/HelpContent';
 
 const rules={
@@ -33,7 +34,7 @@ class HelpScreen extends React.Component {
     render() {
         return (
             <ScrollView style={[appStyles.screen]}>
-                <Markdown rules={rules}>{content}</Markdown>
+                <Markdown styles={markdownStyles} rules={rules}>{content}</Markdown>
             </ScrollView>
         );
     }

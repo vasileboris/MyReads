@@ -1,5 +1,5 @@
 export const content = `
-# Privacy Policy
+# My Reads
 
 [Espresso Programmer][about-me] built the [My Reads][my-reads] app as an Open Source app. This SERVICE is provided by [Espresso Programmer][about-me] at no cost and is intended for use as is.
 
