@@ -16,6 +16,10 @@ export const content = `
 * [Redux][redux]
 * [Redux-Saga][redux-saga]
 
+## Built with support from
+
+* [JetBrains][jet-brains]
+
 ## Credits
 
 ### ![book](book.png), ![open-book](open-book.png) images
@@ -45,4 +49,5 @@ export const content = `
 [typicons-2-source]: https://www.iconfinder.com/iconsets/typicons-2
 [typicons-2-author]: https://www.s-ings.com/me/
 [creativecommons-unported-3.0]: https://creativecommons.org/licenses/by/3.0/
+[jet-brains]: https://www.jetbrains.com/?from=MyReads 
 `;
