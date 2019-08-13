@@ -22,14 +22,16 @@ export const content = `
 
 ## Credits
 
-### ![book](book.png), ![open-book](open-book.png) images
+### Images
+ 
+![book](book.png) ![open-book](open-book.png)
 
 * Author: [Icons Field][school-education-32-author]
 * Source: [School & Education, Iconfinder][school-education-32-source]
 * License: [Attribution 3.0 Unported (CC BY 3.0)][creativecommons-unported-3.0] 
 * Changes: Updated format from svg to png and changed color
 
-### ![menu](menu.png), ![home](home.png), ![help](help.png), ![info](info.png), ![lock](lock.png) images
+![menu](menu.png) ![home](home.png) ![help](help.png) ![info](info.png) ![lock](lock.png)
 
 * Author: [Stephen Hutchings][typicons-2-author]
 * Source: [School & Education, Iconfinder][typicons-2-source]
