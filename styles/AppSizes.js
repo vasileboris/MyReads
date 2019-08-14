@@ -2,7 +2,7 @@ import {
     Dimensions,
     Platform
 } from 'react-native';
-import { Constants } from "expo";
+import { Constants } from 'expo';
 
 const PHI = 1.618;
 const BOOK_HW_RATIO = 1.5;

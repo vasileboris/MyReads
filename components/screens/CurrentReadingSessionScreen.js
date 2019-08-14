@@ -19,7 +19,7 @@ import { fetchCurrentReadingSessionAction } from 'actions/ReadingSessionAction';
 import { changeDateReadingSessionOperationAction } from 'actions/OperationAction';
 import { receiveMessageAction } from 'actions/MessageAction';
 import appStyles from 'styles/AppStyles';
-import localizer from "../../utils/Localizer";
+import localizer from 'utils/Localizer';
 
 class CurrentReadingSessionScreen extends React.Component {
     static navigationOptions = () => {

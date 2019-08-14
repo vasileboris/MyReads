@@ -4,7 +4,7 @@ import {
     FlatList
 } from 'react-native';
 import DateReadingSessionComponent from './DateReadingSessionComponent';
-import appStyles from "styles/AppStyles";
+import appStyles from 'styles/AppStyles';
 
 function DateReadingSessionsComponent(props) {
     const { dateReadingSessions, onDateReadingSessionClick } = props;

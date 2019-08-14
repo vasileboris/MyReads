@@ -4,7 +4,7 @@ import {
     FlatList
 } from 'react-native';
 import BookComponent from './BookComponent';
-import appStyles from "styles/AppStyles";
+import appStyles from 'styles/AppStyles';
 
 function BooksComponent(props) {
     const { books, onBookClick } = props;

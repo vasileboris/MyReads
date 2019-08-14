@@ -5,7 +5,7 @@ import {
     TouchableOpacity
 } from 'react-native';
 import appStyles from 'styles/AppStyles';
-import BookImageComponent from "./BookImageComponent";
+import BookImageComponent from './BookImageComponent';
 import BookDetailsComponent from './BookDetailsComponent';
 
 function BookComponent(props) {

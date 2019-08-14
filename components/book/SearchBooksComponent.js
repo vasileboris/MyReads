@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 import Button from 'components/button/Button';
 import TextInput from 'components/input/TextInput';
-import appStyles from "styles/AppStyles";
+import appStyles from 'styles/AppStyles';
 import localizer from 'utils/Localizer';
 
 function SearchBooksComponent(props) {
