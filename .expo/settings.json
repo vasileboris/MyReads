@@ -3,5 +3,8 @@
   "lanType": "ip",
   "dev": true,
   "minify": false,
-  "urlRandomness": "u6-fb4"
+  "urlRandomness": "u6-fb4",
+  "https": false,
+  "scheme": null,
+  "devClient": false
 }
