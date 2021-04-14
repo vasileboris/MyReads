@@ -26,6 +26,7 @@ import { clearDateReadingSessionAction } from 'actions/DateReadingSessionAction'
 import { changeBookOperationAction } from 'actions/OperationAction';
 import { receiveMessageAction } from 'actions/MessageAction';
 import { changeDateReadingSessionOperationAction } from 'actions/OperationAction';
+import { getISODate } from 'utils/Date';
 
 class BookScreenComponent extends React.Component {
     static navigationOptions = () => {
@@ -161,14 +162,24 @@ class BookScreenComponent extends React.Component {
         const booksSearchText = this.props.booksSearchText.trim(),
             { book, addBookAction } = this.props;
 
-        addBookAction(booksSearchText, book);
+        const addedBook = {
+            ...book,
+            date: getISODate(new Date())
+        }
+
+        addBookAction(booksSearchText, addedBook);
     }
 
     onUpdateButtonClick() {
         const booksSearchText = this.props.booksSearchText.trim(),
             { book, updateBookAction } = this.props;
 
-        updateBookAction(booksSearchText, book);
+        const updatedBook = {
+            ...book,
+            date: getISODate(new Date())
+        }
+
+        updateBookAction(booksSearchText, updatedBook);
     }
 
     onConfirmDeleteDateReadingSessionClick() {
