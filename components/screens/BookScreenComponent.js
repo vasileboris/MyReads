@@ -82,7 +82,7 @@ class BookScreenComponent extends React.Component {
                         </View>
                     </View>
                     <View style={[appStyles.screenSectionA1, appStyles.vertical, appStyles.justifyCenter, appStyles.resultDetail]}>
-                        <View style={[appStyles.horizontal, appStyles.justifyStart, appStyles.alignItemsCenter]}>
+                        <View style={[appStyles.horizontal, appStyles.justifyStart, appStyles.alignItemsCenter, appStyles.marginBottom]}>
                             <Image image={{source: openBook}} size="largeSquare"/>
                             <View style={[appStyles.screenSectionA2]}>
                                 <ReadingSessionProgressComponent readingSessionProgress={readingSessionProgress}/>

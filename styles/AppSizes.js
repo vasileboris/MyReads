@@ -131,6 +131,14 @@ const appSizes = {
         return 24;
     },
 
+    progressCircleWidth: function () {
+        return this.appWidthGoldenSegments(1).a / 4;
+    },
+
+    progressCircleBorder: function () {
+        return 10;
+    }
+
 };
 
 export default appSizes;

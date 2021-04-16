@@ -4,8 +4,11 @@ import {
     Text,
     View
 } from 'react-native';
+import ProgressCircle from 'react-native-progress-circle';
 import localizer from 'utils/Localizer';
 import appStyles from 'styles/AppStyles';
+import appSizes from 'styles/AppSizes';
+import appColors from 'styles/AppColors';
 
 function ReadingSessionProgressComponent (props) {
     const  { readingSessionProgress } = props;
@@ -20,87 +23,96 @@ function ReadingSessionProgressComponent (props) {
     }
     return (
         <View style={[appStyles.vertical, appStyles.justifyCenter]}>
-            <Text>
-                <Text style={[appStyles.text, appStyles.title]}>
-                    {readingSessionProgress.readPercentage}%
-                </Text>
-                <Text style={[appStyles.text]}>
-                    {localizer.localize('reading-session-progress-status-label')}
-                </Text>
-            </Text>
-            <Text>
-                <Text style={[appStyles.text, appStyles.title]}>
-                    {readingSessionProgress.averagePagesPerDay}
-                </Text>
-                <Text style={[appStyles.text]}>
-                    {' '}
-                </Text>
-                <Text style={[appStyles.text]}>
-                    {localizer.localize('reading-session-progress-average-pages-label')}
-                </Text>
-            </Text>
-            { readingSessionProgress.estimatedReadDaysLeft > 0 && (
-            <React.Fragment>
+            <View style={[appStyles.horizontal, appStyles.justifyCenter, appStyles.marginBottom]}>
+                <ProgressCircle
+                    percent={readingSessionProgress.readPercentage}
+                    radius={appSizes.progressCircleWidth()}
+                    borderWidth={appSizes.progressCircleBorder()}
+                    color={appColors.color4}
+                    shadowColor={appColors.color5}
+                    bgColor={appColors.color2}>
+
+                    <Text style={[appStyles.text, appStyles.title]}>
+                        {readingSessionProgress.readPercentage}%
+                    </Text>
+                </ProgressCircle>
+            </View>
+
+            <View style={[appStyles.vertical, appStyles.justifyCenter]}>
                 <Text>
                     <Text style={[appStyles.text, appStyles.title]}>
-                        {readingSessionProgress.pagesTotal - readingSessionProgress.lastReadPage}
+                        {readingSessionProgress.averagePagesPerDay}
                     </Text>
                     <Text style={[appStyles.text]}>
                         {' '}
                     </Text>
                     <Text style={[appStyles.text]}>
-                        {localizer.localize('reading-session-progress-estimated-pages-left-label')}
+                        {localizer.localize('reading-session-progress-average-pages-label')}
                     </Text>
                 </Text>
-                <Text>
-                    <Text style={[appStyles.text, appStyles.title]}>
-                        {readingSessionProgress.estimatedReadDaysLeft}
+                { readingSessionProgress.estimatedReadDaysLeft > 0 && (
+                <React.Fragment>
+                    <Text>
+                        <Text style={[appStyles.text, appStyles.title]}>
+                            {readingSessionProgress.pagesTotal - readingSessionProgress.lastReadPage}
+                        </Text>
+                        <Text style={[appStyles.text]}>
+                            {' '}
+                        </Text>
+                        <Text style={[appStyles.text]}>
+                            {localizer.localize('reading-session-progress-estimated-pages-left-label')}
+                        </Text>
                     </Text>
-                    <Text style={[appStyles.text]}>
-                        {' '}
+                    <Text>
+                        <Text style={[appStyles.text, appStyles.title]}>
+                            {readingSessionProgress.estimatedReadDaysLeft}
+                        </Text>
+                        <Text style={[appStyles.text]}>
+                            {' '}
+                        </Text>
+                        <Text style={[appStyles.text]}>
+                            {localizer.localize('reading-session-progress-estimated-read-days-left-label')}
+                        </Text>
+                        <Text style={[appStyles.text]}>
+                            {' / '}
+                        </Text>
+                        <Text style={[appStyles.text, appStyles.title]}>
+                            {readingSessionProgress.estimatedDaysLeft}
+                        </Text>
+                        <Text style={[appStyles.text]}>
+                            {' '}
+                        </Text>
+                        <Text style={[appStyles.text]}>
+                            {localizer.localize('reading-session-progress-estimated-days-left-label')}
+                        </Text>
                     </Text>
-                    <Text style={[appStyles.text]}>
-                        {localizer.localize('reading-session-progress-estimated-read-days-left-label')}
+                    <Text>
+                        <Text style={[appStyles.text]}>
+                            {localizer.localize('reading-session-progress-estimated-finish-date-label')}
+                        </Text>
+                        <Text style={[appStyles.text]}>
+                            {' '}
+                        </Text>
+                        <Text style={[appStyles.text, appStyles.title]}>
+                            {localizer.toLocaleDateString(readingSessionProgress.estimatedFinishDate)}
+                        </Text>
                     </Text>
-                    <Text style={[appStyles.text]}>
-                        {' / '}
+                    {readingSessionProgress.deadline ? (
+                    <Text>
+                        <Text style={[appStyles.text, appStyles.title]}>
+                            {localizer.localize('reading-session-progress-deadline-label')}
+                        </Text>
+                        <Text style={[appStyles.text]}>
+                            {' '}
+                        </Text>
+                        <Text style={[appStyles.text, appStyles.title]}>
+                            {readingSessionProgress.deadline}
+                        </Text>
                     </Text>
-                    <Text style={[appStyles.text, appStyles.title]}>
-                        {readingSessionProgress.estimatedDaysLeft}
-                    </Text>
-                    <Text style={[appStyles.text]}>
-                        {' '}
-                    </Text>
-                    <Text style={[appStyles.text]}>
-                        {localizer.localize('reading-session-progress-estimated-days-left-label')}
-                    </Text>
-                </Text>
-                <Text>
-                    <Text style={[appStyles.text]}>
-                        {localizer.localize('reading-session-progress-estimated-finish-date-label')}
-                    </Text>
-                    <Text style={[appStyles.text]}>
-                        {' '}
-                    </Text>
-                    <Text style={[appStyles.text, appStyles.title]}>
-                        {localizer.toLocaleDateString(readingSessionProgress.estimatedFinishDate)}
-                    </Text>
-                </Text>
-                {readingSessionProgress.deadline ? (
-                <Text>
-                    <Text style={[appStyles.text, appStyles.title]}>
-                        {localizer.localize('reading-session-progress-deadline-label')}
-                    </Text>
-                    <Text style={[appStyles.text]}>
-                        {' '}
-                    </Text>
-                    <Text style={[appStyles.text, appStyles.title]}>
-                        {readingSessionProgress.deadline}
-                    </Text>
-                </Text>
-                ) : null}
-            </React.Fragment>
-            )}
+                    ) : null}
+                </React.Fragment>
+                )}
+            </View>
         </View>
     );
 }
