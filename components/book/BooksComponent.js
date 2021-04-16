@@ -15,7 +15,7 @@ function BooksComponent(props) {
                     return book2.date.localeCompare(book1.date);
                 }
 
-                return book1.title.localeCompare(book2.title);
+                return book1.title.toLowerCase().localeCompare(book2.title.toLowerCase());
             })}
             keyExtractor={book => book.uuid}
             renderItem={ ({item}) => (
