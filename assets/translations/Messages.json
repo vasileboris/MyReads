@@ -23,6 +23,7 @@
   "validation-value-is-required": "{0} is required",
   "validation-value-is-positive-number": "{0} must be at least 1",
   "validation-value-is-date": "{0} must be a date in the format yyyy-mm-dd",
+  "validation-value-is-url": "{0} must be a valid url",
   "books-search-error": "An error occurred. Please try again!",
   "book-isbn-already-exists-error": "Book cannot be added. The same ISBN is already used!",
   "book-save-error": "An error occurred. Please try again!",

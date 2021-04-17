@@ -24,6 +24,11 @@ const InputBookComponent = props => {
                        value={book.authors ? book.authors.join(',') : ''}
                        onInputChange={onInputChange}
                        editable={'delete' !== operation}/>
+            <TextInput name="image"
+                       placeholder={localizer.localize('book-image-text')}
+                       value={book.image ? book.image : ''}
+                       onInputChange={onInputChange}
+                       editable={'delete' !== operation}/>
             <NumberInput name="pages"
                          placeholder={localizer.localize('book-pages-text')}
                          value={book.pages ? book.pages : '' }

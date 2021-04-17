@@ -4,7 +4,7 @@ export const content = `
 ## Application details
 
 * Author: [Espresso Programmer][about-me]
-* Version: 1.0.4
+* Version: 1.0.5
 * License: [MIT][license-mit]
 
 ## Built with Open Source Software

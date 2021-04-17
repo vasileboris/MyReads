@@ -9,7 +9,8 @@ import {
 } from 'validation/Sanitizer';
 import {
     isPositiveNumber,
-    isRequired
+    isRequired,
+    isUrl
 } from 'validation/Rule';
 import validate from 'validation/Validator';
 import {
@@ -71,6 +72,12 @@ export function validateBook(book) {
         message = validate(book.authors, [isRequired]);
         if(message) {
             reject(localizer.localize(message, localizer.localize('book-authors-text')));
+            return;
+        }
+
+        message = validate(book.image, [isUrl]);
+        if(message) {
+            reject(localizer.localize(message, localizer.localize('book-image-text')));
             return;
         }
 
