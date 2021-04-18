@@ -5,6 +5,11 @@ import {
     clearReadingSessionProgressAction,
     FETCH_READING_SESSION_PROGRESS } from 'actions/ReadingSessionProgressAction';
 import { receiveMessageAction } from 'actions/MessageAction';
+import {
+    fetchBook,
+    updateBook
+} from 'api/BookApi';
+import { receiveBookAction } from 'actions/BookAction';
 
 export function* watchFetchReadingSessionProgress() {
     yield takeLatest(FETCH_READING_SESSION_PROGRESS, callFetchReadingSessionProgress);
@@ -13,7 +18,18 @@ export function* watchFetchReadingSessionProgress() {
 function* callFetchReadingSessionProgress(action) {
     const { bookUuid, uuid } = action.payload;
     try {
+        const bookResponse = yield call(fetchBook, bookUuid);
         const response = yield call(fetchReadingSessionProgress, bookUuid, uuid);
+
+        if(bookResponse.data.readPercentage !== response.data.readPercentage) {
+                const book = {
+                ...bookResponse.data,
+                readPercentage: response.data.readPercentage
+            }
+            yield call(updateBook, book);
+            yield put(receiveBookAction(book));
+        }
+
         yield put(receiveReadingSessionProgressAction(response.data));
     } catch (error) {
         yield put(receiveMessageAction(error));

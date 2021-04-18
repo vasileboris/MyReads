@@ -119,6 +119,10 @@ const appStyles = StyleSheet.create({
         color: appColors.color3,
     },
 
+    emphasis: {
+        color: appColors.color4
+    },
+
     textEntry: {
         marginBottom: appSizes.margin,
         padding: appSizes.smallPadding,

@@ -32,7 +32,7 @@ function ReadingSessionProgressComponent (props) {
                     shadowColor={appColors.color5}
                     bgColor={appColors.color2}>
 
-                    <Text style={[appStyles.text, appStyles.title]}>
+                    <Text style={[appStyles.text, appStyles.emphasis]}>
                         {readingSessionProgress.readPercentage}%
                     </Text>
                 </ProgressCircle>

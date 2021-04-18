@@ -71,7 +71,7 @@ class BookScreenComponent extends React.Component {
                         <View style={[appStyles.horizontal, appStyles.justifyStart, appStyles.alignItemsCenter, appStyles.marginBottom]}>
                             <BookImageComponent image={book.image} size="smallRectangle"/>
                             <View style={[appStyles.screenSectionA2]}>
-                                <BookDetailsComponent book={book}/>
+                                <BookDetailsComponent book={book} hideReadProgress="true"/>
                             </View>
                         </View>
                         <View style={[appStyles.vertical, appStyles.justifyCenter]}>
@@ -214,8 +214,11 @@ class BookScreenComponent extends React.Component {
 BookScreenComponent.propTypes = {
     operation: PropTypes.oneOf(['view', 'add', 'edit', 'delete']),
     message: PropTypes.string,
+    book: PropTypes.object,
     books: PropTypes.object,
-    readingSessionProgress: PropTypes.object
+    readingSessions: PropTypes.object,
+    readingSessionProgress: PropTypes.object,
+    booksSearchText: PropTypes.string
 };
 
 const mapStateToProps = state => {

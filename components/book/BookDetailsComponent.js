@@ -8,7 +8,7 @@ import localizer from 'utils/Localizer';
 import appStyles from 'styles/AppStyles';
 
 function BookDetailsComponent(props) {
-    const { book } = props;
+    const { book, hideReadProgress } = props;
     return (
         <View style={[appStyles.vertical, appStyles.justifyCenter]}>
             <Text style={[appStyles.text, appStyles.title]}>
@@ -20,6 +20,12 @@ function BookDetailsComponent(props) {
             <Text style={[appStyles.text]}>
                 {localizer.localizeWithCount('book-page-label', parseInt(book.pages))}
             </Text>
+            {!hideReadProgress && book.readPercentage && (
+            <Text style={[appStyles.text, appStyles.emphasis]}>
+                {book.readPercentage}%
+                {localizer.localize('reading-session-progress-status-label')}
+            </Text>
+            )}
         </View>
     );
 }
@@ -35,7 +41,8 @@ BookDetailsComponent.propTypes = {
             PropTypes.number,
             PropTypes.string
         ]).isRequired,
-    }).isRequired
+    }).isRequired,
+    hideReadProgress: PropTypes.bool
 };
 
 export default BookDetailsComponent;
