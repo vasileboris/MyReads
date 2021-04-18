@@ -10,6 +10,7 @@ import {
     updateBook
 } from 'api/BookApi';
 import { receiveBookAction } from 'actions/BookAction';
+import { getISODate } from 'utils/Date';
 
 export function* watchFetchReadingSessionProgress() {
     yield takeLatest(FETCH_READING_SESSION_PROGRESS, callFetchReadingSessionProgress);
@@ -24,7 +25,8 @@ function* callFetchReadingSessionProgress(action) {
         if(bookResponse.data.readPercentage !== response.data.readPercentage) {
                 const book = {
                 ...bookResponse.data,
-                readPercentage: response.data.readPercentage
+                readPercentage: response.data.readPercentage,
+                date: getISODate(new Date())
             }
             yield call(updateBook, book);
             yield put(receiveBookAction(book));

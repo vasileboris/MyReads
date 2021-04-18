@@ -23,7 +23,6 @@ import { changeDateReadingSessionOperationAction } from 'actions/OperationAction
 import { receiveMessageAction } from 'actions/MessageAction';
 import appStyles from 'styles/AppStyles';
 import localizer from 'utils/Localizer';
-import { getISODate } from 'utils/Date';
 
 class CurrentReadingSessionScreen extends React.Component {
     static navigationOptions = () => {
@@ -84,7 +83,6 @@ class CurrentReadingSessionScreen extends React.Component {
         const { dateReadingSession, createDateReadingSessionAction, bookUuid, currentReadingSessions } = this.props,
             currentReadingSession = currentReadingSessions[bookUuid];
         createDateReadingSessionAction(bookUuid, currentReadingSession.uuid, dateReadingSession);
-        this.updateBook();
     }
 
     onEditDateReadingSessionClick(dateReadingSession) {
@@ -98,7 +96,6 @@ class CurrentReadingSessionScreen extends React.Component {
         const { dateReadingSession, updateDateReadingSessionAction, bookUuid, currentReadingSessions } = this.props,
             currentReadingSession = currentReadingSessions[bookUuid];
         updateDateReadingSessionAction(bookUuid, currentReadingSession.uuid, dateReadingSession);
-        this.updateBook();
     }
 
     onDeleteDateReadingSessionClick() {
@@ -112,7 +109,6 @@ class CurrentReadingSessionScreen extends React.Component {
         const { dateReadingSession, deleteDateReadingSessionAction, bookUuid, currentReadingSessions } = this.props,
             currentReadingSession = currentReadingSessions[bookUuid];
         deleteDateReadingSessionAction(bookUuid, currentReadingSession.uuid, dateReadingSession.date);
-        this.updateBook();
     }
 
     switchToAddDateReadingSession() {
@@ -120,17 +116,6 @@ class CurrentReadingSessionScreen extends React.Component {
         changeDateReadingSessionOperationAction('add');
         clearDateReadingSessionAction();
         receiveMessageAction(null);
-    }
-
-    updateBook() {
-        const booksSearchText = this.props.booksSearchText.trim(),
-            { book, updateBookAction } = this.props;
-
-        const updatedBook = {
-            ...book,
-            date: getISODate(new Date())
-        }
-        updateBookAction(booksSearchText, updatedBook);
     }
 }
 
