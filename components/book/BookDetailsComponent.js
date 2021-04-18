@@ -6,6 +6,7 @@ import {
 } from 'react-native';
 import localizer from 'utils/Localizer';
 import appStyles from 'styles/AppStyles';
+import ProgressBarComponent from 'components/progress-bar/ProgressBarComponent';
 
 function BookDetailsComponent(props) {
     const { book, hideReadProgress } = props;
@@ -21,10 +22,13 @@ function BookDetailsComponent(props) {
                 {localizer.localizeWithCount('book-page-label', parseInt(book.pages))}
             </Text>
             {!hideReadProgress && book.readPercentage && (
-            <Text style={[appStyles.text, appStyles.emphasis]}>
-                {book.readPercentage}%
-                {localizer.localize('reading-session-progress-status-label')}
-            </Text>
+                <React.Fragment>
+                    <Text style={[appStyles.text, appStyles.emphasis]}>
+                        {book.readPercentage}%
+                        {localizer.localize('reading-session-progress-status-label')}
+                    </Text>
+                    <ProgressBarComponent value={book.readPercentage}/>
+                </React.Fragment>
             )}
         </View>
     );

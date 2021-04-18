@@ -137,6 +137,10 @@ const appSizes = {
 
     progressCircleBorder: function () {
         return 10;
+    },
+
+    progressBarHeight: function () {
+        return 10;
     }
 
 };

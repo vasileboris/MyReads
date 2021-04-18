@@ -148,8 +148,24 @@ const appStyles = StyleSheet.create({
 
     disabled: {
         backgroundColor: appColors.colorDisabled
-    }
+    },
 
+    progressBar: {
+        height: appSizes.progressBarHeight(),
+        width: '100%',
+        backgroundColor: appColors.color5,
+        borderColor: appColors.color2,
+        borderWidth: 0,
+        borderRadius: 0
+    },
+
+    absoluteFill: {
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        top: 0,
+        bottom: 0
+    }
 });
 
 export default appStyles;
