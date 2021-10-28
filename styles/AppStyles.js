@@ -5,7 +5,8 @@ import appSizes from './AppSizes';
 const appStyles = StyleSheet.create({
     app: {
         marginTop: appSizes.appMarginTop(),
-        backgroundColor: appColors.color2,
+        paddingTop: appSizes.phoneStatusBarHeight(),
+        backgroundColor: appColors.color1,
     },
 
     navigationBarHeaderStyle: {

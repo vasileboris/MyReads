@@ -57,7 +57,7 @@ const appSizes = {
     },
 
     appHeight: function() {
-        return this.phoneScreenHeight() - this.phoneStatusBarHeight() - this.navigationBarHeight - 2 * this.margin;
+        return this.phoneScreenHeight() - this.navigationBarHeight - 2 * this.margin;
     },
 
     goldenSegments: function(value, level = 1) {
