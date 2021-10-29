@@ -71,7 +71,7 @@ class BookScreenComponent extends React.Component {
                         <View style={[appStyles.horizontal, appStyles.justifyStart, appStyles.alignItemsCenter, appStyles.marginBottom]}>
                             <BookImageComponent image={book.image} size="smallRectangle"/>
                             <View style={[appStyles.screenSectionA2]}>
-                                <BookDetailsComponent book={book} hideReadProgress="true"/>
+                                <BookDetailsComponent book={book} hideReadProgress={true}/>
                             </View>
                         </View>
                         <View style={[appStyles.vertical, appStyles.justifyCenter]}>
