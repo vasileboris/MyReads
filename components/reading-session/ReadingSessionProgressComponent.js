@@ -22,7 +22,7 @@ function ReadingSessionProgressComponent (props) {
         );
     }
     return (
-        <View style={[appStyles.vertical, appStyles.justifyCenter]}>
+        <View style={[appStyles.vertical, appStyles.justifySpaceBetween, appStyles.alignItemsCenter]}>
             <View style={[appStyles.horizontal, appStyles.justifyCenter, appStyles.marginBottom]}>
                 <ProgressCircle
                     percent={readingSessionProgress.readPercentage}
@@ -32,7 +32,7 @@ function ReadingSessionProgressComponent (props) {
                     shadowColor={appColors.color5}
                     bgColor={appColors.color2}>
 
-                    <Text style={[appStyles.text, appStyles.emphasis]}>
+                    <Text style={[appStyles.text, appStyles.emphasis, appStyles.h1]}>
                         {readingSessionProgress.readPercentage}%
                     </Text>
                 </ProgressCircle>

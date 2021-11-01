@@ -124,6 +124,10 @@ const appStyles = StyleSheet.create({
         color: appColors.color4
     },
 
+    h1: {
+        fontSize: appSizes.h1Size()
+    },
+
     textEntry: {
         marginBottom: appSizes.margin,
         padding: appSizes.smallPadding,
@@ -166,6 +170,11 @@ const appStyles = StyleSheet.create({
         right: 0,
         top: 0,
         bottom: 0
+    },
+
+    borderAllAround: {
+        borderColor: appColors.color3,
+        borderWidth: 1,
     }
 });
 

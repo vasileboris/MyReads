@@ -81,13 +81,8 @@ class BookScreenComponent extends React.Component {
                                     title={localizer.localize('delete-button')}/>
                         </View>
                     </View>
-                    <View style={[appStyles.screenSectionA1, appStyles.vertical, appStyles.justifyCenter, appStyles.resultDetail]}>
-                        <View style={[appStyles.horizontal, appStyles.justifyStart, appStyles.alignItemsCenter, appStyles.marginBottom]}>
-                            <Image image={{source: openBook}} size="largeSquare"/>
-                            <View style={[appStyles.screenSectionA2]}>
-                                <ReadingSessionProgressComponent readingSessionProgress={readingSessionProgress}/>
-                            </View>
-                        </View>
+                    <View style={[appStyles.screenSectionA1, appStyles.vertical, appStyles.justifySpaceAround, appStyles.resultDetail]}>
+                        <ReadingSessionProgressComponent readingSessionProgress={readingSessionProgress}/>
                         <Button onPress={this.onReadButtonClick}
                                 title={localizer.localize('read-button')}/>
                     </View>

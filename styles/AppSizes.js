@@ -132,7 +132,7 @@ const appSizes = {
     },
 
     progressCircleWidth: function () {
-        return this.appWidthGoldenSegments(1).a / 4;
+        return (this.appWidthGoldenSegments(1).a + this.appWidthGoldenSegments(1).b) / 4;
     },
 
     progressCircleBorder: function () {
