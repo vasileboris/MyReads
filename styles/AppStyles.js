@@ -74,7 +74,7 @@ const appStyles = StyleSheet.create({
         marginTop: appSizes.margin,
         marginLeft: appSizes.margin,
         marginRight: appSizes.margin,
-        width: appSizes.resultWidth(),
+        width: appSizes.appWidth(),
         height: appSizes.appHeight(),
     },
 

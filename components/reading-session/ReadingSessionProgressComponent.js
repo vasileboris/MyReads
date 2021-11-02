@@ -5,6 +5,7 @@ import {
     View
 } from 'react-native';
 import ProgressCircle from 'react-native-progress-circle';
+import Carousel from 'components/carousel/Carousel';
 import localizer from 'utils/Localizer';
 import appStyles from 'styles/AppStyles';
 import appSizes from 'styles/AppSizes';
@@ -14,7 +15,7 @@ function ReadingSessionProgressComponent (props) {
     const  { readingSessionProgress } = props;
     if(!readingSessionProgress) {
         return (
-            <View style={[appStyles.vertical, appStyles.justifyCenter]}>
+            <View style={[appStyles.vertical, appStyles.justifyEnd, appStyles.alignItemsCenter]}>
                 <Text style={[appStyles.text, appStyles.title]}>
                     {localizer.localize('reading-session-progress-none')}
                 </Text>
@@ -24,18 +25,32 @@ function ReadingSessionProgressComponent (props) {
     return (
         <View style={[appStyles.vertical, appStyles.justifySpaceBetween, appStyles.alignItemsCenter]}>
             <View style={[appStyles.horizontal, appStyles.justifyCenter, appStyles.marginBottom]}>
-                <ProgressCircle
-                    percent={readingSessionProgress.readPercentage}
-                    radius={appSizes.progressCircleWidth()}
-                    borderWidth={appSizes.progressCircleBorder()}
-                    color={appColors.color4}
-                    shadowColor={appColors.color5}
-                    bgColor={appColors.color2}>
+                <Carousel>
+                    <ProgressCircle
+                        percent={readingSessionProgress.readPercentage}
+                        radius={appSizes.progressCircleWidth()}
+                        borderWidth={appSizes.progressCircleBorder()}
+                        color={appColors.color4}
+                        shadowColor={appColors.color5}
+                        bgColor={appColors.color2}>
 
-                    <Text style={[appStyles.text, appStyles.emphasis, appStyles.h1]}>
-                        {readingSessionProgress.readPercentage}%
-                    </Text>
-                </ProgressCircle>
+                        <Text style={[appStyles.text, appStyles.emphasis, appStyles.h1]}>
+                            {readingSessionProgress.readPercentage}%
+                        </Text>
+                    </ProgressCircle>
+                    <ProgressCircle
+                        percent={readingSessionProgress.readPercentage}
+                        radius={appSizes.progressCircleWidth()}
+                        borderWidth={appSizes.progressCircleBorder()}
+                        color={appColors.color4}
+                        shadowColor={appColors.color5}
+                        bgColor={appColors.color2}>
+
+                        <Text style={[appStyles.text, appStyles.emphasis, appStyles.h1]}>
+                            {readingSessionProgress.readPercentage}%
+                        </Text>
+                    </ProgressCircle>
+                </Carousel>
             </View>
 
             <View style={[appStyles.vertical, appStyles.justifyCenter]}>

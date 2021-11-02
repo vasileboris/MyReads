@@ -141,7 +141,12 @@ const appSizes = {
 
     progressBarHeight: function () {
         return 10;
-    }
+    },
+
+    carouselWidth: function() {
+        return this.appWidth();
+    },
+
 
 };
 
