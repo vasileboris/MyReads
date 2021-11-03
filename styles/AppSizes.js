@@ -131,7 +131,7 @@ const appSizes = {
         return 24;
     },
 
-    progressCircleWidth: function () {
+    progressCircleRadius: function () {
         return (this.appWidthGoldenSegments(1).a + this.appWidthGoldenSegments(1).b) / 4;
     },
 
