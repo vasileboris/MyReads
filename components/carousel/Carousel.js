@@ -3,7 +3,7 @@ import {
     View
 } from 'react-native';
 import RNCarousel from 'react-native-snap-carousel';
-import Circle from 'components/circle/Circle';
+import Circle from 'components/shapes/Circle';
 import appStyles from 'styles/AppStyles';
 import appSizes from 'styles/AppSizes';
 import appColors from 'styles/AppColors';
