@@ -22,6 +22,13 @@ function ReadingSessionProgressComponent (props) {
             </View>
         );
     }
+
+    const pagesReadOverTime = {
+        labels: ["January", "February", "March", "April", "May", "June"],
+        values: [20, 45, 28, 80, 99, 43],
+        legend: ['Read pages over time']
+    };
+
     return (
         <View style={[appStyles.vertical, appStyles.justifySpaceBetween, appStyles.alignItemsCenter]}>
             <View style={[appStyles.horizontal, appStyles.justifyCenter, appStyles.marginBottom]}>
@@ -32,6 +39,7 @@ function ReadingSessionProgressComponent (props) {
                         borderWidth={appSizes.progressCircleBorder()}
                     />
                     <LineChart
+                        data={pagesReadOverTime}
                         width={appSizes.carouselWidth()}
                         height={appSizes.progressCircleRadius() * 2}
                     />

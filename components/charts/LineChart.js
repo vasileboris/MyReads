@@ -3,11 +3,10 @@ import PropTypes from 'prop-types';
 import {
     LineChart as RNLineChart
 } from "react-native-chart-kit";
-import appSizes from 'styles/AppSizes';
 import appColors from 'styles/AppColors';
 
 const LineChart = props => {
-    const { width, height } = props;
+    const { width, height, data } = props;
 
     const chartConfig = {
         backgroundGradientFrom: appColors.color2,
@@ -22,21 +21,32 @@ const LineChart = props => {
         }
     };
 
-    const data = {
-        labels: ["January", "February", "March", "April", "May", "June"],
+    const defaultData = {
+        labels: [],
         datasets: [
             {
-                data: [20, 45, 28, 80, 99, 43],
+                data: [],
                 color: (opacity = 1) => appColors.color5,
                 strokeWidth: 2.5
             }
         ],
-        legend: ['Read pages over time']
+        legend: []
     };
+
+    const mergedData = {
+        labels: data.labels,
+        datasets: [
+            {
+                ...defaultData.datasets[0],
+                data: data.values
+            }
+        ],
+        legend: data.legend
+    }
 
     return (
         <RNLineChart
-            data={data}
+            data={mergedData}
             width={width}
             height={height}
             chartConfig={chartConfig}
@@ -46,6 +56,7 @@ const LineChart = props => {
 };
 
 LineChart.propTypes = {
+    data: PropTypes.object.isRequired,
     diameter: PropTypes.number.isRequired,
     color: PropTypes.string.isRequired,
     margin: PropTypes.number
