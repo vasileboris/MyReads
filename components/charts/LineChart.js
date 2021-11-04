@@ -34,9 +34,16 @@ const LineChart = props => {
     };
 
     const { labels } = data;
-    const mergedLabels = labels.length > 3
-        ? [labels[0], labels[Math.floor((labels.length-1)/2)], labels[labels.length-1]]
-        : labels;
+    const mergedLabels = labels.map((lbl, idx) => {
+        if(labels.length < 4
+            || 0 === idx
+            || Math.floor((labels.length-1)/2) === idx
+            || labels.length - 1 === idx) {
+            return lbl;
+        }
+        return '';
+    })
+
     const mergedData = {
         labels: mergedLabels,
         datasets: [
