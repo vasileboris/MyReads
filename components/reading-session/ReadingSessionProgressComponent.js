@@ -27,11 +27,86 @@ function ReadingSessionProgressComponent (props) {
         <View style={[appStyles.vertical, appStyles.justifySpaceBetween, appStyles.alignItemsCenter]}>
             <View style={[appStyles.horizontal, appStyles.justifyCenter, appStyles.marginBottom]}>
                 <Carousel>
-                    <ProgressCircle
-                        readingSessionProgress={readingSessionProgress}
-                        radius={appSizes.progressCircleRadius()}
-                        borderWidth={appSizes.progressCircleBorder()}
-                    />
+                    <View style={[appStyles.vertical, appStyles.justifyCenter]}>
+                        <ProgressCircle
+                            readingSessionProgress={readingSessionProgress}
+                            radius={appSizes.progressCircleRadius()}
+                            borderWidth={appSizes.progressCircleBorder()}
+                        />
+                        <Text>
+                            <Text style={[appStyles.text, appStyles.title]}>
+                                {readingSessionProgress.averagePagesPerDay}
+                            </Text>
+                            <Text style={[appStyles.text]}>
+                                {' '}
+                            </Text>
+                            <Text style={[appStyles.text]}>
+                                {localizer.localize('reading-session-progress-average-pages-label')}
+                            </Text>
+                        </Text>
+                        { readingSessionProgress.estimatedReadDaysLeft > 0 && (
+                            <React.Fragment>
+                                <Text>
+                                    <Text style={[appStyles.text, appStyles.title]}>
+                                        {readingSessionProgress.pagesTotal - readingSessionProgress.lastReadPage}
+                                    </Text>
+                                    <Text style={[appStyles.text]}>
+                                        {' '}
+                                    </Text>
+                                    <Text style={[appStyles.text]}>
+                                        {localizer.localize('reading-session-progress-estimated-pages-left-label')}
+                                    </Text>
+                                </Text>
+                                <Text>
+                                    <Text style={[appStyles.text, appStyles.title]}>
+                                        {readingSessionProgress.estimatedReadDaysLeft}
+                                    </Text>
+                                    <Text style={[appStyles.text]}>
+                                        {' '}
+                                    </Text>
+                                    <Text style={[appStyles.text]}>
+                                        {localizer.localize('reading-session-progress-estimated-read-days-left-label')}
+                                    </Text>
+                                    <Text style={[appStyles.text]}>
+                                        {' / '}
+                                    </Text>
+                                    <Text style={[appStyles.text, appStyles.title]}>
+                                        {readingSessionProgress.estimatedDaysLeft}
+                                    </Text>
+                                    <Text style={[appStyles.text]}>
+                                        {' '}
+                                    </Text>
+                                    <Text style={[appStyles.text]}>
+                                        {localizer.localize('reading-session-progress-estimated-days-left-label')}
+                                    </Text>
+                                </Text>
+                                <Text>
+                                    <Text style={[appStyles.text]}>
+                                        {localizer.localize('reading-session-progress-estimated-finish-date-label')}
+                                    </Text>
+                                    <Text style={[appStyles.text]}>
+                                        {' '}
+                                    </Text>
+                                    <Text style={[appStyles.text, appStyles.title]}>
+                                        {localizer.toLocaleDateString(readingSessionProgress.estimatedFinishDate)}
+                                    </Text>
+                                </Text>
+                                {readingSessionProgress.deadline ? (
+                                    <Text>
+                                        <Text style={[appStyles.text, appStyles.title]}>
+                                            {localizer.localize('reading-session-progress-deadline-label')}
+                                        </Text>
+                                        <Text style={[appStyles.text]}>
+                                            {' '}
+                                        </Text>
+                                        <Text style={[appStyles.text, appStyles.title]}>
+                                            {readingSessionProgress.deadline}
+                                        </Text>
+                                    </Text>
+                                ) : null}
+                            </React.Fragment>
+                        )}
+                    </View>
                     <LineChart
                         data={buildPagesReadOverTime(readingSessionProgress)}
                         width={appSizes.carouselWidth()}
@@ -40,81 +115,6 @@ function ReadingSessionProgressComponent (props) {
                 </Carousel>
             </View>
 
-            <View style={[appStyles.vertical, appStyles.justifyCenter]}>
-                <Text>
-                    <Text style={[appStyles.text, appStyles.title]}>
-                        {readingSessionProgress.averagePagesPerDay}
-                    </Text>
-                    <Text style={[appStyles.text]}>
-                        {' '}
-                    </Text>
-                    <Text style={[appStyles.text]}>
-                        {localizer.localize('reading-session-progress-average-pages-label')}
-                    </Text>
-                </Text>
-                { readingSessionProgress.estimatedReadDaysLeft > 0 && (
-                <React.Fragment>
-                    <Text>
-                        <Text style={[appStyles.text, appStyles.title]}>
-                            {readingSessionProgress.pagesTotal - readingSessionProgress.lastReadPage}
-                        </Text>
-                        <Text style={[appStyles.text]}>
-                            {' '}
-                        </Text>
-                        <Text style={[appStyles.text]}>
-                            {localizer.localize('reading-session-progress-estimated-pages-left-label')}
-                        </Text>
-                    </Text>
-                    <Text>
-                        <Text style={[appStyles.text, appStyles.title]}>
-                            {readingSessionProgress.estimatedReadDaysLeft}
-                        </Text>
-                        <Text style={[appStyles.text]}>
-                            {' '}
-                        </Text>
-                        <Text style={[appStyles.text]}>
-                            {localizer.localize('reading-session-progress-estimated-read-days-left-label')}
-                        </Text>
-                        <Text style={[appStyles.text]}>
-                            {' / '}
-                        </Text>
-                        <Text style={[appStyles.text, appStyles.title]}>
-                            {readingSessionProgress.estimatedDaysLeft}
-                        </Text>
-                        <Text style={[appStyles.text]}>
-                            {' '}
-                        </Text>
-                        <Text style={[appStyles.text]}>
-                            {localizer.localize('reading-session-progress-estimated-days-left-label')}
-                        </Text>
-                    </Text>
-                    <Text>
-                        <Text style={[appStyles.text]}>
-                            {localizer.localize('reading-session-progress-estimated-finish-date-label')}
-                        </Text>
-                        <Text style={[appStyles.text]}>
-                            {' '}
-                        </Text>
-                        <Text style={[appStyles.text, appStyles.title]}>
-                            {localizer.toLocaleDateString(readingSessionProgress.estimatedFinishDate)}
-                        </Text>
-                    </Text>
-                    {readingSessionProgress.deadline ? (
-                    <Text>
-                        <Text style={[appStyles.text, appStyles.title]}>
-                            {localizer.localize('reading-session-progress-deadline-label')}
-                        </Text>
-                        <Text style={[appStyles.text]}>
-                            {' '}
-                        </Text>
-                        <Text style={[appStyles.text, appStyles.title]}>
-                            {readingSessionProgress.deadline}
-                        </Text>
-                    </Text>
-                    ) : null}
-                </React.Fragment>
-                )}
-            </View>
         </View>
     );
 }
