@@ -23,12 +23,6 @@ function ReadingSessionProgressComponent (props) {
         );
     }
 
-    const pagesReadOverTime = {
-        labels: ["January", "February", "March", "April", "May", "June"],
-        values: [20, 45, 28, 80, 99, 43],
-        legend: ['Read pages over time']
-    };
-
     return (
         <View style={[appStyles.vertical, appStyles.justifySpaceBetween, appStyles.alignItemsCenter]}>
             <View style={[appStyles.horizontal, appStyles.justifyCenter, appStyles.marginBottom]}>
@@ -39,7 +33,7 @@ function ReadingSessionProgressComponent (props) {
                         borderWidth={appSizes.progressCircleBorder()}
                     />
                     <LineChart
-                        data={pagesReadOverTime}
+                        data={buildPagesReadOverTime(readingSessionProgress)}
                         width={appSizes.carouselWidth()}
                         height={appSizes.progressCircleRadius() * 2}
                     />
@@ -123,6 +117,17 @@ function ReadingSessionProgressComponent (props) {
             </View>
         </View>
     );
+}
+
+function buildPagesReadOverTime(readingSessionProgress) {
+    const { dateReadingSessions } = readingSessionProgress;
+    dateReadingSessions.sort((drs1, drs2) => drs1.date.localeCompare(drs2.date));
+    const pagesReadOverTime = {
+        labels: dateReadingSessions.map(drs => drs.date),
+        values: dateReadingSessions.map(drs => drs.lastReadPage),
+        legend: [localizer.localize('read-pages-over-time-label')]
+    };
+    return pagesReadOverTime;
 }
 
 ReadingSessionProgressComponent.propTypes = {

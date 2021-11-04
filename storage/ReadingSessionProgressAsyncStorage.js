@@ -53,7 +53,8 @@ export const fetchCurrentReadingSessionProgressFromStore = (bookUuid, uuid) => {
                             estimatedReadDaysLeft,
                             estimatedDaysLeft,
                             estimatedFinishDate,
-                            deadline: readingSession.deadline
+                            deadline: readingSession.deadline,
+                            dateReadingSessions
                         };
 
                         resolve(buildResponse(readingSessionProgress));
