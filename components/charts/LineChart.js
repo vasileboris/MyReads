@@ -33,8 +33,12 @@ const LineChart = props => {
         legend: []
     };
 
+    const { labels } = data;
+    const mergedLabels = labels.length > 3
+        ? [labels[0], labels[Math.floor((labels.length-1)/2)], labels[labels.length-1]]
+        : labels;
     const mergedData = {
-        labels: data.labels,
+        labels: mergedLabels,
         datasets: [
             {
                 ...defaultData.datasets[0],

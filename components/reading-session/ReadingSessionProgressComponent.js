@@ -24,15 +24,15 @@ function ReadingSessionProgressComponent (props) {
     }
 
     return (
-        <View style={[appStyles.vertical, appStyles.justifySpaceBetween, appStyles.alignItemsCenter]}>
-            <View style={[appStyles.horizontal, appStyles.justifyCenter, appStyles.marginBottom]}>
-                <Carousel>
-                    <View style={[appStyles.vertical, appStyles.justifyCenter]}>
-                        <ProgressCircle
-                            readingSessionProgress={readingSessionProgress}
-                            radius={appSizes.progressCircleRadius()}
-                            borderWidth={appSizes.progressCircleBorder()}
-                        />
+        <View style={[appStyles.horizontal, appStyles.justifyCenter]}>
+            <Carousel>
+                <View style={[appStyles.vertical, appStyles.justifySpaceAround]}>
+                    <ProgressCircle
+                        readingSessionProgress={readingSessionProgress}
+                        radius={appSizes.progressCircleRadius()}
+                        borderWidth={appSizes.progressCircleBorder()}
+                    />
+                    <View style={[appStyles.vertical, appStyles.justifySpaceBetween]}>
                         <Text>
                             <Text style={[appStyles.text, appStyles.title]}>
                                 {readingSessionProgress.averagePagesPerDay}
@@ -107,14 +107,13 @@ function ReadingSessionProgressComponent (props) {
                             </React.Fragment>
                         )}
                     </View>
-                    <LineChart
-                        data={buildPagesReadOverTime(readingSessionProgress)}
-                        width={appSizes.carouselWidth()}
-                        height={appSizes.progressCircleRadius() * 2}
-                    />
-                </Carousel>
-            </View>
-
+                </View>
+                <LineChart
+                    data={buildPagesReadOverTime(readingSessionProgress)}
+                    width={appSizes.carouselWidth()}
+                    height={appSizes.progressCircleRadius() * 3}
+                />
+            </Carousel>
         </View>
     );
 }
