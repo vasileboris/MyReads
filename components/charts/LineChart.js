@@ -7,7 +7,7 @@ import appSizes from 'styles/AppSizes';
 import appColors from 'styles/AppColors';
 
 const LineChart = props => {
-    const { diameter, color, margin } = props;
+    const { width, height } = props;
 
     const chartConfig = {
         backgroundGradientFrom: appColors.color2,
@@ -37,20 +37,18 @@ const LineChart = props => {
     return (
         <RNLineChart
             data={data}
-            width={appSizes.carouselWidth()}
-            height={appSizes.progressCircleRadius() * 2}
+            width={width}
+            height={height}
             chartConfig={chartConfig}
             withVerticalLines={false}
         />
     );
 };
 
-/*
 LineChart.propTypes = {
     diameter: PropTypes.number.isRequired,
     color: PropTypes.string.isRequired,
     margin: PropTypes.number
 };
-*/
 
 export default LineChart;

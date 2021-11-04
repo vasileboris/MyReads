@@ -4,13 +4,12 @@ import {
     Text,
     View
 } from 'react-native';
-import ProgressCircle from 'react-native-progress-circle';
+import ProgressCircle from 'components/charts/ProgressCircle';
 import Carousel from 'components/carousel/Carousel';
 import LineChart from 'components/charts/LineChart';
 import localizer from 'utils/Localizer';
 import appStyles from 'styles/AppStyles';
 import appSizes from 'styles/AppSizes';
-import appColors from 'styles/AppColors';
 
 function ReadingSessionProgressComponent (props) {
     const  { readingSessionProgress } = props;
@@ -28,18 +27,14 @@ function ReadingSessionProgressComponent (props) {
             <View style={[appStyles.horizontal, appStyles.justifyCenter, appStyles.marginBottom]}>
                 <Carousel>
                     <ProgressCircle
-                        percent={readingSessionProgress.readPercentage}
+                        readingSessionProgress={readingSessionProgress}
                         radius={appSizes.progressCircleRadius()}
                         borderWidth={appSizes.progressCircleBorder()}
-                        color={appColors.color4}
-                        shadowColor={appColors.color5}
-                        bgColor={appColors.color2}>
-
-                        <Text style={[appStyles.text, appStyles.emphasis, appStyles.h1]}>
-                            {readingSessionProgress.readPercentage}%
-                        </Text>
-                    </ProgressCircle>
-                    <LineChart/>
+                    />
+                    <LineChart
+                        width={appSizes.carouselWidth()}
+                        height={appSizes.progressCircleRadius() * 2}
+                    />
                 </Carousel>
             </View>
 

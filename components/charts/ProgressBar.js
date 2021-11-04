@@ -7,7 +7,7 @@ import {
 import appStyles from 'styles/AppStyles';
 import appColors from 'styles/AppColors';
 
-const ProgressBarComponent = props => {
+const ProgressBar = props => {
     const { value } = props;
     return value && (
         <View style={[appStyles.progressBar]}>
@@ -22,8 +22,8 @@ const ProgressBarComponent = props => {
     );
 };
 
-ProgressBarComponent.propTypes = {
+ProgressBar.propTypes = {
     value: PropTypes.number
 };
 
-export default ProgressBarComponent;
+export default ProgressBar;
