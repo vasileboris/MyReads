@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {
     Text,
-    View
+    View,
+    ScrollView
 } from 'react-native';
 import ProgressCircle from 'components/charts/ProgressCircle';
 import Carousel from 'components/carousel/Carousel';
@@ -24,16 +25,21 @@ function ReadingSessionProgressComponent (props) {
     }
 
     return (
-        <View style={[appStyles.horizontal, appStyles.justifyCenter]}>
-            <Carousel>
-                <View style={[appStyles.vertical, appStyles.justifySpaceAround]}>
-                    <View style={[appStyles.horizontal, appStyles.justifyCenter]}>
-                        <ProgressCircle
-                            readingSessionProgress={readingSessionProgress}
-                            radius={appSizes.progressCircleRadius()}
-                            borderWidth={appSizes.progressCircleBorder()}
-                        />
-                    </View>
+        <View style={[appStyles.vertical, appStyles.justifyCenter]} height={appSizes.progressCircleRadius() * 3}>
+            <ScrollView>
+                <View style={[appStyles.horizontal, appStyles.justifyCenter]}>
+                    <ProgressCircle
+                        readingSessionProgress={readingSessionProgress}
+                        radius={appSizes.progressCircleRadius()}
+                        borderWidth={appSizes.progressCircleBorder()}
+                    />
+                </View>
+                <LineChart
+                    data={buildPagesReadOverTime(readingSessionProgress)}
+                    width={appSizes.carouselWidth()}
+                    height={appSizes.progressCircleRadius() * 3}
+                />
+                <View style={[appStyles.horizontal, appStyles.justifyCenter]}>
                     <View style={[appStyles.vertical, appStyles.justifySpaceBetween]}>
                         <Text>
                             <Text style={[appStyles.text, appStyles.title]}>
@@ -110,12 +116,7 @@ function ReadingSessionProgressComponent (props) {
                         )}
                     </View>
                 </View>
-                <LineChart
-                    data={buildPagesReadOverTime(readingSessionProgress)}
-                    width={appSizes.carouselWidth()}
-                    height={appSizes.progressCircleRadius() * 3}
-                />
-            </Carousel>
+            </ScrollView>
         </View>
     );
 }
