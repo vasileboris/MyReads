@@ -7,6 +7,8 @@ I needed to know when I will finish a book based on my current reading speed and
 
 ![reading-session-progress](reading-session-progress.png)
 
+![reading-session-progress-chart](reading-session-progress-chart.png)
+
 In order to have similar results you'll have to manage the books and corresponding reading sessions.
 
 ## Add a book

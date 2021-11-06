@@ -10,6 +10,7 @@ const assets = {
     '/menu/lock.png': require('../../assets/menu/lock.png'),
 
     '/help/reading-session-progress.png': require('../../assets/help/reading-session-progress.png'),
+    '/help/reading-session-progress-chart.png': require('../../assets/help/reading-session-progress-chart.png'),
     '/help/add-book.png': require('../../assets/help/add-book.png'),
     '/help/edit-book.png': require('../../assets/help/edit-book.png'),
     '/help/delete-book.png': require('../../assets/help/delete-book.png'),
