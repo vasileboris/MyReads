@@ -25,7 +25,7 @@ function ReadingSessionProgressComponent (props) {
 
     return (
         <View style={[appStyles.vertical, appStyles.justifyCenter]} height={appSizes.progressCircleRadius() * 3}>
-            <ScrollView>
+            <ScrollView persistentScrollbar={true}>
                 <View style={[appStyles.horizontal, appStyles.justifyCenter]}>
                     <ProgressCircle
                         readingSessionProgress={readingSessionProgress}
@@ -33,11 +33,6 @@ function ReadingSessionProgressComponent (props) {
                         borderWidth={appSizes.progressCircleBorder()}
                     />
                 </View>
-                <LineChart
-                    data={buildPagesReadOverTime(readingSessionProgress)}
-                    width={appSizes.carouselWidth()}
-                    height={appSizes.progressCircleRadius() * 3}
-                />
                 <View style={[appStyles.horizontal, appStyles.justifyCenter]}>
                     <View style={[appStyles.vertical, appStyles.justifySpaceBetween]}>
                         <Text>
@@ -115,6 +110,11 @@ function ReadingSessionProgressComponent (props) {
                         )}
                     </View>
                 </View>
+                <LineChart
+                    data={buildPagesReadOverTime(readingSessionProgress)}
+                    width={appSizes.carouselWidth()}
+                    height={appSizes.progressCircleRadius() * 3}
+                />
             </ScrollView>
         </View>
     );
