@@ -27,11 +27,13 @@ function ReadingSessionProgressComponent (props) {
         <View style={[appStyles.horizontal, appStyles.justifyCenter]}>
             <Carousel>
                 <View style={[appStyles.vertical, appStyles.justifySpaceAround]}>
-                    <ProgressCircle
-                        readingSessionProgress={readingSessionProgress}
-                        radius={appSizes.progressCircleRadius()}
-                        borderWidth={appSizes.progressCircleBorder()}
-                    />
+                    <View style={[appStyles.horizontal, appStyles.justifyCenter]}>
+                        <ProgressCircle
+                            readingSessionProgress={readingSessionProgress}
+                            radius={appSizes.progressCircleRadius()}
+                            borderWidth={appSizes.progressCircleBorder()}
+                        />
+                    </View>
                     <View style={[appStyles.vertical, appStyles.justifySpaceBetween]}>
                         <Text>
                             <Text style={[appStyles.text, appStyles.title]}>
