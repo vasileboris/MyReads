@@ -6,7 +6,6 @@ import {
     ScrollView
 } from 'react-native';
 import ProgressCircle from 'components/charts/ProgressCircle';
-import Carousel from 'components/carousel/Carousel';
 import LineChart from 'components/charts/LineChart';
 import localizer from 'utils/Localizer';
 import appStyles from 'styles/AppStyles';
