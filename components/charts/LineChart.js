@@ -62,7 +62,11 @@ const LineChart = props => {
             height={height}
             chartConfig={chartConfig}
             withVerticalLines={false}
-        />
+            getDotColor={(point, index) => {
+                if(index <= data.seriesOneLastIndex) {
+                    return appColors.color4;
+                }
+            }}/>
     );
 };
 

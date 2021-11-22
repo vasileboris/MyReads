@@ -10,6 +10,7 @@ import LineChart from 'components/charts/LineChart';
 import localizer from 'utils/Localizer';
 import appStyles from 'styles/AppStyles';
 import appSizes from 'styles/AppSizes';
+import { addDays } from 'utils/Date';
 
 function ReadingSessionProgressComponent (props) {
     const  { readingSessionProgress } = props;
@@ -121,11 +122,35 @@ function ReadingSessionProgressComponent (props) {
 }
 
 function buildPagesReadOverTime(readingSessionProgress) {
-    const { dateReadingSessions } = readingSessionProgress;
+    const { dateReadingSessions,
+        estimatedReadDaysLeft,
+        estimatedDaysLeft,
+        estimatedFinishDate,
+        lastReadPage,
+        averagePagesPerDay,
+        pagesTotal } = readingSessionProgress;
+
     dateReadingSessions.sort((drs1, drs2) => drs1.date.localeCompare(drs2.date));
+    const lastReadIndex = dateReadingSessions.length - 1;
+
+    if(estimatedReadDaysLeft > 0) {
+        const lastReadingSessionDate = dateReadingSessions[dateReadingSessions.length - 1].date;
+        const multiplyFactor = Math.round(estimatedDaysLeft / estimatedReadDaysLeft);
+        for(let i=0; i<estimatedReadDaysLeft-1; i++) {
+            dateReadingSessions.push({
+                date: addDays(lastReadingSessionDate, (i+1) * multiplyFactor),
+                lastReadPage: lastReadPage + (i+1) * averagePagesPerDay
+            });
+        }
+        dateReadingSessions.push({
+            date: estimatedFinishDate,
+            lastReadPage: pagesTotal
+        });
+    }
     const pagesReadOverTime = {
         labels: dateReadingSessions.map(drs => drs.date),
         values: dateReadingSessions.map(drs => drs.lastReadPage),
+        seriesOneLastIndex: lastReadIndex,
         legend: [localizer.localize('read-pages-over-time-label')]
     };
     return pagesReadOverTime;
