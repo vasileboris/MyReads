@@ -16,7 +16,7 @@ const LineChart = props => {
         labelColor: (opacity = 1) => appColors.color3,
         propsForDots: {
             r: 5,
-            strokeWidth: 2.5,
+            strokeWidth: 0,
             stroke: appColors.color4
         }
     };
@@ -34,7 +34,7 @@ const LineChart = props => {
     };
 
     const { labels } = data;
-    const mergedLabels = labels.map((lbl, idx) => {
+    let mergedLabels = labels.map((lbl, idx) => {
         if(labels.length < 4
             || 0 === idx
             || Math.floor((labels.length-1)/2) === idx
@@ -42,7 +42,20 @@ const LineChart = props => {
             return lbl;
         }
         return '';
-    })
+    });
+    //This is magic number. If there too many empty labels, the rightest one is not visible.
+    if(mergedLabels.length > 9) {
+        mergedLabels = mergedLabels.reduce(
+            (previous, current) => {
+                if(!current) {
+                    return previous;
+                }
+                if(0 === previous.length) {
+                    return [...previous, current];
+                }
+                return [...previous, '', '', '', current];
+            }, []);
+    }
 
     const mergedData = {
         labels: mergedLabels,
@@ -66,6 +79,7 @@ const LineChart = props => {
                 if(index <= data.seriesOneLastIndex) {
                     return appColors.color4;
                 }
+                return appColors.color5;
             }}/>
     );
 };
