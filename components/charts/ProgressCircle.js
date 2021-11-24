@@ -17,7 +17,7 @@ const ProgressBar = props => {
             borderWidth={appSizes.progressCircleBorder()}
             color={appColors.color4}
             shadowColor={appColors.color5}
-            bgColor={appColors.color2}>
+            bgColor={appColors.color1}>
 
             <Text style={[appStyles.text, appStyles.emphasis, appStyles.h1]}>
                 {readingSessionProgress.readPercentage}%

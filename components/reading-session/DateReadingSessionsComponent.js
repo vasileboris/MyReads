@@ -4,6 +4,7 @@ import {
     FlatList
 } from 'react-native';
 import DateReadingSessionComponent from './DateReadingSessionComponent';
+import Card from '/components/card/Card';
 import appStyles from 'styles/AppStyles';
 
 function DateReadingSessionsComponent(props) {
@@ -13,7 +14,9 @@ function DateReadingSessionsComponent(props) {
             data={dateReadingSessions.sort((drs1, drs2) => drs2.date.localeCompare(drs1.date))}
             keyExtractor={drs => drs.date}
             renderItem={ ({item}) => (
-                <DateReadingSessionComponent dateReadingSession={item} onClick={onDateReadingSessionClick}/>
+                <Card style={[appStyles.marginTop]}>
+                    <DateReadingSessionComponent dateReadingSession={item} onClick={onDateReadingSessionClick}/>
+                </Card>
             )}
         />
     );

@@ -96,13 +96,12 @@ const appStyles = StyleSheet.create({
     },
 
     result: {
-        width: appSizes.resultWidth(),
-        marginTop: appSizes.margin,
+        width: appSizes.resultWidth()
     },
 
     resultDetail: {
         borderTopColor: appColors.color3,
-        borderTopWidth: 1,
+        borderTopWidth: 1
     },
 
     resultDetailsSection: {
@@ -157,7 +156,7 @@ const appStyles = StyleSheet.create({
 
     progressBar: {
         height: appSizes.progressBarHeight(),
-        width: '100%',
+        width: '90%',
         backgroundColor: appColors.color5,
         borderColor: appColors.color2,
         borderWidth: 0,
@@ -175,6 +174,16 @@ const appStyles = StyleSheet.create({
     borderAllAround: {
         borderColor: appColors.color3,
         borderWidth: 1,
+    },
+
+    card: {
+        padding: appSizes.padding,
+        backgroundColor: appColors.color1,
+        borderRadius: 10
+    },
+
+    marginTop: {
+        marginTop: appSizes.margin
     }
 });
 

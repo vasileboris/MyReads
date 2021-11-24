@@ -143,11 +143,17 @@ const appSizes = {
         return 10;
     },
 
-    carouselWidth: function() {
-        return this.appWidth();
+    carouselHeight: function() {
+        return this.progressCircleRadius() * 3 + 4 * this.padding;
     },
 
+    lineChartHeight: function() {
+        return this.progressCircleRadius() * 3 - 2 * this.padding;
+    },
 
+    lineChartWidth: function() {
+        return this.appWidth() - 2 * this.padding;
+    }
 };
 
 export default appSizes;

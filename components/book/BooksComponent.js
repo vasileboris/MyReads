@@ -4,6 +4,7 @@ import {
     FlatList
 } from 'react-native';
 import BookComponent from './BookComponent';
+import Card from '/components/card/Card';
 import appStyles from 'styles/AppStyles';
 
 function BooksComponent(props) {
@@ -19,7 +20,9 @@ function BooksComponent(props) {
             })}
             keyExtractor={book => book.uuid}
             renderItem={ ({item}) => (
-                <BookComponent book={item} onClick={onBookClick}/>
+                <Card style={[appStyles.marginTop]}>
+                    <BookComponent book={item} onClick={onBookClick}/>
+                </Card>
             )}
         />
     );

@@ -11,7 +11,6 @@ import BookDetailsComponent from 'components/book/BookDetailsComponent';
 import ReadingSessionProgressComponent from 'components/reading-session/ReadingSessionProgressComponent';
 import InputBookComponent from 'components/book/InputBookComponent';
 import Button from 'components/button/Button';
-import Image from 'components/image/Image';
 import appStyles from 'styles/AppStyles';
 import {
     fetchBookAction,
@@ -69,10 +68,10 @@ class BookScreenComponent extends React.Component {
                 <React.Fragment>
                     <View style={[appStyles.screenSectionB1, appStyles.vertical, appStyles.justifyCenter]}>
                         <View style={[appStyles.horizontal, appStyles.justifyStart, appStyles.alignItemsCenter, appStyles.marginBottom]}>
-                            <BookImageComponent image={book.image} size="smallRectangle"/>
-                            <View style={[appStyles.screenSectionA2]}>
-                                <BookDetailsComponent book={book} hideReadProgress={true}/>
-                            </View>
+                                <BookImageComponent image={book.image} size="smallRectangle"/>
+                                <View style={[appStyles.screenSectionA2]}>
+                                    <BookDetailsComponent book={book} hideReadProgress={true}/>
+                                </View>
                         </View>
                         <View style={[appStyles.vertical, appStyles.justifyCenter]}>
                             <Button onPress={this.onEditButtonClick}

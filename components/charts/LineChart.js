@@ -9,8 +9,8 @@ const LineChart = props => {
     const { width, height, data } = props;
 
     const chartConfig = {
-        backgroundGradientFrom: appColors.color2,
-        backgroundGradientTo: appColors.color2,
+        backgroundGradientFrom: appColors.color1,
+        backgroundGradientTo: appColors.color1,
         decimalPlaces: 0,
         color: (opacity = 1) => 'black',
         labelColor: (opacity = 1) => appColors.color3,
