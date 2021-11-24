@@ -27,7 +27,7 @@ function ReadingSessionProgressComponent (props) {
 
     return (
         <View style={[appStyles.vertical, appStyles.justifyCenter]} height={appSizes.carouselHeight()}>
-            <ScrollView persistentScrollbar={true}>
+            <ScrollView>
                 <Card>
                     <View style={[appStyles.horizontal, appStyles.justifyCenter]}>
                         <ProgressCircle

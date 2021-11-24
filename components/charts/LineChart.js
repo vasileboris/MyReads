@@ -44,7 +44,7 @@ const LineChart = props => {
         return '';
     });
     //This is magic number. If there too many empty labels, the rightest one is not visible.
-    if(mergedLabels.length > 9) {
+    if(mergedLabels.length > 7) {
         mergedLabels = mergedLabels.reduce(
             (previous, current) => {
                 if(!current) {
@@ -53,7 +53,7 @@ const LineChart = props => {
                 if(0 === previous.length) {
                     return [...previous, current];
                 }
-                return [...previous, '', '', '', current];
+                return [...previous, '', '', current];
             }, []);
     }
 
