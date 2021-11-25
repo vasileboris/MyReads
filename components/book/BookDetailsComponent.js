@@ -23,11 +23,29 @@ function BookDetailsComponent(props) {
             </Text>
             {!hideReadProgress && book.readPercentage && (
                 <React.Fragment>
-                    <Text style={[appStyles.text, appStyles.emphasis]}>
-                        {book.readPercentage}%
-                        {localizer.localize('reading-session-progress-status-label')}
+                    <Text>
+                        <Text style={[appStyles.text, appStyles.emphasis]}>
+                            {book.readPercentage}%
+                        </Text>
+                        <Text style={[appStyles.text]}>
+                            {' '}
+                        </Text>
+                        <Text style={[appStyles.text]}>
+                            {localizer.localize('reading-session-progress-status-label')}
+                        </Text>
                     </Text>
                     <ProgressBar value={book.readPercentage}/>
+                    <Text>
+                        <Text style={[appStyles.text]}>
+                            {localizer.localize('book-last-update-label')}
+                        </Text>
+                        <Text style={[appStyles.text]}>
+                            {' '}
+                        </Text>
+                        <Text style={[appStyles.text, appStyles.title]}>
+                            {localizer.toLocaleDateString(book.date)}
+                        </Text>
+                    </Text>
                 </React.Fragment>
             )}
         </View>
