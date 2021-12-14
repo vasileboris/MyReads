@@ -31,7 +31,11 @@ export const fetchCurrentReadingSessionProgressFromStore = (bookUuid, uuid) => {
                         if(Date.parse(today) > Date.parse(lastReadDate)) {
                             lastReadDate = today;
                         }
-                        const lastReadPage = dateReadingSessions.reduce((lastReadPage, drs) => Math.max(lastReadPage, drs.lastReadPage), dateReadingSessions[0].lastReadPage);
+
+                        let lastReadPage = dateReadingSessions.reduce((lastReadPage, drs) => Math.max(lastReadPage, drs.lastReadPage), dateReadingSessions[0].lastReadPage);
+                        const lastReadPageDate = dateReadingSessions.find(drs => lastReadPage == drs.lastReadPage);
+                        lastReadPage = Math.min(lastReadPage, book.pages);
+
                         const averagePagesPerDay = Math.round(lastReadPage / dateReadingSessions.length);
                         const readPercentage = Math.round((lastReadPage * 100) / book.pages);
                         let remainingPages = book.pages - lastReadPage;
@@ -47,7 +51,8 @@ export const fetchCurrentReadingSessionProgressFromStore = (bookUuid, uuid) => {
                         const readingSessionProgress = {
                             bookUuid,
                             lastReadPage,
-                            pagesTotal: book.pages,
+                            lastReadPageDate,
+                            bookPages: book.pages,
                             readPercentage,
                             averagePagesPerDay,
                             estimatedReadDaysLeft,

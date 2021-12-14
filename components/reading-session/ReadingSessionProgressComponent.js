@@ -55,7 +55,7 @@ function ReadingSessionProgressComponent (props) {
                                 <React.Fragment>
                                     <Text>
                                         <Text style={[appStyles.text, appStyles.title]}>
-                                            {readingSessionProgress.pagesTotal - readingSessionProgress.lastReadPage}
+                                            {readingSessionProgress.bookPages - readingSessionProgress.lastReadPage}
                                         </Text>
                                         <Text style={[appStyles.text]}>
                                             {' '}
@@ -135,7 +135,7 @@ function buildPagesReadOverTime(readingSessionProgress) {
         estimatedFinishDate,
         lastReadPage,
         averagePagesPerDay,
-        pagesTotal } = readingSessionProgress;
+        bookPages } = readingSessionProgress;
 
     dateReadingSessions.sort((drs1, drs2) => drs1.date.localeCompare(drs2.date));
     const lastReadIndex = dateReadingSessions.length - 1;
@@ -151,7 +151,7 @@ function buildPagesReadOverTime(readingSessionProgress) {
         }
         dateReadingSessions.push({
             date: estimatedFinishDate,
-            lastReadPage: pagesTotal
+            lastReadPage: bookPages
         });
     }
     const pagesReadOverTime = {
@@ -167,7 +167,7 @@ ReadingSessionProgressComponent.propTypes = {
     readingSessionProgress: PropTypes.shape({
         readPercentage: PropTypes.number.isRequired,
         averagePagesPerDay: PropTypes.number.isRequired,
-        pagesTotal: PropTypes.number.isRequired,
+        bookPages: PropTypes.number.isRequired,
         lastReadPage: PropTypes.number.isRequired,
         estimatedReadDaysLeft: PropTypes.number.isRequired,
         estimatedDaysLeft: PropTypes.number.isRequired,

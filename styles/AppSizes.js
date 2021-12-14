@@ -143,6 +143,10 @@ const appSizes = {
         return 10;
     },
 
+    progressBarWidth: function () {
+        return this.resultDetailsSectionWidth() - 2 * this.margin;
+    },
+
     carouselHeight: function() {
         return this.progressCircleRadius() * 3 + 4 * this.padding;
     },

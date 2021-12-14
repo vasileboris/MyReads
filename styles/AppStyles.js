@@ -156,7 +156,7 @@ const appStyles = StyleSheet.create({
 
     progressBar: {
         height: appSizes.progressBarHeight(),
-        width: '90%',
+        width: appSizes.progressBarWidth(),
         backgroundColor: appColors.color5,
         borderColor: appColors.color2,
         borderWidth: 0,
