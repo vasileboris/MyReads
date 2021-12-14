@@ -2,9 +2,9 @@ import { getReason } from 'utils/Error';
 import localizer from 'utils/Localizer';
 import { fetchCurrentReadingSessionProgressFromStore } from 'storage/ReadingSessionProgressAsyncStorage';
 
-export function fetchReadingSessionProgress(bookUuid, uuid) {
+export function fetchReadingSessionProgress(bookUuid) {
     return new Promise((resolve, reject) => {
-        fetchCurrentReadingSessionProgressFromStore(bookUuid, uuid)
+        fetchCurrentReadingSessionProgressFromStore(bookUuid)
             .then(response => resolve(response))
             .catch(error => reject(fetchReadingSessionProgressMessage(error)))
     });

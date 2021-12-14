@@ -15,7 +15,7 @@ function* callFetchCurrentReadingSession(action) {
         const bookUuid  = action.payload;
         const response = yield call(fetchCurrentReadingSession, bookUuid);
         yield put(receiveCurrentReadingSessionAction(response.data));
-        yield put(fetchReadingSessionProgressAction(bookUuid, response.data.uuid));
+        yield put(fetchReadingSessionProgressAction(bookUuid));
     } catch (error) {
         yield put(receiveMessageAction(error));
     }

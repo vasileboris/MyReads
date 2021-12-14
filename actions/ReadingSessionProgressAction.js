@@ -2,10 +2,10 @@ export const FETCH_READING_SESSION_PROGRESS = 'FETCH_READING_SESSION_PROGRESS';
 export const RECEIVE_READING_SESSION_PROGRESS = 'RECEIVE_READING_SESSION_PROGRESS';
 export const CLEAR_READING_SESSION_PROGRESS = 'CLEAR_READING_SESSION_PROGRESS';
 
-export function fetchReadingSessionProgressAction(bookUuid, uuid) {
+export function fetchReadingSessionProgressAction(bookUuid) {
     return {
         type: FETCH_READING_SESSION_PROGRESS,
-        payload: { bookUuid, uuid }
+        payload: { bookUuid }
     }
 }
 

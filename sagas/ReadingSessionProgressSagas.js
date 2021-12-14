@@ -17,10 +17,10 @@ export function* watchFetchReadingSessionProgress() {
 }
 
 function* callFetchReadingSessionProgress(action) {
-    const { bookUuid, uuid } = action.payload;
+    const { bookUuid } = action.payload;
     try {
         const bookResponse = yield call(fetchBook, bookUuid);
-        const response = yield call(fetchReadingSessionProgress, bookUuid, uuid);
+        const response = yield call(fetchReadingSessionProgress, bookUuid);
 
         if(bookResponse.data.readPercentage !== response.data.readPercentage) {
                 const book = {
