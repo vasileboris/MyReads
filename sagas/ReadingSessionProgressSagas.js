@@ -1,5 +1,5 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-import { fetchReadingSessionProgress } from 'api/ReadingSessionProgressApi';
+import { fetchReadingSessionProgressByBookUuid } from 'api/ReadingSessionProgressApi';
 import {
     receiveReadingSessionProgressAction,
     clearReadingSessionProgressAction,
@@ -20,7 +20,7 @@ function* callFetchReadingSessionProgress(action) {
     const { bookUuid } = action.payload;
     try {
         const bookResponse = yield call(fetchBook, bookUuid);
-        const response = yield call(fetchReadingSessionProgress, bookUuid);
+        const response = yield call(fetchReadingSessionProgressByBookUuid, bookUuid);
 
         if(bookResponse.data.readPercentage !== response.data.readPercentage) {
                 const book = {

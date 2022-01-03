@@ -8,7 +8,7 @@ import { buildResponse } from 'utils/Response';
 import { fetchBookFromStore } from './BooksAsyncStorage';
 import { fetchCurrentReadingSessionFromStore } from './ReadingSessionAsyncStorage';
 
-export const fetchCurrentReadingSessionProgressFromStore = (bookUuid) => {
+export const fetchCurrentReadingSessionProgressByBookUuidFromStore = (bookUuid) => {
     return new Promise((resolve, reject) => {
         fetchBookFromStore(bookUuid)
             .then(response => {
