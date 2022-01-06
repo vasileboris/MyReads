@@ -26,7 +26,7 @@ function* callFetchReadingSessionProgress(action) {
                 const book = {
                 ...bookResponse.data,
                 readPercentage: response.data.readPercentage,
-                date: getISODate(new Date())
+                updateDate: getISODate(new Date())
             }
             yield call(updateBook, book);
             yield put(receiveBookAction(book));

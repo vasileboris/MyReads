@@ -12,8 +12,8 @@ function BooksComponent(props) {
     return (
         <FlatList style={[appStyles.resultDetail]}
             data={Object.values(books).sort((book1, book2) => {
-                if(book1.date && book2.date && book1.date !== book2.date) {
-                    return book2.date.localeCompare(book1.date);
+                if(book1.updateDate && book2.updateDate && book1.updateDate !== book2.updateDate) {
+                    return book2.updateDate.localeCompare(book1.updateDate);
                 }
 
                 return book1.title.toLowerCase().localeCompare(book2.title.toLowerCase());

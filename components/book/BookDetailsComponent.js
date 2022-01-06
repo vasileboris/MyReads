@@ -43,7 +43,7 @@ function BookDetailsComponent(props) {
                             {' '}
                         </Text>
                         <Text style={[appStyles.text, appStyles.title]}>
-                            {localizer.toLocaleDateString(book.date)}
+                            {localizer.toLocaleDateString(book.updateDate)}
                         </Text>
                     </Text>
                 </React.Fragment>

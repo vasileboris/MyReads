@@ -161,7 +161,7 @@ class BookScreenComponent extends React.Component {
 
         const addedBook = {
             ...book,
-            date: getISODate(new Date())
+            updateDate: getISODate(new Date())
         }
 
         addBookAction(booksSearchText, addedBook);
@@ -173,7 +173,7 @@ class BookScreenComponent extends React.Component {
 
         const updatedBook = {
             ...book,
-            date: getISODate(new Date())
+            updateDate: getISODate(new Date())
         }
 
         updateBookAction(booksSearchText, updatedBook);
