@@ -6,7 +6,7 @@ import {
 import BookComponent from './BookComponent';
 import Card from '/components/card/Card';
 import appStyles from 'styles/AppStyles';
-import { getISODate } from 'utils/Date';
+import { getBookDate } from 'utils/Book';
 
 function BooksComponent(props) {
     const { books, onBookClick } = props;
@@ -37,11 +37,6 @@ function BooksComponent(props) {
             )}
         />
     );
-}
-
-function getBookDate(book) {
-    const bookDate = book.lastReadPageDate ? book.lastReadPageDate : book.lastReadPageDate;
-    return bookDate ? bookDate :  getISODate(new Date(0)); // 1970-01-01
 }
 
 BooksComponent.propTypes = {

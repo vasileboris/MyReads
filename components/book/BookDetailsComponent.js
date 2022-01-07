@@ -7,6 +7,7 @@ import {
 import localizer from 'utils/Localizer';
 import appStyles from 'styles/AppStyles';
 import ProgressBar from 'components/charts/ProgressBar';
+import { getBookDate } from 'utils/Book';
 
 function BookDetailsComponent(props) {
     const { book, hideReadProgress } = props;
@@ -43,7 +44,7 @@ function BookDetailsComponent(props) {
                             {' '}
                         </Text>
                         <Text style={[appStyles.text, appStyles.title]}>
-                            {localizer.toLocaleDateString(book.updateDate)}
+                            {localizer.toLocaleDateString(getBookDate(book))}
                         </Text>
                     </Text>
                 </React.Fragment>
