@@ -9,7 +9,9 @@ import {
     fetchBook,
     updateBook
 } from 'api/BookApi';
-import { receiveBookAction } from 'actions/BookAction';
+import {
+    receiveBookAction,
+    resetBookAction} from 'actions/BookAction';
 import { getISODate } from 'utils/Date';
 
 export function* watchFetchReadingSessionProgress() {
@@ -22,16 +24,15 @@ function* callFetchReadingSessionProgress(action) {
         const bookResponse = yield call(fetchBook, bookUuid);
         const response = yield call(fetchReadingSessionProgressByBookUuid, bookUuid);
 
-        if(bookResponse.data.readPercentage !== response.data.readPercentage) {
-                const book = {
-                ...bookResponse.data,
-                updateDate: getISODate(new Date()),
-                readPercentage: response.data.readPercentage,
-                lastReadPageDate: response.data.lastReadPageDate
-            }
-            yield call(updateBook, book);
-            yield put(receiveBookAction(book));
+        const book = {
+            ...bookResponse.data,
+            updateDate: getISODate(new Date()),
+            readPercentage: response.data.readPercentage,
+            lastReadPageDate: response.data.lastReadPageDate
         }
+        yield call(updateBook, book);
+        yield put(receiveBookAction(book));
+        yield put(resetBookAction(book));
 
         yield put(receiveReadingSessionProgressAction(response.data));
     } catch (error) {
