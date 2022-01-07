@@ -6,7 +6,9 @@ import {
 import BookComponent from './BookComponent';
 import Card from '/components/card/Card';
 import appStyles from 'styles/AppStyles';
-import { getBookDate } from 'utils/Book';
+import {
+    getBookDate,
+    getBookReadPercentage } from 'utils/Book';
 
 function BooksComponent(props) {
     const { books, onBookClick } = props;
@@ -14,9 +16,11 @@ function BooksComponent(props) {
         <FlatList style={[appStyles.resultDetail]}
             data={Object.values(books).sort((book1, book2) => {
                 // Unread books first
-                if((book1.readPercentage === 100 && book2.readPercentage < 100)
-                    || (book1.readPercentage < 100 && book2.readPercentage === 100)) {
-                    return book1.readPercentage - book2.readPercentage;
+                const book1ReadPercentage = getBookReadPercentage(book1);
+                const book2ReadPercentage = getBookReadPercentage(book2);
+                if((book1ReadPercentage === 100 && book2ReadPercentage < 100)
+                    || (book1ReadPercentage < 100 && book2ReadPercentage === 100)) {
+                    return book1ReadPercentage - book2ReadPercentage;
                 }
 
                 // and then sort by date desc

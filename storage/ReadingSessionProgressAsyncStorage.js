@@ -46,7 +46,8 @@ export const fetchCurrentReadingSessionProgressByBookFromStore = (book) => {
                 }
 
                 let lastReadPage = dateReadingSessions.reduce((lastReadPage, drs) => Math.max(lastReadPage, drs.lastReadPage), dateReadingSessions[0].lastReadPage);
-                const lastReadPageDate = dateReadingSessions.find(drs => lastReadPage == drs.lastReadPage);
+                const lastReadPageDrs = dateReadingSessions.find(drs => lastReadPage == drs.lastReadPage);
+                const lastReadPageDate = lastReadPageDrs.date;
                 lastReadPage = Math.min(lastReadPage, book.pages);
 
                 const averagePagesPerDay = Math.round(lastReadPage / dateReadingSessions.length);
