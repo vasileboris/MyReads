@@ -36,18 +36,20 @@ function BookDetailsComponent(props) {
                         </Text>
                     </Text>
                     <ProgressBar value={book.readPercentage}/>
-                    <Text>
-                        <Text style={[appStyles.text]}>
-                            {localizer.localize('book-last-update-label')}
-                        </Text>
-                        <Text style={[appStyles.text]}>
-                            {' '}
-                        </Text>
-                        <Text style={[appStyles.text, appStyles.title]}>
-                            {localizer.toLocaleDateString(getBookDate(book))}
-                        </Text>
-                    </Text>
                 </React.Fragment>
+            )}
+            {'1970-01-01' !== getBookDate(book) && (
+                <Text>
+                    <Text style={[appStyles.text]}>
+                        {localizer.localize('book-last-update-label')}
+                    </Text>
+                    <Text style={[appStyles.text]}>
+                        {' '}
+                    </Text>
+                    <Text style={[appStyles.text, appStyles.title]}>
+                        {localizer.toLocaleDateString(getBookDate(book))}
+                    </Text>
+                </Text>
             )}
         </View>
     );
