@@ -5,19 +5,19 @@ import appStyles from 'styles/AppStyles';
 import BookImageComponent from './BookImageComponent';
 import BookDetailsComponent from './BookDetailsComponent';
 
-function StatsBookComponent(props) {
+function BookStatsComponent(props) {
     const { book } = props;
     return (
-        <View style={[appStyles.result, appStyles.horizontal, appStyles.justifyStart, appStyles.alignItemsCenter]}>
+        <View style={[appStyles.result, appStyles.marginTop, appStyles.horizontal, appStyles.justifyStart, appStyles.alignItemsCenter]}>
             <BookImageComponent image={book.image} size="smallRectangle"/>
             <View style={[appStyles.resultDetailsSection]}>
-                <BookDetailsComponent book={book}/>
+                <BookDetailsComponent book={book} hideReadProgress={true}/>
             </View>
         </View>
     );
 }
 
-StatsBookComponent.propTypes = {
+BookStatsComponent.propTypes = {
     book: PropTypes.shape({
         authors: PropTypes.arrayOf(PropTypes.string).isRequired,
         pages: PropTypes.oneOfType([
@@ -27,4 +27,4 @@ StatsBookComponent.propTypes = {
     }).isRequired
 };
 
-export default StatsBookComponent;
+export default BookStatsComponent;

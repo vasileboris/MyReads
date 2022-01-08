@@ -55,5 +55,7 @@
   "about-screen": "About",
   "privacy-policy-screen": "Privacy Policy",
   "read-pages-over-time-label": "Read pages over time",
-  "statistics-screen": "Statistics"
+  "statistics-screen": "Statistics",
+  "statistics-books-read-label": "You finished {count} book:",
+  "statistics-books-read-label_plural": "You finished {count} books:"
 }

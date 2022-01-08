@@ -1,12 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-    Text,
-    View,
-} from 'react-native';
+import { View } from 'react-native';
 import { connect } from 'react-redux';
 import MessageComponent from 'components/message/MessageComponent';
-import StatsBooksComponent from 'components/book/StatsBooksComponent';
+import BooksStatsComponent from 'components/book/BooksStatsComponent';
 import { createDrawerHeaderLeft } from 'components/navigation/ScreenNavigation';
 import { receiveMessageAction } from 'actions/MessageAction';
 import { fetchBooksAction } from 'actions/BookAction';
@@ -31,10 +28,7 @@ class StatsScreenComponent extends React.Component {
         return (
             <View style={[appStyles.screen, appStyles.vertical, appStyles.justifyStart]}>
                 <MessageComponent message={message}/>
-                <Text style={[appStyles.text]}>
-                    {localizer.localize('statistics-screen')}
-                </Text>
-                <StatsBooksComponent books={books}/>
+                <BooksStatsComponent books={books}/>
             </View>
         );
 
