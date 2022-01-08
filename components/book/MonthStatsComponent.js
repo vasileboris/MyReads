@@ -1,24 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Text, View} from 'react-native';
+import {
+    Text,
+    View
+} from 'react-native';
 import appStyles from 'styles/AppStyles';
-import localizer from '/utils/Localizer';
+import localizer from 'utils/Localizer';
+import Card from 'components/card/Card';
 import BookStatsComponent from './BookStatsComponent';
 
 function MonthStatsComponent(props) {
     const { monthStats } = props;
 
     return (
-        <View style={[appStyles.result, appStyles.vertical, appStyles.justifyStart, appStyles.marginTop]}>
-            <Text style={[appStyles.text, appStyles.emphasis, appStyles.h2]}>
-                {monthStats.month}
-            </Text>
-            <Text style={[appStyles.text]}>
-                {localizer.localizeWithCount('statistics-books-read-label', monthStats.books.length)}
-            </Text>
+        <View style={[appStyles.result, appStyles.vertical, appStyles.justifyStart]}>
+            <Card style={[appStyles.marginBottom]}>
+                <Text style={[appStyles.text, appStyles.emphasis, appStyles.h2]}>
+                    {localizer.localize(`month-${monthStats.month}`)}
+                </Text>
+                <Text style={[appStyles.text]}>
+                    {localizer.localizeWithCount('statistics-books-read-label', monthStats.books.length)}
+                </Text>
+            </Card>
             <View>
                 {monthStats.books.map(book =>
-                    <BookStatsComponent book={book}/>
+                    <Card style={[appStyles.marginBottom]}>
+                        <BookStatsComponent book={book}/>
+                    </Card>
                 )}
             </View>
         </View>

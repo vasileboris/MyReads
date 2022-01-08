@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-    FlatList
-} from 'react-native';
+import { FlatList } from 'react-native';
 import YearStatsComponent from '/components/book/YearStatsComponent';
 import Card from '/components/card/Card';
 import appStyles from 'styles/AppStyles';
@@ -51,9 +49,7 @@ function BooksStatsComponent(props) {
             data={sortedStats}
             keyExtractor={stats => stats.year}
             renderItem={({item}) => (
-                <Card style={[appStyles.marginBottom]}>
-                    <YearStatsComponent yearStats={item} key={item.year}/>
-                </Card>
+                <YearStatsComponent yearStats={item} key={item.year}/>
             )}
         />
     );

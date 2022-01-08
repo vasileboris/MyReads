@@ -5,7 +5,7 @@ import appStyles from 'styles/AppStyles';
 const Card = props => {
     const { style=[] } = props;
     return (
-        <View style={[...style, appStyles.card]}>
+        <View style={[appStyles.card, ...style]}>
             {props.children}
         </View>
     );

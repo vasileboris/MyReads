@@ -8,7 +8,7 @@ import BookDetailsComponent from './BookDetailsComponent';
 function BookStatsComponent(props) {
     const { book } = props;
     return (
-        <View style={[appStyles.result, appStyles.marginTop, appStyles.horizontal, appStyles.justifyStart, appStyles.alignItemsCenter]}>
+        <View style={[appStyles.result, appStyles.horizontal, appStyles.justifyStart, appStyles.alignItemsCenter]}>
             <BookImageComponent image={book.image} size="smallRectangle"/>
             <View style={[appStyles.resultDetailsSection]}>
                 <BookDetailsComponent book={book}/>
