@@ -25,8 +25,6 @@ function BooksStatsComponent(props) {
             }
         }
     });
-    console.log('---')
-    console.log(JSON.stringify(statsBooks, null, 2))
 
     Object.keys(statsBooks).forEach(year => {
         let length = 0;

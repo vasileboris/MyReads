@@ -11,7 +11,7 @@ function BookStatsComponent(props) {
         <View style={[appStyles.result, appStyles.marginTop, appStyles.horizontal, appStyles.justifyStart, appStyles.alignItemsCenter]}>
             <BookImageComponent image={book.image} size="smallRectangle"/>
             <View style={[appStyles.resultDetailsSection]}>
-                <BookDetailsComponent book={book} hideReadProgress={true}/>
+                <BookDetailsComponent book={book}/>
             </View>
         </View>
     );

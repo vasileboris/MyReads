@@ -16,7 +16,7 @@ function MonthStatsComponent(props) {
             <Text style={[appStyles.text]}>
                 {localizer.localizeWithCount('statistics-books-read-label', monthStats.books.length)}
             </Text>
-            <View style={[appStyles.resultDetail]}>
+            <View>
                 {monthStats.books.map(book =>
                     <BookStatsComponent book={book}/>
                 )}
