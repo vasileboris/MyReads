@@ -54,5 +54,6 @@
   "help-screen": "Help",
   "about-screen": "About",
   "privacy-policy-screen": "Privacy Policy",
-  "read-pages-over-time-label": "Read pages over time"
+  "read-pages-over-time-label": "Read pages over time",
+  "statistics-screen": "Statistics"
 }

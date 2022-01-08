@@ -6,6 +6,7 @@ import {
 import BooksScreenComponent from 'components/screens/BooksScreenComponent';
 import BookScreenComponent from 'components/screens/BookScreenComponent';
 import CurrentReadingSessionScreen from 'components/screens/CurrentReadingSessionScreen';
+import StatsScreenComponent from 'components/screens/StatsScreenComponent';
 import HelpScreen from 'components/screens/HelpScreen';
 import AboutScreen from 'components/screens/AboutScreen';
 import PrivacyPolicyScreen from 'components/screens/PrivacyPolicyScreen';
@@ -28,6 +29,16 @@ const BooksStackNavigator = createStackNavigator(
     },
     {
         initialRouteName: 'books',
+        defaultNavigationOptions
+    }
+);
+
+const StatsStackNavigator = createStackNavigator(
+    {
+        stats: StatsScreenComponent
+    },
+    {
+        initialRouteName: 'stats',
         defaultNavigationOptions
     }
 );
@@ -64,7 +75,7 @@ const PrivacyPolicyStackNavigator = createStackNavigator(
 
 export const createAppDrawerNavigator = () => createDrawerNavigator(
     {
-        stackNavigator: {
+        books: {
             screen: BooksStackNavigator,
             navigationOptions: {
                 drawerLabel: localizer.localize('app-title'),
@@ -73,6 +84,20 @@ export const createAppDrawerNavigator = () => createDrawerNavigator(
                         key='home.png'
                         folder='menu'
                         image='home.png'
+                        size='menu'
+                    />
+                ),
+            }
+        },
+        stats: {
+            screen: StatsStackNavigator,
+            navigationOptions: {
+                drawerLabel: localizer.localize('statistics-screen'),
+                drawerIcon: () => (
+                    <AssetImage
+                        key='stats.png'
+                        folder='menu'
+                        image='stats.png'
                         size='menu'
                     />
                 ),

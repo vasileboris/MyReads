@@ -5,6 +5,7 @@ import Image from './Image';
 const assets = {
     '/menu/menu.png': require('../../assets/menu/menu.png'),
     '/menu/home.png': require('../../assets/menu/home.png'),
+    '/menu/stats.png': require('../../assets/menu/stats.png'),
     '/menu/info.png': require('../../assets/menu/info.png'),
     '/menu/help.png': require('../../assets/menu/help.png'),
     '/menu/lock.png': require('../../assets/menu/lock.png'),
