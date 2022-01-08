@@ -20,8 +20,9 @@ export function* watchFetchReadingSessionProgress() {
 
 function* callFetchReadingSessionProgress(action) {
     const { bookUuid } = action.payload;
+    let bookResponse = null;
     try {
-        const bookResponse = yield call(fetchBook, bookUuid);
+        bookResponse = yield call(fetchBook, bookUuid);
         const response = yield call(fetchReadingSessionProgressByBookUuid, bookUuid);
 
         const book = {
@@ -37,6 +38,16 @@ function* callFetchReadingSessionProgress(action) {
         yield put(receiveReadingSessionProgressAction(response.data));
     } catch (error) {
         yield put(receiveMessageAction(error));
+        if(!error && bookResponse) {
+            const book = {
+                ...bookResponse.data,
+                updateDate: getISODate(new Date()),
+                readPercentage: null,
+                lastReadPageDate: null
+            }
+            yield call(updateBook, book);
+            yield put(receiveBookAction(book));
+        }
         yield put(clearReadingSessionProgressAction(bookUuid));
     }
 }
