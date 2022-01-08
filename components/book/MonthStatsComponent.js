@@ -6,6 +6,7 @@ import {
 } from 'react-native';
 import appStyles from 'styles/AppStyles';
 import localizer from 'utils/Localizer';
+import { sortBooks } from 'utils/Book';
 import Card from 'components/card/Card';
 import BookStatsComponent from './BookStatsComponent';
 
@@ -23,7 +24,7 @@ function MonthStatsComponent(props) {
                 </Text>
             </Card>
             <View>
-                {monthStats.books.map(book =>
+                {monthStats.books.sort(sortBooks).map(book =>
                     <Card style={[appStyles.marginBottom]}>
                         <BookStatsComponent book={book}/>
                     </Card>
