@@ -6,6 +6,7 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import MessageComponent from 'components/message/MessageComponent';
+import StatsBooksComponent from 'components/book/StatsBooksComponent';
 import { createDrawerHeaderLeft } from 'components/navigation/ScreenNavigation';
 import { receiveMessageAction } from 'actions/MessageAction';
 import { fetchBooksAction } from 'actions/BookAction';
@@ -33,10 +34,7 @@ class StatsScreenComponent extends React.Component {
                 <Text style={[appStyles.text]}>
                     {localizer.localize('statistics-screen')}
                 </Text>
-{/*
-                <BooksComponent books={books}
-                                onBookClick={this.onBookClick}/>
-*/}
+                <StatsBooksComponent books={books}/>
             </View>
         );
 
