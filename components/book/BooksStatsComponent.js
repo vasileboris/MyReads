@@ -8,7 +8,7 @@ import appStyles from 'styles/AppStyles';
 function BooksStatsComponent(props) {
     const { books } = props;
 
-    const booksRead = Object.values(books).filter(book => book.lastReadPageDate && book.readPercentage);
+    const booksRead = Object.values(books).filter(book => book.lastReadPageDate && 100 === book.readPercentage);
     let statsBooks = {};
     booksRead.forEach(book => {
         const [year, month] = book.lastReadPageDate.split('-');
