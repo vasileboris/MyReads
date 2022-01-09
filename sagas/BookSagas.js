@@ -12,6 +12,7 @@ import {
     addBook,
     updateBook
 } from 'api/BookApi';
+import { fetchReadingSessionProgressByBook } from 'api/ReadingSessionProgressApi';
 import {
     receiveBookAction,
     receiveBooksAction,
@@ -20,7 +21,8 @@ import {
     FETCH_BOOKS,
     DELETE_BOOK,
     ADD_BOOK,
-    UPDATE_BOOK
+    UPDATE_BOOK,
+    UPDATE_BOOKS_STATS
 } from 'actions/BookAction';
 import { receiveMessageAction } from 'actions/MessageAction';
 import { receiveBooksSearchTextAction } from 'actions/BooksSearchAction';
@@ -29,6 +31,7 @@ import { fetchCurrentReadingSessionAction } from 'actions/ReadingSessionAction';
 
 //Needed for Uncaught ReferenceError: regeneratorRuntime is not defined
 import 'babel-polyfill';
+import { getISODate } from 'utils/Date';
 
 export function* watchFetchBook() {
     yield takeLatest(FETCH_BOOK, callFetchBook);
@@ -36,6 +39,10 @@ export function* watchFetchBook() {
 
 export function* watchFetchBooks() {
     yield takeLatest(FETCH_BOOKS, callFetchBooks);
+}
+
+export function* watchUpdateBooksStats() {
+    yield takeLatest(UPDATE_BOOKS_STATS, callUpdateBooksStats);
 }
 
 export function* watchDeleteBook() {
@@ -66,6 +73,46 @@ function* callFetchBooks(action) {
         const searchText = action.payload;
         const response = yield call(fetchBooks, searchText);
         yield put(receiveBooksAction(response.data));
+    } catch(error) {
+        yield put(receiveMessageAction(error));
+    }
+}
+
+function* callUpdateBooksStats() {
+    try {
+        yield put(receiveMessageAction(null));
+        const searchText = null; // Retrieve all books
+        const booksResponse = yield call(fetchBooks, searchText);
+        const books = booksResponse.data;
+        for(let i=0; i<books.length; i++) {
+            const book = books[i];
+            if(undefined === book.updateDate
+                || undefined === book.readPercentage
+                || undefined === book.lastReadPageDate) {
+
+                try {
+                    const readingSessionProgressResponse = yield call(fetchReadingSessionProgressByBook, book);
+                    const readingSessionProgress = readingSessionProgressResponse.data;
+                    const updatedBook = {
+                        ...book,
+                        updateDate: getISODate(new Date()),
+                        readPercentage: readingSessionProgress.readPercentage,
+                        lastReadPageDate: readingSessionProgress.lastReadPageDate
+                    }
+                    yield call(updateBook, updatedBook);
+                } catch (error) {
+                    if(!error) {
+                        const updatedBook = {
+                            ...book,
+                            updateDate: getISODate(new Date()),
+                            readPercentage: null,
+                            lastReadPageDate: null
+                        }
+                        yield call(updateBook, updatedBook);
+                    }
+                }
+            }
+        }
     } catch(error) {
         yield put(receiveMessageAction(error));
     }

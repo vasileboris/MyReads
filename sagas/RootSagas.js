@@ -4,7 +4,8 @@ import {
     watchFetchBooks,
     watchDeleteBook,
     watchAddBook,
-    watchUpdateBook
+    watchUpdateBook,
+    watchUpdateBooksStats
 } from 'sagas/BookSagas';
 import { watchFetchCurrentReadingSession } from 'sagas/ReadingSessionActionSagas';
 import { watchFetchReadingSessionProgress } from 'sagas/ReadingSessionProgressSagas';
@@ -25,6 +26,7 @@ export default function* rootSaga() {
         call(watchFetchReadingSessionProgress),
         call(watchCreateDateReadingSession),
         call(watchUpdateDateReadingSession),
-        call(watchDeleteDateReadingSession)
+        call(watchDeleteDateReadingSession),
+        call(watchUpdateBooksStats)
     ]);
 }

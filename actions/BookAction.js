@@ -7,6 +7,7 @@ export const CHANGE_BOOK = 'CHANGE_BOOK';
 export const RESET_BOOK = 'RESET_BOOK';
 export const ADD_BOOK = 'ADD_BOOK';
 export const UPDATE_BOOK = 'UPDATE_BOOK';
+export const UPDATE_BOOKS_STATS = 'UPDATE_BOOKS_STATS';
 
 export function fetchBookAction(uuid) {
     return {
@@ -78,5 +79,11 @@ export function updateBookAction(searchText, book) {
             searchText,
             book
         }
+    }
+}
+
+export function updateBooksStatsAction() {
+    return {
+        type: UPDATE_BOOKS_STATS
     }
 }
