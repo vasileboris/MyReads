@@ -56,4 +56,10 @@ Tap the book, choose ADD READING, tap the reading session, update the details an
 Tap the book, choose ADD READING, tap the reading session, choose DELETE. You'll have to confirm.
 
 ![delete-reading-session](delete-reading-session.png)
+
+## Statistics, finished books
+
+In statistics you can see how many books you finished and when.
+
+![finished-books](finished-books.png)
 `;
