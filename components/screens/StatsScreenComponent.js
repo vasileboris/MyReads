@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
-import { connect } from 'react-redux';
 import MessageComponent from 'components/message/MessageComponent';
 import BooksStatsComponent from 'components/book/BooksStatsComponent';
 import { createDrawerHeaderLeft } from 'components/navigation/ScreenNavigation';
@@ -13,30 +12,20 @@ import {
 import localizer from 'utils/Localizer';
 import appStyles from 'styles/AppStyles';
 
-class StatsScreenComponent extends React.Component {
-    static navigationOptions = ({navigation}) => {
-        return {
-            title: localizer.localize('statistics-screen'),
-            headerLeft: createDrawerHeaderLeft(navigation)
-        };
-    };
+const StatsScreenComponent = props => {
 
-    constructor(props) {
-        super(props);
-    }
+    const [ message, setMessage ] = useState(null);
+    const [books, setBooks] = useState([]);
 
-    render() {
-        const { message, books } = this.props;
+    return (
+        <View style={[appStyles.screen, appStyles.vertical, appStyles.justifyStart]}>
+            <MessageComponent message={message}/>
+            <BooksStatsComponent books={books}/>
+        </View>
+    );
+}
 
-        return (
-            <View style={[appStyles.screen, appStyles.vertical, appStyles.justifyStart]}>
-                <MessageComponent message={message}/>
-                <BooksStatsComponent books={books}/>
-            </View>
-        );
-
-    }
-
+/*
     componentDidMount() {
         const { navigation, receiveMessageAction } = this.props;
         this.willFocus = navigation.addListener('willFocus', () => {
@@ -61,27 +50,17 @@ class StatsScreenComponent extends React.Component {
         const { updateBooksStatsAction } = this.props;
         updateBooksStatsAction();
     }
+ */
 
-}
+
+StatsScreenComponent['navigationOptions'] = ({navigation}) => ({
+    title: localizer.localize('statistics-screen'),
+    headerLeft: createDrawerHeaderLeft(navigation)
+})
 
 StatsScreenComponent.propTypes = {
     message: PropTypes.string,
     books: PropTypes.object
 };
 
-const mapStateToProps = state => {
-    const { message, books } = state;
-
-    return {
-        message,
-        books
-    };
-};
-
-const mapDispatchToProps = {
-    receiveMessageAction,
-    fetchBooksAction,
-    updateBooksStatsAction
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(StatsScreenComponent);
+export default StatsScreenComponent;
