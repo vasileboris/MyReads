@@ -1,12 +1,21 @@
 import { getReason } from 'utils/Error';
 import localizer from 'utils/Localizer';
 import {
-    fetchCurrentReadingSessionProgressByBookUuidFromStore
+    fetchCurrentReadingSessionProgressByBookUuidFromStore,
+    fetchCurrentReadingSessionProgressByBookFromStore
 } from 'storage/ReadingSessionProgressAsyncStorage';
 
 export function fetchReadingSessionProgressByBookUuid(bookUuid) {
     return new Promise((resolve, reject) => {
         fetchCurrentReadingSessionProgressByBookUuidFromStore(bookUuid)
+            .then(response => resolve(response))
+            .catch(error => reject(fetchReadingSessionProgressMessage(error)))
+    });
+}
+
+export function fetchReadingSessionProgressByBook(book) {
+    return new Promise((resolve, reject) => {
+        fetchCurrentReadingSessionProgressByBookFromStore(book)
             .then(response => resolve(response))
             .catch(error => reject(fetchReadingSessionProgressMessage(error)))
     });

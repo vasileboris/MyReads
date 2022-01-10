@@ -6,7 +6,10 @@ import MessageComponent from 'components/message/MessageComponent';
 import BooksStatsComponent from 'components/book/BooksStatsComponent';
 import { createDrawerHeaderLeft } from 'components/navigation/ScreenNavigation';
 import { receiveMessageAction } from 'actions/MessageAction';
-import { fetchBooksAction } from 'actions/BookAction';
+import {
+    fetchBooksAction,
+    updateBooksStatsAction
+} from 'actions/BookAction';
 import localizer from 'utils/Localizer';
 import appStyles from 'styles/AppStyles';
 
@@ -39,6 +42,7 @@ class StatsScreenComponent extends React.Component {
         this.willFocus = navigation.addListener('willFocus', () => {
             receiveMessageAction(null);
         });
+        this.updateBooksStats();
         this.retrieveBooks();
     }
 
@@ -51,6 +55,11 @@ class StatsScreenComponent extends React.Component {
     retrieveBooks() {
         const { fetchBooksAction } = this.props;
         fetchBooksAction();
+    }
+
+    updateBooksStats() {
+        const { updateBooksStatsAction } = this.props;
+        updateBooksStatsAction();
     }
 
 }
@@ -71,7 +80,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
     receiveMessageAction,
-    fetchBooksAction
+    fetchBooksAction,
+    updateBooksStatsAction
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(StatsScreenComponent);
