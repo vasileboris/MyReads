@@ -25,7 +25,7 @@ function MonthStatsComponent(props) {
             </Card>
             <View>
                 {monthStats.books.sort(sortBooks).map(book =>
-                    <Card style={[appStyles.marginBottom]}>
+                    <Card style={[appStyles.marginBottom]} key={book.uuid}>
                         <BookStatsComponent book={book}/>
                     </Card>
                 )}

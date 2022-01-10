@@ -1,21 +1,41 @@
-import React, { useState } from 'react';
+import React from 'react';
+import {
+    useState,
+    useEffect
+} from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import MessageComponent from 'components/message/MessageComponent';
 import BooksStatsComponent from 'components/book/BooksStatsComponent';
 import { createDrawerHeaderLeft } from 'components/navigation/ScreenNavigation';
-import { receiveMessageAction } from 'actions/MessageAction';
 import {
-    fetchBooksAction,
-    updateBooksStatsAction
-} from 'actions/BookAction';
+    fetchBooks as fetchBooksApi
+} from 'api/BookApi';
 import localizer from 'utils/Localizer';
 import appStyles from 'styles/AppStyles';
 
 const StatsScreenComponent = props => {
-
     const [ message, setMessage ] = useState(null);
     const [books, setBooks] = useState([]);
+
+    function fetchBooks() {
+        fetchBooksApi(null)
+            .then(response => setBooks(response.data))
+            .catch(error => setMessage(error));
+    }
+
+    useEffect(() => {
+        fetchBooks();
+
+        const didFocusSubscription = props.navigation.addListener(
+            'didFocus',
+            payload => {
+                setMessage(null);
+                fetchBooks();
+            }
+        );
+        return () => didFocusSubscription.remove();
+    }, []);
 
     return (
         <View style={[appStyles.screen, appStyles.vertical, appStyles.justifyStart]}>
@@ -24,30 +44,6 @@ const StatsScreenComponent = props => {
         </View>
     );
 }
-
-/*
-    componentDidMount() {
-        const { navigation, receiveMessageAction } = this.props;
-        this.willFocus = navigation.addListener('willFocus', () => {
-            receiveMessageAction(null);
-        });
-        this.updateBooksStats();
-        this.retrieveBooks();
-    }
-
-    componentWillUnmount() {
-        if(this.willFocus) {
-            this.willFocus.remove();
-        }
-    }
-
-    retrieveBooks() {
-        const { fetchBooksAction } = this.props;
-        fetchBooksAction();
-    }
-
- */
-
 
 StatsScreenComponent['navigationOptions'] = ({navigation}) => ({
     title: localizer.localize('statistics-screen'),

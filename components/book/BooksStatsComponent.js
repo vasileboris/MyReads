@@ -2,13 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FlatList } from 'react-native';
 import YearStatsComponent from '/components/book/YearStatsComponent';
-import Card from '/components/card/Card';
-import appStyles from 'styles/AppStyles';
 
 function BooksStatsComponent(props) {
     const { books } = props;
 
-    const booksRead = Object.values(books).filter(book => book.lastReadPageDate && 100 === book.readPercentage);
+    const booksRead = books.filter(book => book.lastReadPageDate && 100 === book.readPercentage);
     let statsBooks = {};
     booksRead.forEach(book => {
         const [year, month] = book.lastReadPageDate.split('-');
@@ -49,14 +47,14 @@ function BooksStatsComponent(props) {
             data={sortedStats}
             keyExtractor={stats => stats.year}
             renderItem={({item}) => (
-                <YearStatsComponent yearStats={item} key={item.year}/>
+                <YearStatsComponent yearStats={item} key={`${item.year}`}/>
             )}
         />
     );
 }
 
 BooksStatsComponent.propTypes = {
-    books: PropTypes.object.isRequired
+    books: PropTypes.array.isRequired
 };
 
 export default BooksStatsComponent;

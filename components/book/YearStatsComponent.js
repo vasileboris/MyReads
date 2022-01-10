@@ -34,7 +34,7 @@ function YearStatsComponent(props) {
                 </Text>
             </Card>
             {sortedStats.map(stats =>
-                <MonthStatsComponent monthStats={stats}/>
+                <MonthStatsComponent monthStats={stats} key={`${yearStats.year}-${stats.month}`}/>
             )}
         </View>
     );
