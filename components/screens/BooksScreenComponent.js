@@ -12,7 +12,8 @@ import { receiveMessageAction } from 'actions/MessageAction';
 import { receiveBooksSearchTextAction } from 'actions/BooksSearchAction';
 import {
     fetchBooksAction,
-    resetBookAction
+    resetBookAction,
+    updateBooksStatsAction
 } from 'actions/BookAction';
 import { changeBookOperationAction } from 'actions/OperationAction';
 import localizer from 'utils/Localizer';
@@ -55,6 +56,7 @@ class BooksScreenComponent extends React.Component {
             receiveMessageAction(null);
         });
         this.retrieveBooks();
+        this.updateBooksStats();
     }
 
     componentWillUnmount() {
@@ -68,6 +70,10 @@ class BooksScreenComponent extends React.Component {
         fetchBooksAction();
     }
 
+    updateBooksStats() {
+        const { updateBooksStatsAction } = this.props;
+        updateBooksStatsAction();
+    }
     onSearchInputChange(text) {
         const booksSearchText = text,
             { receiveBooksSearchTextAction, fetchBooksAction } = this.props;
@@ -111,7 +117,8 @@ const mapDispatchToProps = {
     receiveBooksSearchTextAction,
     fetchBooksAction,
     resetBookAction,
-    changeBookOperationAction
+    changeBookOperationAction,
+    updateBooksStatsAction
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BooksScreenComponent);

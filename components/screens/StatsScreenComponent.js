@@ -46,10 +46,6 @@ const StatsScreenComponent = props => {
         fetchBooksAction();
     }
 
-    updateBooksStats() {
-        const { updateBooksStatsAction } = this.props;
-        updateBooksStatsAction();
-    }
  */
 
 
