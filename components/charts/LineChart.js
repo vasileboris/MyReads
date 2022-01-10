@@ -86,9 +86,8 @@ const LineChart = props => {
 
 LineChart.propTypes = {
     data: PropTypes.object.isRequired,
-    diameter: PropTypes.number.isRequired,
-    color: PropTypes.string.isRequired,
-    margin: PropTypes.number
+    width: PropTypes.number.isRequired,
+    height: PropTypes.number.isRequired
 };
 
 export default LineChart;
